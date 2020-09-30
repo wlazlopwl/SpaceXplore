@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardElevation="2dp"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints">
+        <LinearLayout
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_marginBottom="@dimen/margin_bottom_card_linear"
+                          android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="@string/capsule_type_serial"
+                    >
+
+                    </TextView>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:id="@+id/capsule_serial_type"
+
+                              android:textSize="@dimen/larger_text"
+                              android:textStyle="bold"
+                    >
+
+                    </TextView>
+                </LinearLayout>
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="Status"
+                              android:layout_gravity="right"
+                    >
+
+                    </TextView>
+                    <TextView
+                            android:id="@+id/capsule_status_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/larger_text"
+                            android:textStyle="bold"
+                            android:text="RETIRED"
+
+                    >
+
+                    </TextView>
+                    <!--                    <ImageView-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:id="@+id/capsule_status_icon"-->
+                    <!--                    >-->
+
+                    <!--                    </ImageView>-->
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_marginBottom="@dimen/margin_bottom_card_linear"
+                          android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="@string/capsule_active_since"
+                    >
+
+                    </TextView>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:id="@+id/capsule_active_since"
+                              android:textSize="@dimen/larger_text"
+                              android:textStyle="bold"
+                    >
+
+                    </TextView>
+                </LinearLayout>
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="@string/capsule_mission_count">
+
+                    </TextView>
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                              android:id="@+id/capsule_count_missions"
+                              android:gravity="center_horizontal"
+                              android:textSize="@dimen/larger_text"
+                              android:textStyle="bold"
+                              android:layout_gravity="right"
+                    >
+
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_marginBottom="@dimen/margin_bottom_card_linear"
+                          android:orientation="horizontal">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="@string/capsule_landings"
+                    >
+
+                    </TextView>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:id="@+id/capsule_count_landings"
+                              android:textSize="@dimen/larger_text"
+                              android:layout_gravity="center_horizontal"
+                              android:textStyle="bold"
+                    >
+
+                    </TextView>
+                </LinearLayout>
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+
+                              android:layout_gravity="right">
+
+                    </TextView>
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="GET MORE"
+                                android:textSize="@dimen/larger_text"
+                        >
+
+                        </TextView>
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_forward_black_24dp">
+
+                        </ImageView>
+                    </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
