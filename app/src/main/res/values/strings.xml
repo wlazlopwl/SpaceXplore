@@ -23,4 +23,12 @@
     <string name="capsule_no_time_data">No data</string>
     <string name="capsule_landings">Landings</string>
     <string name="capsule_type_serial">Serial | type</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sortBy">Sort by:</string>
+    <string name="sort_by_serial_asc">SERIAL ASCENDING</string>
+    <string name="sort_by_type_desc">SERIAL DESCENDING</string>
+    <string name="sort_by_time_asc">TIME ASCENDING</string>
+    <string name="sort_by_time_desc">TIME DESCENDING</string>
 </resources>

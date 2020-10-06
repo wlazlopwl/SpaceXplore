@@ -7,4 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="larger_text">16dp</dimen>
     <dimen name="margin_bottom_card_linear">8dp</dimen>
+    <dimen name="bottom_sheet_item_padding">8sp</dimen>
+    <dimen name="round_corner_bottom_sheet_dialog">16dp</dimen>
+    <dimen name="largest_text">20sp</dimen>
 </resources>

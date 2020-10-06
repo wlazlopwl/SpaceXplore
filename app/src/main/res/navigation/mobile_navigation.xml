@@ -43,5 +43,11 @@
     <fragment android:id="@+id/nav_capsule"
               android:name="com.appdevpwl.spacex.ui.capsule.CapsuleFragment"
               android:label="@string/menu_capsule"
-              tools:layout="@layout/capsule_fragment"/>
+              tools:layout="@layout/capsule_fragment">
+
+    </fragment>
+    <dialog android:id="@+id/bottomSheetMainSortFragment"
+              android:name="com.appdevpwl.spacex.ui.capsule.BottomSheetMainSortFragment"
+              android:label="fragment_bottom_sheet_main_sort"
+              tools:layout="@layout/capsule_sort_bottom_sheet_main"/>
 </navigation>
