@@ -1,13 +1,8 @@
 package com.appdevpwl.spacex.data.capsules
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.appdevpwl.spacex.data.Service
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Response
+
 import javax.inject.Inject
 
 class CapsulesRepository @Inject constructor(private val capsulesDao: CapsulesDao, private val service: Service) {

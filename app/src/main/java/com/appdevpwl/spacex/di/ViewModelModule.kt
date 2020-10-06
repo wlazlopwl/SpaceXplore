@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.appdevpwl.spacex.ui.capsule.CapsuleViewModel
 import com.appdevpwl.spacex.ui.home.HomeViewModel
+import com.appdevpwl.spacex.ui.rocket.RocketViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -21,6 +22,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CapsuleViewModel::class)
     abstract fun bindCapsuleViewModel(capsuleViewModel: CapsuleViewModel):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RocketViewModel::class)
+    abstract fun bindRocketViewModel(rocketViewModel: RocketViewModel):ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(viewModelProviderFactory: ViewModelProviderFactory): ViewModelProvider.Factory

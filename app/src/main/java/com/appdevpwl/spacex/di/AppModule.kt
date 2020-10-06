@@ -30,5 +30,11 @@ class AppModule {
     @Provides
     fun provideCapsuleDao(appDatabase: AppDatabase)= appDatabase.capsuleDao()
 
+    @Singleton
+    @Provides
+    fun provideRocketDao(appDatabase: AppDatabase)= appDatabase.rocketDao()
+
+
+
 
 }

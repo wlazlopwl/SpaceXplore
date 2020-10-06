@@ -1,6 +1,7 @@
-package com.appdevpwl.spacex.data.capsules
+package com.appdevpwl.spacex.data.converters
 
 import androidx.room.TypeConverter
+import com.appdevpwl.spacex.data.capsules.Capsule
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
