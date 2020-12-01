@@ -17,13 +17,13 @@
     <style name="SmallDivider">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">1dp</item>
-    <item name="android:background">@android:color/darker_gray</item>
+    <item name="android:background">#E3E1E1</item>
     </style>
 
     <style name="MediumDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">2dp</item>
-        <item name="android:background">@android:color/darker_gray</item>
+        <item name="android:background">#E3E1E1</item>
     </style>
 
 

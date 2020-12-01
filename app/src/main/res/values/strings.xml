@@ -24,11 +24,36 @@
     <string name="capsule_landings">Landings</string>
     <string name="capsule_type_serial">Serial | type</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sortBy">Sort by:</string>
     <string name="sort_by_serial_asc">SERIAL ASCENDING</string>
     <string name="sort_by_type_desc">SERIAL DESCENDING</string>
     <string name="sort_by_time_asc">TIME ASCENDING</string>
     <string name="sort_by_time_desc">TIME DESCENDING</string>
+    <string name="menu_rocket">Rockets</string>
+    <string name="rocket_first_flight">First flight</string>
+    <string name="rocket_company">Company</string>
+    <string name="rocket_cost">Cost per launch</string>
+    <string name="rocket_succes_rate">Success rate</string>
+    <string name="metrics_card_title">Metrics</string>
+
+    <string name="concatenate_int_string">%1$d %2$s</string>
+    <string name="concatenate_double_string">%1.2f %2$s</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="units_header">Units</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="menu_settings">Settings</string>
 </resources>

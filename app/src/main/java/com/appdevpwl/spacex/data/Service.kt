@@ -1,7 +1,7 @@
 package com.appdevpwl.spacex.data
 
 import com.appdevpwl.spacex.data.capsules.Capsule
-import com.appdevpwl.spacex.data.rocket.Rocket
+import com.appdevpwl.spacex.data.rocket.model.Rocket
 import retrofit2.Response
 import retrofit2.http.GET
 

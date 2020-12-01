@@ -1,0 +1,19 @@
+<resources>
+      <string-array name="list_preference_length_entry_values">
+          <item>meters</item>
+          <item>feet</item>
+          </string-array>
+    <string-array name="list_preference_length_entries">
+        <item>Meter</item>
+        <item>Feet</item>
+    </string-array>
+
+    <string-array name="list_preference_mass_entry_values">
+        <item>kg</item>
+        <item>lb</item>
+    </string-array>
+    <string-array name="list_preference_mass_entries">
+        <item>Kilogram</item>
+        <item>Pound</item>
+    </string-array>
+</resources>

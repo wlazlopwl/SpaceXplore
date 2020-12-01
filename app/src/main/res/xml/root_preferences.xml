@@ -1,0 +1,26 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <PreferenceCategory app:title="@string/units_header">
+
+        <ListPreference
+                app:key="lengthUnit"
+                android:title="Length"
+                android:defaultValue="meters"
+                app:useSimpleSummaryProvider="true"
+                android:entries="@array/list_preference_length_entries"
+                android:entryValues="@array/list_preference_length_entry_values" />
+
+    </PreferenceCategory>
+    <ListPreference
+            app:key="massUnit"
+            android:title="Mass"
+            android:defaultValue="kg"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/list_preference_mass_entries"
+            android:entryValues="@array/list_preference_mass_entry_values" />
+
+</PreferenceScreen>
+

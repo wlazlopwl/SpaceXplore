@@ -1,7 +1,7 @@
 package com.appdevpwl.spacex.data.converters
 
 import androidx.room.TypeConverter
-import com.appdevpwl.spacex.data.rocket.SecondStage
+import com.appdevpwl.spacex.data.rocket.model.SecondStage
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

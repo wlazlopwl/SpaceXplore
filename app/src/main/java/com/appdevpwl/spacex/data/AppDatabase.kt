@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.appdevpwl.spacex.data.capsules.Capsule
 import com.appdevpwl.spacex.data.capsules.CapsulesDao
 import com.appdevpwl.spacex.data.converters.*
-import com.appdevpwl.spacex.data.rocket.Rocket
+import com.appdevpwl.spacex.data.rocket.model.Rocket
 import com.appdevpwl.spacex.data.rocket.RocketDao
 
 

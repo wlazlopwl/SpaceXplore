@@ -20,6 +20,15 @@
                 android:id="@+id/nav_capsule"
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="@string/menu_capsule"/>
+        <item
+                android:id="@+id/nav_rocket"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/menu_rocket"/>
+
+        <item
+                android:id="@+id/settingsFragment"
+                android:icon="@drawable/ic_add_circle_green_24dp"
+                android:title="@string/menu_settings"/>
 
     </group>
 </menu>

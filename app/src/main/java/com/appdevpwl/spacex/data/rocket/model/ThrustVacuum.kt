@@ -1,4 +1,4 @@
-package com.appdevpwl.spacex.data.rocket
+package com.appdevpwl.spacex.data.rocket.model
 
 data class ThrustVacuum(
     val kN: Int?,

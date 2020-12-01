@@ -50,4 +50,26 @@
               android:name="com.appdevpwl.spacex.ui.capsule.BottomSheetMainSortFragment"
               android:label="fragment_bottom_sheet_main_sort"
               tools:layout="@layout/capsule_sort_bottom_sheet_main"/>
+    <fragment android:id="@+id/nav_rocket"
+              android:name="com.appdevpwl.spacex.ui.rocket.RocketFragment"
+              android:label="Rockets"
+              tools:layout="@layout/fragment_rocket"
+
+    >
+        <action android:id="@+id/action_nav_rocket_to_rocketDetailsFragment"
+                app:destination="@id/rocketDetailsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/rocketDetailsFragment"
+              android:name="com.appdevpwl.spacex.ui.rocket.RocketDetailsFragment"
+              android:label="rocket_details_fragment" tools:layout="@layout/rocket_details_fragment"/>
+    <argument
+            android:name="argRocketId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.appdevpwl.spacex.ui.SettingsFragment"
+            android:label="Settings" />
+
+
 </navigation>

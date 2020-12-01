@@ -1,4 +1,4 @@
-package com.appdevpwl.spacex.data.rocket
+package com.appdevpwl.spacex.data.rocket.model
 
 data class Payloads(
     val composite_fairing: CompositeFairing?,

@@ -22,7 +22,7 @@ class CapsuleAdapter() : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
         private val capsuleName: TextView = mView.capsule_serial_type
         private val activeSince: TextView = mView.capsule_active_since
 
-        //        private val capsuleStatus: ImageView = mView.capsule_status_icon
+        // private val capsuleStatus: ImageView = mView.capsule_status_icon
         private val countMissions: TextView = mView.capsule_count_missions
         private val capsuleStatusTV: TextView = mView.capsule_status_tv
         private val countLandings: TextView = mView.capsule_count_landings

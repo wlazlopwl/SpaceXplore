@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.rocket.RocketDetailsFragment">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/rocket_img_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+        </androidx.viewpager.widget.ViewPager>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/linearLayout">
+
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    app:cardCornerRadius="16dp"
+
+                    android:id="@+id/cardView">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_card"
+                        android:paddingRight="@dimen/padding_card"
+
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/rocket_details_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/app_name"
+                                android:textSize="@dimen/largest_text" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <ImageView
+                                android:id="@+id/rocket_details_status_IV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </ImageView>
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Cost per launch:"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:id="@+id/rocket_details_cost"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Stages:"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:id="@+id/rocket_details_stages"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="First flight:"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:id="@+id/rocket_details_first_flight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Success rate:"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </TextView>
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:id="@+id/rocket_details_success_rate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </TextView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    app:cardCornerRadius="16dp"
+
+                    android:id="@+id/cardViewMetrics">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_card"
+                        android:paddingRight="@dimen/padding_card"
+
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:id="@+id/metricsCardTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/metrics_card_title"
+                                android:textSize="@dimen/largest_text" />
+
+
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Mass:"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:id="@+id/rocket_details_metric_mass"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Height:"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:id="@+id/rocket_details_metric_height"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Diameter:"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:id="@+id/rocket_details_metric_diameter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+

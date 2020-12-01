@@ -21,13 +21,13 @@ interface CapsulesDao {
     @Query("SELECT COUNT(capsule_serial) FROM capsule_table")
     fun countCapsules(): Int
 
-    @Query("SELECT * FROM(capsule_table)")
+    @Query("SELECT * FROM capsule_table")
     fun loadAllCapsules(): LiveData<List<Capsule>>
 
-    @Query("SELECT * FROM capsule_table ORDER BY type DESC")
+    @Query("SELECT * FROM capsule_table ORDER BY capsule_serial DESC")
     fun getAllCapsulesSortByTypeDescending(): LiveData<List<Capsule>>
 
-    @Query("SELECT * FROM capsule_table ORDER BY type ASC")
+    @Query("SELECT * FROM capsule_table ORDER BY capsule_serial ASC")
     fun getAllCapsulesSortByTypeAscending(): LiveData<List<Capsule>>
 
     @Query("SELECT * FROM capsule_table ORDER BY original_launch ASC")

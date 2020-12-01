@@ -38,7 +38,7 @@
         <LinearLayout
                 android:id="@+id/linear_serial_asc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottom_sheet_item_height"
                 android:padding="@dimen/bottom_sheet_item_padding"
                 android:orientation="horizontal"
                 android:clickable="true"
@@ -74,7 +74,7 @@
         <LinearLayout
                 android:id="@+id/linear_serial_desc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottom_sheet_item_height"
                 android:padding="@dimen/bottom_sheet_item_padding"
                 android:orientation="horizontal"
                 android:clickable="true"
@@ -110,7 +110,7 @@
         <LinearLayout
                 android:id="@+id/linear_time_asc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottom_sheet_item_height"
                 android:padding="@dimen/bottom_sheet_item_padding"
                 android:orientation="horizontal"
                 android:clickable="true"
@@ -147,7 +147,7 @@
         <LinearLayout
                 android:id="@+id/linear_time_desc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottom_sheet_item_height"
                 android:padding="@dimen/bottom_sheet_item_padding"
                 android:orientation="horizontal"
                 android:clickable="true"

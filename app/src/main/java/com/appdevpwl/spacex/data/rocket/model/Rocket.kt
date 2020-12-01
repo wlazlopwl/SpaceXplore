@@ -1,4 +1,4 @@
-package com.appdevpwl.spacex.data.rocket
+package com.appdevpwl.spacex.data.rocket.model
 
 import androidx.room.*
 import com.appdevpwl.spacex.data.converters.*
@@ -17,7 +17,7 @@ data class Rocket(
     val country: String,
     val description: String,
     @TypeConverters(DiameterConverter::class)
-    val diameter: SecondStage?,
+    val diameter: Diameter?,
     @TypeConverters(EnginesConverter::class)
     val engines: Engines?,
     val first_flight: String,
@@ -39,5 +39,6 @@ data class Rocket(
     val second_stage: SecondStage?,
     val stages: Int,
     val success_rate_pct: Int,
-    val wikipedia: String
+    val wikipedia: String,
+    val flickr_images: List<String>
 )

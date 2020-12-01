@@ -2,6 +2,8 @@ package com.appdevpwl.spacex.di
 
 import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.appdevpwl.spacex.data.AppDatabase
 import com.appdevpwl.spacex.data.capsules.CapsulesDao
@@ -34,7 +36,11 @@ class AppModule {
     @Provides
     fun provideRocketDao(appDatabase: AppDatabase)= appDatabase.rocketDao()
 
-
+    @Singleton
+    @Provides
+    fun provideSharedPreferences(context: Context) : SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
+//        context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
 
 
 }

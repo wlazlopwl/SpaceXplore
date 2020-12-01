@@ -1,12 +1,10 @@
 package com.appdevpwl.spacex.data.converters
 
 import androidx.room.TypeConverter
-import com.appdevpwl.spacex.data.capsules.Capsule
-import com.appdevpwl.spacex.data.rocket.PayloadWeight
+import com.appdevpwl.spacex.data.rocket.model.PayloadWeight
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
-import javax.inject.Inject
 
 class PayloadWeightTypeConverter  {
 

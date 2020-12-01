@@ -2,9 +2,6 @@ package com.appdevpwl.spacex.ui
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.View
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,15 +9,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.appdevpwl.spacex.R
-import com.appdevpwl.spacex.ui.home.HomeFragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.android.AndroidInjection
-import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.capsule_sort_top_layout.*
 
 class MainActivity : DaggerAppCompatActivity() {
 
@@ -42,7 +34,9 @@ class MainActivity : DaggerAppCompatActivity() {
             R.id.nav_home,
             R.id.nav_gallery,
             R.id.nav_slideshow,
-            R.id.nav_capsule
+            R.id.nav_capsule,
+            R.id.nav_rocket,
+            R.id.settingsFragment
 
         ), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
