@@ -6,11 +6,13 @@ import androidx.room.TypeConverters
 import com.appdevpwl.spacex.data.capsules.Capsule
 import com.appdevpwl.spacex.data.capsules.CapsulesDao
 import com.appdevpwl.spacex.data.converters.*
+import com.appdevpwl.spacex.data.launches.LaunchesDao
+import com.appdevpwl.spacex.data.launches.model.LaunchesItem
 import com.appdevpwl.spacex.data.rocket.model.Rocket
 import com.appdevpwl.spacex.data.rocket.RocketDao
 
 
-@Database(entities = [TestEntity::class, Capsule::class, Rocket::class], version = 2, exportSchema = false)
+@Database(entities = [TestEntity::class, Capsule::class, Rocket::class, LaunchesItem::class], version = 3, exportSchema = false)
 @TypeConverters(
     MissionTypeConverter::class,
     JsonToStringConverter::class,
@@ -21,12 +23,19 @@ import com.appdevpwl.spacex.data.rocket.RocketDao
     HeightConverter::class,
     LandingLegsConverter::class,
     SecondStageConverter::class,
-    MassConverter::class
+    MassConverter::class,
+    LaunchFailureDetailsConverter::class,
+    LaunchSiteConverter::class,
+    LinksConverter::class,
+    TimelineConverter::class,
+    RocketConverter::class,
+    TelemetryConverter::class
 )
 
 abstract class AppDatabase : RoomDatabase() {
     abstract fun testEntityDao(): TestEntityDao
     abstract fun capsuleDao(): CapsulesDao
     abstract fun rocketDao(): RocketDao
+    abstract fun launchesDao(): LaunchesDao
 
 }

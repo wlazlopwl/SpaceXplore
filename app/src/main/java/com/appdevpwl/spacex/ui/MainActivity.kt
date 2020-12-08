@@ -36,7 +36,8 @@ class MainActivity : DaggerAppCompatActivity() {
             R.id.nav_slideshow,
             R.id.nav_capsule,
             R.id.nav_rocket,
-            R.id.settingsFragment
+            R.id.settingsFragment,
+            R.id.nav_launches
 
         ), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)

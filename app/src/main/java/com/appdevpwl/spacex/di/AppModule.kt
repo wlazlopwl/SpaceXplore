@@ -38,6 +38,10 @@ class AppModule {
 
     @Singleton
     @Provides
+    fun providelaunchesDao(appDatabase: AppDatabase)= appDatabase.launchesDao()
+
+    @Singleton
+    @Provides
     fun provideSharedPreferences(context: Context) : SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 //        context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)

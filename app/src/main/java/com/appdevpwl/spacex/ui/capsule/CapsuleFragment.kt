@@ -55,7 +55,7 @@ class CapsuleFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        capsuleViewModel.getApiTest()
+
         capsuleViewModel.getDataFromApiAndSave()
 
         val navController = findNavController()

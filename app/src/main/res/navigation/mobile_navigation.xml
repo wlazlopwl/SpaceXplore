@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/mobile_navigation"
-            app:startDestination="@+id/nav_home">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@+id/nav_home">
 
     <fragment
             android:id="@+id/nav_home"
@@ -13,7 +13,7 @@
 
         <action
                 android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-                app:destination="@id/nav_home_second"/>
+                app:destination="@id/nav_home_second" />
     </fragment>
     <fragment
             android:id="@+id/nav_home_second"
@@ -22,46 +22,52 @@
             tools:layout="@layout/fragment_home_second">
         <action
                 android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-                app:destination="@id/nav_home"/>
+                app:destination="@id/nav_home" />
 
         <argument
                 android:name="myArg"
-                app:argType="string"/>
+                app:argType="string" />
     </fragment>
 
     <fragment
             android:id="@+id/nav_gallery"
             android:name="com.appdevpwl.spacex.ui.gallery.GalleryFragment"
             android:label="@string/menu_gallery"
-            tools:layout="@layout/fragment_gallery"/>
+            tools:layout="@layout/fragment_gallery" />
 
     <fragment
             android:id="@+id/nav_slideshow"
             android:name="com.appdevpwl.spacex.ui.slideshow.SlideshowFragment"
             android:label="@string/menu_slideshow"
-            tools:layout="@layout/fragment_slideshow"/>
-    <fragment android:id="@+id/nav_capsule"
-              android:name="com.appdevpwl.spacex.ui.capsule.CapsuleFragment"
-              android:label="@string/menu_capsule"
-              tools:layout="@layout/capsule_fragment">
+            tools:layout="@layout/fragment_slideshow" />
+    <fragment
+            android:id="@+id/nav_capsule"
+            android:name="com.appdevpwl.spacex.ui.capsule.CapsuleFragment"
+            android:label="@string/menu_capsule"
+            tools:layout="@layout/capsule_fragment">
 
     </fragment>
-    <dialog android:id="@+id/bottomSheetMainSortFragment"
-              android:name="com.appdevpwl.spacex.ui.capsule.BottomSheetMainSortFragment"
-              android:label="fragment_bottom_sheet_main_sort"
-              tools:layout="@layout/capsule_sort_bottom_sheet_main"/>
-    <fragment android:id="@+id/nav_rocket"
-              android:name="com.appdevpwl.spacex.ui.rocket.RocketFragment"
-              android:label="Rockets"
-              tools:layout="@layout/fragment_rocket"
+    <dialog
+            android:id="@+id/bottomSheetMainSortFragment"
+            android:name="com.appdevpwl.spacex.ui.capsule.BottomSheetMainSortFragment"
+            android:label="fragment_bottom_sheet_main_sort"
+            tools:layout="@layout/capsule_sort_bottom_sheet_main" />
+    <fragment
+            android:id="@+id/nav_rocket"
+            android:name="com.appdevpwl.spacex.ui.rocket.RocketFragment"
+            android:label="Rockets"
+            tools:layout="@layout/fragment_rocket"
 
-    >
-        <action android:id="@+id/action_nav_rocket_to_rocketDetailsFragment"
-                app:destination="@id/rocketDetailsFragment"/>
+            >
+        <action
+                android:id="@+id/action_nav_rocket_to_rocketDetailsFragment"
+                app:destination="@id/rocketDetailsFragment" />
     </fragment>
-    <fragment android:id="@+id/rocketDetailsFragment"
-              android:name="com.appdevpwl.spacex.ui.rocket.RocketDetailsFragment"
-              android:label="rocket_details_fragment" tools:layout="@layout/rocket_details_fragment"/>
+    <fragment
+            android:id="@+id/rocketDetailsFragment"
+            android:name="com.appdevpwl.spacex.ui.rocket.RocketDetailsFragment"
+            android:label="rocket_details_fragment"
+            tools:layout="@layout/rocket_details_fragment" />
     <argument
             android:name="argRocketId"
             app:argType="integer"
@@ -70,6 +76,11 @@
             android:id="@+id/settingsFragment"
             android:name="com.appdevpwl.spacex.ui.SettingsFragment"
             android:label="Settings" />
+    <fragment
+            android:id="@+id/nav_launches"
+            android:name="com.appdevpwl.spacex.ui.launches.LaunchesFragment"
+            android:label="fragment_launches"
+            tools:layout="@layout/fragment_launches" />
 
 
 </navigation>

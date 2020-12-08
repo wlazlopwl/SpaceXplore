@@ -4,12 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.appdevpwl.spacex.ui.capsule.CapsuleViewModel
 import com.appdevpwl.spacex.ui.home.HomeViewModel
-import com.appdevpwl.spacex.ui.rocket.RocketDetailsFragment
+import com.appdevpwl.spacex.ui.launches.LaunchesViewModel
 import com.appdevpwl.spacex.ui.rocket.RocketDetailsViewModel
 import com.appdevpwl.spacex.ui.rocket.RocketViewModel
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.IntoMap
 
 @Module
@@ -34,6 +33,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(RocketDetailsViewModel::class)
     abstract fun bindRocketDetailsViewModel(rocketDetailsViewModel: RocketDetailsViewModel):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LaunchesViewModel::class)
+    abstract fun bindLaunchesViewModel(launchesViewModel: LaunchesViewModel):ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(viewModelProviderFactory: ViewModelProviderFactory): ViewModelProvider.Factory
