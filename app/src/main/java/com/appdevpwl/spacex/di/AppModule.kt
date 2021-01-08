@@ -38,6 +38,10 @@ class AppModule {
 
     @Singleton
     @Provides
+    fun provideCoreDao(appDatabase: AppDatabase)= appDatabase.coresDao()
+
+    @Singleton
+    @Provides
     fun providelaunchesDao(appDatabase: AppDatabase)= appDatabase.launchesDao()
 
     @Singleton

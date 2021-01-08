@@ -2,6 +2,7 @@ package com.appdevpwl.spacex.di
 
 
 import com.appdevpwl.spacex.ui.capsule.CapsuleFragment
+import com.appdevpwl.spacex.ui.cores.CoresFragment
 import com.appdevpwl.spacex.ui.home.HomeFragment
 import com.appdevpwl.spacex.ui.launches.LaunchesFragment
 import com.appdevpwl.spacex.ui.launches.PastLaunchesFragment
@@ -33,6 +34,9 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributePastLaunchesFragment(): PastLaunchesFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCoresFragment(): CoresFragment
 
 
 
