@@ -10,6 +10,7 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 
@@ -19,9 +20,10 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideHTTPClient(): OkHttpClient {
-        return OkHttpClient.Builder().build()
+        return OkHttpClient.Builder().callTimeout(20000, TimeUnit.MILLISECONDS).
+                build()
     }
-//    okHttpClient: OkHttpClient, gson: Gson
+//    okHttpClient: OkHttpClient, gson: Gson3
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {

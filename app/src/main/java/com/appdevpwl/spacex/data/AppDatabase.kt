@@ -24,12 +24,11 @@ import com.appdevpwl.spacex.data.rocket.RocketDao
     LandingLegsConverter::class,
     SecondStageConverter::class,
     MassConverter::class,
-    LaunchFailureDetailsConverter::class,
-    LaunchSiteConverter::class,
     LinksConverter::class,
-    TimelineConverter::class,
-    RocketConverter::class,
-    TelemetryConverter::class
+    FairingsConverter::class,
+    FailureListConverter::class,
+    CoreListConverter::class
+
 )
 
 abstract class AppDatabase : RoomDatabase() {

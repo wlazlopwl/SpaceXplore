@@ -1,20 +1,21 @@
 package com.appdevpwl.spacex.data.converters
 
 import androidx.room.TypeConverter
+import com.appdevpwl.spacex.data.launches.model.Fairings
 import com.appdevpwl.spacex.data.launches.model.Links
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class LinksConverter {
+class FairingsConverter {
 
     private val gson = Gson()
-    private val type = object : TypeToken<Links>() {}.type
+    private val type = object : TypeToken<Fairings?>() {}.type
     @TypeConverter
-    fun linksToString(links: Links): String?{
-        return gson.toJson(links, type)
+    fun fairingsToString(fairings: Fairings?): String?{
+        return gson.toJson(fairings, type)
     }
     @TypeConverter
-    fun stringToLinks(string: String): Links?{
+    fun stringToFairings(string: String): Fairings?{
         return gson.fromJson(string,type)
     }
 }

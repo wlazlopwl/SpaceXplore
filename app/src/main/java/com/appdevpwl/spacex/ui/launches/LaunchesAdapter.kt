@@ -1,11 +1,14 @@
 package com.appdevpwl.spacex.ui.launches
 
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.launches.model.LaunchesItem
@@ -16,6 +19,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.launches_single_item_rv.view.*
+
 
 class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
 
@@ -31,10 +35,10 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
 
 
         fun bindView(launchesItem: LaunchesItem) {
-            launchesName.text = launchesItem.mission_name
-            launchDate.text = convertUnixTime(launchesItem.launch_date_unix!!)
+            launchesName.text = launchesItem.name
+            launchDate.text = convertUnixTime(launchesItem.date_unix!!)
             launchFlightNumber.text = launchesItem.flight_number.toString()
-            Glide.with(mView).load(launchesItem.links?.mission_patch_small)
+            Glide.with(mView).load(launchesItem.links?.patch?.small)
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -61,13 +65,16 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
                 .fallback(R.drawable.ic_error_black_24dp)
                 .into(launchImageView)
 
-//
 
-//           itemView.setOnClickListener{view->
-//               val argRocketId = rocket.id.toString()
-//               val bundle = bundleOf("argRocketId" to argRocketId)
-//               view.findNavController().navigate(R.id.action_nav_rocket_to_rocketDetailsFragment, bundle)
-//           }
+
+            itemView.setOnClickListener { view ->
+                val argLaunchesId = launchesItem
+                val bundle = bundleOf("argLaunchesId" to argLaunchesId)
+
+
+
+                view.findNavController().navigate(R.id.action_nav_launches_to_launchesDetailsFragment, bundle)
+            }
 
         }
 

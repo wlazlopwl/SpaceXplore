@@ -14,6 +14,6 @@ interface Service {
     @GET("v3/rockets")
     suspend fun getRockets() : Response<List<Rocket>>
 
-    @GET("v3/launches")
+    @GET("v4/launches")
     suspend fun getAllLaunches() : Response<List<LaunchesItem>>
 }

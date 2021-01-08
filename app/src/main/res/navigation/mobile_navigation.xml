@@ -66,12 +66,12 @@
     <fragment
             android:id="@+id/rocketDetailsFragment"
             android:name="com.appdevpwl.spacex.ui.rocket.RocketDetailsFragment"
-            android:label="rocket_details_fragment"
             tools:layout="@layout/rocket_details_fragment" />
     <argument
             android:name="argRocketId"
             app:argType="integer"
             android:defaultValue="0" />
+
     <fragment
             android:id="@+id/settingsFragment"
             android:name="com.appdevpwl.spacex.ui.SettingsFragment"
@@ -79,8 +79,47 @@
     <fragment
             android:id="@+id/nav_launches"
             android:name="com.appdevpwl.spacex.ui.launches.LaunchesFragment"
-            android:label="fragment_launches"
-            tools:layout="@layout/fragment_launches" />
+            android:label="Launches"
+            tools:layout="@layout/fragment_launches" >
+        <action
+                android:id="@+id/action_nav_launches_to_upcomingLaunchesFragment"
+                app:destination="@id/upcomingLaunchesFragment" />
+        <action
+                android:id="@+id/action_nav_launches_to_pastLaunchesFragment"
+                app:destination="@id/pastLaunchesFragment" />
+        <action
+                android:id="@+id/action_nav_launches_to_launchesDetailsFragment"
+                app:destination="@id/launchesDetailsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/upcomingLaunchesFragment"
+            android:name="com.appdevpwl.spacex.ui.launches.UpcomingLaunchesFragment"
+            android:label="fragment_upcoming_launches"
+            tools:layout="@layout/fragment_upcoming_launches" >
+        <action
+                android:id="@+id/action_upcomingLaunchesFragment_to_launchesDetailsFragment"
+                app:destination="@id/launchesDetailsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/pastLaunchesFragment"
+            android:name="com.appdevpwl.spacex.ui.launches.PastLaunchesFragment"
+            android:label="fragment_past_lunches"
+            tools:layout="@layout/fragment_past_lunches" >
+        <action
+                android:id="@+id/action_pastLaunchesFragment_to_launchesDetailsFragment"
+                app:destination="@id/launchesDetailsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/launchesDetailsFragment"
+            android:name="com.appdevpwl.spacex.ui.launches.LaunchesDetailsFragment"
+            android:label="fragment_launches_details"
+            tools:layout="@layout/fragment_launches_details" />
+    <argument
+            android:name="argLaunchesId"
+            app:argType="com.appdevpwl.spacex.data.launches.model.LaunchesItem"
+             />
+
+
 
 
 </navigation>
