@@ -112,14 +112,17 @@
     <fragment
             android:id="@+id/launchesDetailsFragment"
             android:name="com.appdevpwl.spacex.ui.launches.LaunchesDetailsFragment"
-            android:label="fragment_launches_details"
+            android:label=""
             tools:layout="@layout/fragment_launches_details" />
     <argument
             android:name="argLaunchesId"
             app:argType="com.appdevpwl.spacex.data.launches.model.LaunchesItem"
              />
-
-
+    <fragment
+            android:id="@+id/nav_cores"
+            android:name="com.appdevpwl.spacex.ui.cores.CoresFragment"
+            android:label="Cores"
+            tools:layout="@layout/fragment_cores" />
 
 
 </navigation>

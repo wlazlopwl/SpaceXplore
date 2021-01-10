@@ -61,7 +61,7 @@ class UpcomingLaunchesFragment : DaggerFragment() {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(activity)
                 adapter = launchesAdapter
-                launchesAdapter.addItemsToRocketList(it!!)
+                launchesAdapter.addItemsToLaunchesList(it!!)
                 Log.d("test","success and download from db last")
             }
 

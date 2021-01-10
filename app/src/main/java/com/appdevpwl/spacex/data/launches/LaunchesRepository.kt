@@ -38,9 +38,7 @@ class LaunchesRepository @Inject constructor(private val launchesDao: LaunchesDa
         launchesDao.replaceAllLaunches(list)
     }
 
-//    suspend fun getRocketById(id: Int){
-//        rocketLiveData.value = launchesDao.getLaunchesByLaunchesId(id)
-//    }
+
 
     suspend fun getAllLaunchesFromDb() {
         allLaunchesLiveData.value=launchesDao.getAllLaunches()

@@ -60,4 +60,8 @@
     <string name="launches_name">Name:</string>
     <string name="launch_date">Launch date</string>
     <string name="launch_number">Flight number</string>
+    <string name="menu_cores">Cores</string>
+    <string name="core_type_serial">Serial</string>
+    <string name="core_blocks">Block</string>
+    <string name="core_reuse_count">Reuse count</string>
 </resources>

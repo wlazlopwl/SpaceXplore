@@ -100,7 +100,7 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
         return launchesList.size
     }
 
-    fun addItemsToRocketList(list: List<LaunchesItem>) {
+    fun addItemsToLaunchesList(list: List<LaunchesItem>) {
         launchesList = list
         notifyDataSetChanged()
     }

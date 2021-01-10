@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
 import com.appdevpwl.spacex.R
+import com.appdevpwl.spacex.ui.cores.CoresViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.android.support.AndroidSupportInjection
@@ -26,6 +27,7 @@ class LaunchesFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var launchesViewModel: LaunchesViewModel
+    private lateinit var coreViewModel: CoresViewModel
 
 
 
@@ -40,6 +42,7 @@ class LaunchesFragment : DaggerFragment() {
     ): View? {
        AndroidSupportInjection.inject(this)
         launchesViewModel= ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
+        coreViewModel= ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
         return inflater.inflate(R.layout.fragment_launches, container, false)
     }
 
@@ -57,6 +60,8 @@ class LaunchesFragment : DaggerFragment() {
             }
 
         }.attach()
+
+        coreViewModel.getDataFromApi()
 //
 //        launchesViewModel.getDataFromApi()
 //
