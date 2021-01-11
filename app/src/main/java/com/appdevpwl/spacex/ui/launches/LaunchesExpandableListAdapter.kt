@@ -12,7 +12,7 @@ import com.appdevpwl.spacex.R
 class LaunchesExpandableListAdapter internal constructor(
     private val context: Context,
     private val groupTitle: List<String>,
-    private val dataList: HashMap<String, List<String>>
+    private val dataList: HashMap<String, MutableList<List<String>>>
 ) : BaseExpandableListAdapter() {
 
 
@@ -74,14 +74,14 @@ class LaunchesExpandableListAdapter internal constructor(
         parent: ViewGroup?
     ): View {
         var convertView = convertView
-        val expandableItem = getChild(groupPosition,childPosition) as String
+        val expandableItem = getChild(groupPosition,childPosition) as List<*>
         if (convertView == null) {
             val layoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = layoutInflater.inflate(R.layout.layout_launches_expandable_item, null)
         }
         val listTitleTextView = convertView!!.findViewById<TextView>(R.id.launches_expandable_item_name)
         listTitleTextView.setTypeface(null, Typeface.BOLD)
-        listTitleTextView.text = expandableItem
+        listTitleTextView.text = expandableItem[0].toString()
         return convertView
     }
 

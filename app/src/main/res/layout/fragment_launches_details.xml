@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View"/>
         <variable
                 name="launchesItem"
                 type="com.appdevpwl.spacex.data.launches.model.LaunchesItem" />
@@ -84,6 +84,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/launches_detail_img"
                 android:layout_marginTop="32dp"
                 android:textSize="@dimen/largest_text"
+                android:visibility="@{launchesItem.details!=null ? View.VISIBLE: View.GONE}"
                 app:layout_constraintStart_toStartOf="@+id/launches_detail_img" />
 
         <TextView
