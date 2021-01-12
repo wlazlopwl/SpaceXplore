@@ -8,15 +8,8 @@
                 android:id="@+id/nav_home"
                 android:icon="@drawable/ic_menu_camera"
                 android:title="@string/menu_home"/>
-        <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/ic_menu_gallery"
-                android:title="@string/menu_gallery"/>
-        <item
-                android:id="@+id/nav_slideshow"
-                android:icon="@drawable/ic_menu_slideshow"
-                android:title="@string/menu_slideshow"/>
-        <item
+
+              <item
                 android:id="@+id/nav_launches"
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="@string/menu_launches"/>
@@ -37,6 +30,11 @@
                 android:id="@+id/settingsFragment"
                 android:icon="@drawable/ic_add_circle_green_24dp"
                 android:title="@string/menu_settings"/>
+        <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="@string/menu_about"/>
+
 
     </group>
 </menu>

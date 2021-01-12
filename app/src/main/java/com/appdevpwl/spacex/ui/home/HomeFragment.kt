@@ -40,11 +40,6 @@ class HomeFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<View>(R.id.button_home).setOnClickListener {
-            val action = HomeFragmentDirections
-                .actionHomeFragmentToHomeSecondFragment("From HomeFragment")
-            NavHostFragment.findNavController(this@HomeFragment)
-                .navigate(action)
-        }
+
     }
 }
