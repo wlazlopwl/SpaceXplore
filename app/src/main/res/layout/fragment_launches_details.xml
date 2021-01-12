@@ -5,6 +5,7 @@
 
     <data>
         <import type="android.view.View"/>
+        <import type="com.appdevpwl.spacex.util.ConvertDateTimeKt"/>
         <variable
                 name="launchesItem"
                 type="com.appdevpwl.spacex.data.launches.model.LaunchesItem" />
@@ -20,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="@{launchesItem.name}"
+                android:textSize="@dimen/largest_text"
                 android:id="@+id/launches_detail_name"
                 app:layout_constraintStart_toEndOf="@+id/launches_detail_img"
                 app:layout_constraintTop_toTopOf="@+id/launches_detail_img"
@@ -38,7 +40,7 @@
                 app:layout_constraintHorizontal_bias="0.12" />
 
         <TextView
-                android:text="@{launchesItem.date_unix.toString()}"
+                android:text="@{ConvertDateTimeKt.convertUnixTime(launchesItem.date_unix).toString()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/launches_detail_time"

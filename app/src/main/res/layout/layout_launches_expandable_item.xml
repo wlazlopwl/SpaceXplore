@@ -31,15 +31,15 @@
                         android:orientation="vertical">
 
                     <TextView
-                            android:id="@+id/launches_expandable_item_name"
+
                             android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="@string/rocket_company"
+                            android:text="Serial"
                             >
 
                     </TextView>
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:id="@+id/rocket_company"
+                            android:id="@+id/launchces_expandable_item_name"
 
                             android:textSize="@dimen/larger_text"
                             android:textStyle="bold"
@@ -60,7 +60,7 @@
 
                     </TextView>
                     <TextView
-                            android:id="@+id/rocket_status_tv"
+                            android:id="@+id/cores_expandable_status_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/larger_text"

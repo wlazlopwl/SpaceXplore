@@ -1,6 +1,7 @@
 package com.appdevpwl.spacex.ui.launches
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,7 @@ class LaunchesDetailsFragment : DaggerFragment() {
 
     var expandableListView: ExpandableListView? = null
     var adapter: ExpandableListAdapter? = null
-   lateinit var launches : LaunchesItem
+    lateinit var launches: LaunchesItem
     private var dataList: HashMap<String, MutableList<List<String>>> = HashMap()
 
 
@@ -36,7 +37,8 @@ class LaunchesDetailsFragment : DaggerFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        coreViewModel= ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
+        coreViewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
 
         val binding: FragmentLaunchesDetailsBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_launches_details, container, false)
@@ -48,40 +50,39 @@ class LaunchesDetailsFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        coreViewModel.getAllCores()
-        coreViewModel.result.observe(viewLifecycleOwner, Observer {
 
 
-
-        })
-
-        val lstGroups: MutableList<String> = ArrayList()
 
 //        lstGroups.add("Payloads")
         coreViewModel.getAllCoresByLaunchesId(launches.id!!)
-
+        var i =0
         coreViewModel.liveDataCoresByLaunchesId.observe(viewLifecycleOwner, Observer {
-            when(it.size){
+            i++
+            Log.d("iiiiii",i.toString())
+            when (it.size) {
 
-                0 -> {}
+                0 -> {
+                }
                 else -> {
+                    val lstGroups: MutableList<String> = ArrayList()
                     lstGroups.add("Cores")
                     val lstContent: MutableList<List<String>> = ArrayList()
-                    for (core in it){
+                    for (core in it) {
 
-                        val list : List<String> = listOf(core.serial)
+                        val list: List<String> = listOf(core.serial,
+                            core.status,
+                            core.block.toString(),
+                            core.reuse_count.toString(),
+                            core.last_update.toString())
                         lstContent.add(list)
-
-
 
 
                     }
                     dataList[lstGroups[0]] = lstContent
 
-                    val lstContent1: MutableList<String> = ArrayList()
-                    lstContent1.add("Renda Variavél")
-                    lstContent1.add("Renda Fixa")
-
+//                    val lstContent1: MutableList<String> = ArrayList()
+//                    lstContent1.add("Renda Variavél")
+//                    lstContent1.add("Renda Fixa")
 
 
 //        dataList.put(lstGroups.get(1), lstContent1)
@@ -89,18 +90,14 @@ class LaunchesDetailsFragment : DaggerFragment() {
 
                     expandableListView = view.findViewById(R.id.launches_details_expandable_list)
                     if (expandableListView != null) {
-                        adapter = LaunchesExpandableListAdapter(requireContext(), lstGroups, dataList)
+                        adapter =
+                            LaunchesExpandableListAdapter(requireContext(), lstGroups, dataList)
                         expandableListView!!.setAdapter(adapter)
 
                     }
                 }
             }
         })
-
-
-
-
-
 
 
     }

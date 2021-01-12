@@ -77,11 +77,20 @@ class LaunchesExpandableListAdapter internal constructor(
         val expandableItem = getChild(groupPosition,childPosition) as List<*>
         if (convertView == null) {
             val layoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = layoutInflater.inflate(R.layout.layout_launches_expandable_item, null)
+            convertView = layoutInflater.inflate(R.layout.core_single_item_rv, null)
         }
-        val listTitleTextView = convertView!!.findViewById<TextView>(R.id.launches_expandable_item_name)
-        listTitleTextView.setTypeface(null, Typeface.BOLD)
-        listTitleTextView.text = expandableItem[0].toString()
+        val coresSerial = convertView!!.findViewById<TextView>(R.id.core_serial_type)
+        val coresStatus = convertView!!.findViewById<TextView>(R.id.core_status_tv)
+        val coresBlocks = convertView!!.findViewById<TextView>(R.id.core_blocks_tv)
+        val coresReuseCount = convertView!!.findViewById<TextView>(R.id.core_reuse_count_tv)
+        val coresLastUpdate = convertView!!.findViewById<TextView>(R.id.cores_last_update)
+        coresSerial.setTypeface(null, Typeface.BOLD)
+        coresSerial.text = expandableItem[0].toString()
+        coresStatus.text = expandableItem[1].toString()
+        coresBlocks.text = expandableItem[2].toString()
+        coresReuseCount.text = expandableItem[3].toString()
+        coresLastUpdate.text = expandableItem[4].toString()
+
         return convertView
     }
 
