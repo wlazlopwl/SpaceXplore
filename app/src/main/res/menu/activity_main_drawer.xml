@@ -23,7 +23,7 @@
                 android:title="@string/menu_capsule"/>
         <item
                 android:id="@+id/nav_rocket"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/rocket_icon1"
                 android:title="@string/menu_rocket"/>
 
         <item
