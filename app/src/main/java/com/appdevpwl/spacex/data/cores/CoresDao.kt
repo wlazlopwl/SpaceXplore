@@ -23,5 +23,8 @@ interface CoresDao {
     suspend fun getAllCores():List<CoresItem>
 
     @Query("SELECT * FROM cores_table where launches LIKE '%' || :id || '%'")
-    suspend fun getAllCoresByLaunchesId(id: String): List<CoresItem>?
+    suspend fun getAllCoresByLaunchesId(id: String): List<CoresItem>
+
+    @Query("SELECT COUNT(id) FROM cores_table")
+     fun getSize(): Int
 }
