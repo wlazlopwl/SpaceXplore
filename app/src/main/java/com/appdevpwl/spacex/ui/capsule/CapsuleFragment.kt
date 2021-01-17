@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -33,7 +32,11 @@ class CapsuleFragment : DaggerFragment() {
     var i = 0
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         AndroidSupportInjection.inject(this)
         capsuleViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CapsuleViewModel::class.java)
@@ -92,8 +95,6 @@ class CapsuleFragment : DaggerFragment() {
 
 
         })
-
-
 
 
     }

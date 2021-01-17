@@ -17,6 +17,7 @@ class CoresViewModel @Inject constructor(private val coresRepository: CoresRepos
     private val _liveDataCoresByLaunchesId = MutableLiveData<List<CoresItem>>()
     val liveDataCoresByLaunchesId: LiveData<List<CoresItem>> = _liveDataCoresByLaunchesId
     val snackbarText: LiveData<String> = coresRepository.snackbarText
+    val loadingData: LiveData<Boolean> = coresRepository.loadingData
 
 
     init {
@@ -26,7 +27,7 @@ class CoresViewModel @Inject constructor(private val coresRepository: CoresRepos
     fun getDataFromApi() {
         viewModelScope.launch {
             when (coresRepository.getDbSize()) {
-                0 -> coresRepository.getDataFromApiAndSave()
+                0 -> refreshData()
                 else ->  {
 
                     coresRepository.getAllCoresFromDb()
@@ -34,6 +35,10 @@ class CoresViewModel @Inject constructor(private val coresRepository: CoresRepos
             }
 
         }
+    }
+
+    suspend fun refreshData(){
+        coresRepository.getDataFromApiAndSave()
     }
 
     fun getAllCoresByLaunchesId(id: String) {

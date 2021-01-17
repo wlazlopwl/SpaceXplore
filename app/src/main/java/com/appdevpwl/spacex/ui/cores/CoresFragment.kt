@@ -4,16 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.cores.CoresItem
+import com.appdevpwl.spacex.databinding.FragmentCoresBinding
 import com.appdevpwl.spacex.util.SnackbarType
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_cores.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -22,6 +27,7 @@ class CoresFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var coresViewModel: CoresViewModel
+    lateinit var swipeRefresh: SwipeRefreshLayout
 
     lateinit var coresAdapter: CoresAdapter
 
@@ -32,15 +38,17 @@ class CoresFragment : DaggerFragment() {
         AndroidSupportInjection.inject(this)
         coresViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_cores, container, false)
+        val binding : FragmentCoresBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_cores,container,false)
+        binding.viewModel=coresViewModel
+        binding.lifecycleOwner=viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        swipeRefresh = view.findViewById(R.id.cores_refresh)
         coresViewModel.liveData.observe(viewLifecycleOwner, Observer {
 
 
-            cores_progressBar.visibility = View.INVISIBLE
             initialRecyclerView(it)
         })
 
@@ -48,6 +56,21 @@ class CoresFragment : DaggerFragment() {
             SnackbarType.enableSnackbar(view, it)
 
         })
+
+//        coresViewModel.loadingData.observe(viewLifecycleOwner, Observer {
+//            when (it) {
+//                true -> cores_progressBar.visibility = View.VISIBLE
+//                else -> cores_progressBar.visibility = View.INVISIBLE
+//            }
+//        })
+
+        swipeRefresh.setOnRefreshListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                coresViewModel.refreshData()
+                swipeRefresh.isRefreshing = false
+            }
+
+        }
 
 
     }

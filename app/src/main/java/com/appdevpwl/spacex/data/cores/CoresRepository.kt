@@ -1,6 +1,6 @@
 package com.appdevpwl.spacex.data.cores
 
-import android.util.Log
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.appdevpwl.spacex.data.Service
 import com.appdevpwl.spacex.util.checkIsOnline
@@ -8,30 +8,42 @@ import javax.inject.Inject
 
 class CoresRepository @Inject constructor(
     private val coresDao: CoresDao,
-    private val service: Service
+    private val service: Service,
+    private val context: Context
 ) {
 
     val liveData = MutableLiveData<List<CoresItem>>()
     val snackbarText = MutableLiveData<String>()
+    val loadingData = MutableLiveData<Boolean>()
+
 
 
     suspend fun getDataFromApiAndSave() {
-        checkIsOnline()
-        snackbarText.postValue("działa")
-        val response = service.getAllCores()
-        if (response.isSuccessful) {
-            val body = response.body()!!
-            response.body().let {
-                if (it != null) {
-                    saveCoresToDb(it)
+
+        when (checkIsOnline(context)) {
+
+            false -> snackbarText.postValue("Check your connection")
+            true ->{
+                loadingData.postValue(true)
+                val response = service.getAllCores()
+                if (response.isSuccessful) {
+                    val body = response.body()!!
+                    response.body().let {
+                        if (it != null) {
+                            saveCoresToDb(it)
+                        }
+                        liveData.value = body
+                    }
+                } else {
+                    snackbarText.postValue(response.errorBody().toString())
+
+
                 }
-                liveData.value = body
+                loadingData.postValue(false)
             }
-        } else {
-            snackbarText.postValue(response.errorBody().toString())
-
-
         }
+
+
     }
 
     private suspend fun saveCoresToDb(list: List<CoresItem>) {
@@ -43,8 +55,11 @@ class CoresRepository @Inject constructor(
     }
 
     suspend fun getAllCoresFromDb() {
-        snackbarText.postValue("Data from database")
+        loadingData.postValue(true)
+
         liveData.value = coresDao.getAllCores()
+        loadingData.postValue(false)
+
     }
 
     suspend fun getAllCoresByLaunchesId(id: String): List<CoresItem> {
