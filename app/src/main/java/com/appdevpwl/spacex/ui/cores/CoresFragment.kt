@@ -38,9 +38,10 @@ class CoresFragment : DaggerFragment() {
         AndroidSupportInjection.inject(this)
         coresViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
-        val binding : FragmentCoresBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_cores,container,false)
-        binding.viewModel=coresViewModel
-        binding.lifecycleOwner=viewLifecycleOwner
+        val binding: FragmentCoresBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_cores, container, false)
+        binding.viewModel = coresViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -57,12 +58,6 @@ class CoresFragment : DaggerFragment() {
 
         })
 
-//        coresViewModel.loadingData.observe(viewLifecycleOwner, Observer {
-//            when (it) {
-//                true -> cores_progressBar.visibility = View.VISIBLE
-//                else -> cores_progressBar.visibility = View.INVISIBLE
-//            }
-//        })
 
         swipeRefresh.setOnRefreshListener {
             viewLifecycleOwner.lifecycleScope.launch {
@@ -77,6 +72,8 @@ class CoresFragment : DaggerFragment() {
 
 
     private fun initialRecyclerView(data: List<CoresItem>) {
+
+
         coresAdapter = CoresAdapter()
         cores_recyclerview.apply {
             setHasFixedSize(true)

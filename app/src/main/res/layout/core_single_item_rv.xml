@@ -52,6 +52,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/core_serial_type"
+                            android:text="@{coresItem.serial}"
                             android:textSize="@dimen/larger_text"
                             android:textStyle="bold">
 
@@ -82,7 +83,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/larger_text"
                             android:textStyle="bold"
-                            android:text="RETIRED"
+                            android:text="@{coresItem.status}"
 
                             >
 
@@ -121,6 +122,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/core_blocks_tv"
                             android:textSize="@dimen/larger_text"
+                            android:text="@{String.valueOf(coresItem.block)}"
                             android:textStyle="bold">
 
                     </TextView>
@@ -150,6 +152,7 @@
                             android:gravity="center_horizontal"
                             android:textSize="@dimen/larger_text"
                             android:textStyle="bold"
+                            android:text="@{String.valueOf(coresItem.reuse_count)}"
                             android:layout_gravity="right">
 
                     </TextView>
@@ -172,7 +175,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/cores_last_update"
-
+                            android:text="@{coresItem.last_update}"
                             android:layout_gravity="center_horizontal">
 
 
