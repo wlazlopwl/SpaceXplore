@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View"></import>
         <variable
                 name="coresItem"
                 type="com.appdevpwl.spacex.data.cores.CoresItem" />
@@ -73,7 +73,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Status"
-                            android:layout_gravity="right">
+                            android:layout_gravity="end">
 
                     </TextView>
 
@@ -153,7 +153,7 @@
                             android:textSize="@dimen/larger_text"
                             android:textStyle="bold"
                             android:text="@{String.valueOf(coresItem.reuse_count)}"
-                            android:layout_gravity="right">
+                            android:layout_gravity="end">
 
                     </TextView>
                 </LinearLayout>
@@ -164,6 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_bottom_card_linear"
+                    android:visibility="@{coresItem.last_update==null? View.GONE : View.VISIBLE}"
                     android:orientation="horizontal">
 
                 <LinearLayout
@@ -196,7 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:layout_gravity="right">
+                            android:layout_gravity="end">
 
                     </TextView>
                     <!--                    <LinearLayout-->
