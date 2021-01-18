@@ -4,117 +4,127 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
-        <import type="com.appdevpwl.spacex.util.ConvertDateTimeKt"/>
+
+        <import type="android.view.View" />
+
+        <import type="com.appdevpwl.spacex.util.ConvertDateTimeKt" />
+
         <variable
                 name="launchesItem"
                 type="com.appdevpwl.spacex.data.launches.model.LaunchesItem" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            tools:context=".ui.launches.LaunchesDetailsFragment"
+    <ScrollView
+            android:id="@+id/launches_detail_scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:text="@{launchesItem.name}"
-                android:textSize="@dimen/largest_text"
-                android:id="@+id/launches_detail_name"
-                app:layout_constraintStart_toEndOf="@+id/launches_detail_img"
-                app:layout_constraintTop_toTopOf="@+id/launches_detail_img"
-                android:layout_marginStart="24dp" />
-
-        <ImageView
-                android:layout_width="82dp"
-                android:layout_height="89dp"
-                tools:src="@tools:sample/avatars"
-                android:id="@+id/launches_detail_img"
-                app:loadImage="@{launchesItem.links.patch.small}"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="44dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="40dp" />
-
-        <TextView
-                android:text="@{ConvertDateTimeKt.convertUnixTime(launchesItem.date_unix).toString()}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/launches_detail_time"
-                app:layout_constraintTop_toBottomOf="@+id/launches_detail_name"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="@+id/launches_detail_name" />
-
-        <LinearLayout
-                android:orientation="horizontal"
+        <androidx.constraintlayout.widget.ConstraintLayout
+                tools:context=".ui.launches.LaunchesDetailsFragment"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintStart_toEndOf="@+id/launches_detail_img"
-                android:layout_marginStart="190dp"
-                app:layout_constraintBottom_toBottomOf="@+id/launches_detail_img">
+                android:layout_height="wrap_content">
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@{launchesItem.name}"
+                    android:textSize="@dimen/largest_text"
+                    android:id="@+id/launches_detail_name"
+                    app:layout_constraintStart_toEndOf="@+id/launches_detail_img"
+                    app:layout_constraintTop_toTopOf="@+id/launches_detail_img"
+                    android:layout_marginStart="24dp" />
 
             <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp">
+                    android:layout_width="82dp"
+                    android:layout_height="89dp"
+                    tools:src="@tools:sample/avatars"
+                    android:id="@+id/launches_detail_img"
+                    app:loadImage="@{launchesItem.links.patch.small}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="44dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="40dp" />
 
-            </ImageView>
+            <TextView
+                    android:text="@{ConvertDateTimeKt.convertUnixTime(launchesItem.date_unix).toString()}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/launches_detail_time"
+                    app:layout_constraintTop_toBottomOf="@+id/launches_detail_name"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintStart_toStartOf="@+id/launches_detail_name" />
 
-            <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
+                    app:layout_constraintStart_toEndOf="@+id/launches_detail_img"
+                    android:layout_marginStart="190dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/launches_detail_img">
 
-            </ImageView>
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp">
 
-            <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp">
+                </ImageView>
 
-            </ImageView>
-        </LinearLayout>
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp">
 
-        <TextView
-                android:text="About"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/launches_detail_img"
-                android:layout_marginTop="32dp"
-                android:textSize="@dimen/largest_text"
-                android:visibility="@{launchesItem.details!=null ? View.VISIBLE: View.GONE}"
-                app:layout_constraintStart_toStartOf="@+id/launches_detail_img" />
+                </ImageView>
 
-        <TextView
-                android:text="@{launchesItem.details}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/launches_detail_about"
-                android:singleLine="false"
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp">
 
+                </ImageView>
+            </LinearLayout>
 
-                app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintHorizontal_bias="0.51"
-                android:layout_marginStart="40dp" />
+            <TextView
+                    android:text="About"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/launches_detail_img"
+                    android:layout_marginTop="32dp"
+                    android:textSize="@dimen/largest_text"
+                    android:visibility="@{launchesItem.details!=null ? View.VISIBLE: View.GONE}"
+                    app:layout_constraintStart_toStartOf="@+id/launches_detail_img" />
 
-        <ExpandableListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/launches_detail_about"
-                android:layout_marginTop="32dp"
-                android:id="@+id/launches_details_expandable_list"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-        </ExpandableListView>
+            <TextView
+                    android:text="@{launchesItem.details}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/launches_detail_about"
+                    android:singleLine="false"
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    app:layout_constraintHorizontal_bias="0.51"
+                    android:layout_marginStart="40dp" />
+
+            <ExpandableListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/launches_detail_about"
+                    android:layout_marginTop="32dp"
+                    android:id="@+id/launches_details_expandable_list"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+            </ExpandableListView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

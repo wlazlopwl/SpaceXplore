@@ -33,6 +33,8 @@ class PastLaunchesFragment : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         launchesViewModel.getPastLaunches()
         launchesViewModel.pastLaunchesLiveData.observe(viewLifecycleOwner, Observer {
 
