@@ -1,6 +1,5 @@
 package com.appdevpwl.spacex.ui.cores
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,12 +16,12 @@ import javax.inject.Inject
 
 class CoresViewModel @Inject constructor(
     private val coresRepository: CoresRepository,
-    private val preferences: DataStorePreferences
+    private val preferences: DataStorePreferences,
 ) :
     ViewModel() {
 
 
-    val liveData: MutableLiveData<List<CoresItem>> = coresRepository.liveData
+    val coresLiveData: MutableLiveData<List<CoresItem>> = coresRepository.coresLiveData
     private val _liveDataCoresByLaunchesId = MutableLiveData<List<CoresItem>>()
     val liveDataCoresByLaunchesId: LiveData<List<CoresItem>> = _liveDataCoresByLaunchesId
     val snackbarText: LiveData<String> = coresRepository.snackbarText
@@ -30,15 +29,12 @@ class CoresViewModel @Inject constructor(
 
 
     init {
-
         getData()
-
     }
 
 
     fun getData() {
         viewModelScope.launch {
-            Log.d("dbSIZE", coresRepository.getDbSize().toString())
             when (coresRepository.getDbSize()) {
                 0 -> refreshData()
                 else -> {
@@ -58,8 +54,11 @@ class CoresViewModel @Inject constructor(
     }
 
 
-    suspend fun refreshData() {
-        coresRepository.fetchDataAndSaveToDb()
+     fun refreshData() {
+         viewModelScope.launch {
+             coresRepository.fetchDataAndSaveToDb()
+         }
+
     }
 
     fun getAllCoresByLaunchesId(id: String) {

@@ -27,7 +27,6 @@ class CoresFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var coresViewModel: CoresViewModel
-    lateinit var swipeRefresh: SwipeRefreshLayout
     lateinit var coresAdapter: CoresAdapter
 
     override fun onCreateView(
@@ -45,8 +44,7 @@ class CoresFragment : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        swipeRefresh = view.findViewById(R.id.cores_refresh)
-        coresViewModel.liveData.observe(viewLifecycleOwner, Observer {
+        coresViewModel.coresLiveData.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
         })
 
@@ -55,22 +53,8 @@ class CoresFragment : DaggerFragment() {
 
         })
 
-
-        swipeRefresh.setOnRefreshListener {
-            viewLifecycleOwner.lifecycleScope.launch {
-                coresViewModel.refreshData()
-                swipeRefresh.isRefreshing = false
-            }
-
-        }
-
-
     }
-
-
     private fun initRecyclerView(data: List<CoresItem>) {
-
-
         coresAdapter = CoresAdapter()
         cores_recyclerview.apply {
             setHasFixedSize(true)

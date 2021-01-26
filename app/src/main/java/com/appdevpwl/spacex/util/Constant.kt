@@ -7,8 +7,11 @@ class Constant {
     companion object {
         const val BASE_URL = "https://api.spacexdata.com/"
 
+        const val NO_CONNECTION_MESSAGE="Check Internet connection"
+
         //preferences key
-        const val CORES_LAST_DATE: String = "1579710258000"
+        const val CORES_LAST_DATE: String = ""
+        const val ROCKET_LAST_DATE: String = ""
 
 
         //TIME TO GET DATA FROM API

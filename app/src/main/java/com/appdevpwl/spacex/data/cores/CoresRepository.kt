@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.Service
+import com.appdevpwl.spacex.util.Constant
 import com.appdevpwl.spacex.util.Constant.Companion.CORES_LAST_DATE
+import com.appdevpwl.spacex.util.Constant.Companion.NO_CONNECTION_MESSAGE
 import com.appdevpwl.spacex.util.deviceIsOnline
 import com.appdevpwl.spacex.util.getCurrentMillisTime
 import com.appdevpwl.spacex.util.millisToDate
@@ -17,7 +19,7 @@ class CoresRepository @Inject constructor(
     private val preferences: DataStorePreferences
 ) {
 
-    val liveData = MutableLiveData<List<CoresItem>>()
+    val coresLiveData = MutableLiveData<List<CoresItem>>()
     val snackbarText = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
 
@@ -27,7 +29,7 @@ class CoresRepository @Inject constructor(
         when (deviceIsOnline(context)) {
 
             false -> {
-                snackbarText.postValue("Check Internet connection")
+                snackbarText.postValue(NO_CONNECTION_MESSAGE)
                 getAllCoresFromDb()
             }
             true -> {
@@ -41,7 +43,7 @@ class CoresRepository @Inject constructor(
                             preferences.saveCurrentUpdateTime(CORES_LAST_DATE,
                                 getCurrentMillisTime())
                         }
-                        liveData.value = body!!
+                        coresLiveData.value = body!!
                     }
                 } else {
                     snackbarText.postValue(response.errorBody().toString())
@@ -63,7 +65,7 @@ class CoresRepository @Inject constructor(
     suspend fun getAllCoresFromDb() {
         isLoading.postValue(true)
 
-        liveData.value = coresDao.getAllCores()
+        coresLiveData.value = coresDao.getAllCores()
         isLoading.postValue(false)
         snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CORES_LAST_DATE)!!).toString())
 

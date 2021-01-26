@@ -1,34 +1,54 @@
 package com.appdevpwl.spacex.data.rocket
 
-import androidx.lifecycle.LiveData
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.Service
-import com.appdevpwl.spacex.data.capsules.Capsule
 import com.appdevpwl.spacex.data.rocket.model.Rocket
-import com.appdevpwl.spacex.util.Response
+import com.appdevpwl.spacex.util.*
+import com.appdevpwl.spacex.util.Constant.Companion.NO_CONNECTION_MESSAGE
+import com.appdevpwl.spacex.util.Constant.Companion.ROCKET_LAST_DATE
 
 import javax.inject.Inject
 
-class RocketRepository @Inject constructor(private val rocketDao: RocketDao, private val service: Service) {
+class RocketRepository @Inject constructor(
+    private val rocketDao: RocketDao,
+    private val service: Service,
+    private val context: Context,
+    private val preferences: DataStorePreferences
+) {
 
-    val liveData = MutableLiveData<Response<List<Rocket>>>()
-    val rocketLiveData = MutableLiveData<Rocket>()
+    val snackbarText = MutableLiveData<String>()
+    val isLoading = MutableLiveData<Boolean>()
+    val rocketLiveData = MutableLiveData<List<Rocket>>()
+    val rocketByIdLiveData = MutableLiveData<Rocket>()
 
-    suspend fun getDataFromApiAndSave() {
-        val response = service.getRockets()
-        if (response.isSuccessful) {
-            val body = response.body()!!
-            liveData.value = com.appdevpwl.spacex.util.Response.success(body)
-            response.body().let {
-                if (it != null) {
-                    saveRocketsToDb(it)
-                }
+    suspend fun fetchDataAndSaveToDb() {
+
+        when (deviceIsOnline(context)) {
+
+            false -> {
+                snackbarText.postValue(NO_CONNECTION_MESSAGE)
+                getAllRocketsFromDb()
             }
-        }
-        else{
-            val error = response.errorBody().toString()
-            liveData.value= Response.error(error)
-
+            true -> {
+                isLoading.postValue(true)
+                val response = service.getRockets()
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    response.body().let {
+                        if (it != null) {
+                            saveRocketsToDb(it)
+                            preferences.saveCurrentUpdateTime(ROCKET_LAST_DATE,
+                                getCurrentMillisTime())
+                        }
+                        rocketLiveData.value = body!!
+                    }
+                } else {
+                    snackbarText.postValue(response.errorBody().toString())
+                }
+                isLoading.postValue(false)
+            }
         }
     }
 
@@ -36,13 +56,21 @@ class RocketRepository @Inject constructor(private val rocketDao: RocketDao, pri
         rocketDao.replaceAllRockets(list)
     }
 
-    suspend fun getRocketById(id: Int){
-        rocketLiveData.value = rocketDao.getRocketByRocketId(id)
+    suspend fun getRocketById(id: Int) {
+        rocketByIdLiveData.value = rocketDao.getRocketByRocketId(id)
     }
 
-//    suspend fun getRocketsFromDb(): LiveData<List<Rocket>> {
-//        return rocketDao.getAllRockets()
-//    }
+    fun getDbSize(): Int {
+        return rocketDao.getSize()
+    }
+
+    suspend fun getAllRocketsFromDb() {
+        isLoading.postValue(true)
+
+        rocketLiveData.value = rocketDao.getAllRockets()
+        isLoading.postValue(false)
+        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(ROCKET_LAST_DATE)!!).toString())
+    }
 
 
 }
