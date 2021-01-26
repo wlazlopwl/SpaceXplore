@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+                name="rocketItem"
+                type="com.appdevpwl.spacex.data.rocket.model.Rocket" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:src="@android:color/darker_gray"
-
+            imageUrl="@{rocketItem.flickr_images[0]}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +47,7 @@
             android:id="@+id/rocket_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Falcon 9 test"
+            android:text="@{rocketItem.rocket_name}"
             android:paddingLeft="16dp"
             android:textColor="@android:color/white"
             android:textSize="25sp"
@@ -79,7 +88,7 @@
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                               android:id="@+id/rocket_company"
-
+                                android:text="@{rocketItem.company}"
                               android:textSize="@dimen/larger_text"
                               android:textStyle="bold"
                     >
@@ -105,6 +114,7 @@
                             android:textSize="@dimen/larger_text"
                             android:textStyle="bold"
                             android:layout_gravity="right"
+                            android:text="@{String.valueOf(rocketItem.active)}"
 
                     >
 
@@ -136,6 +146,7 @@
                               android:id="@+id/rocket_first_flight"
                               android:textSize="@dimen/larger_text"
                               android:textStyle="bold"
+                            android:text="@{rocketItem.first_flight}"
                     >
 
                     </TextView>
@@ -155,6 +166,7 @@
                               android:textSize="@dimen/larger_text"
                               android:textStyle="bold"
                               android:layout_gravity="right"
+                            android:text="@{String.valueOf(rocketItem.success_rate_pct)+'%'}"
                     >
 
                     </TextView>
@@ -178,6 +190,7 @@
                               android:id="@+id/rocket_cost_per_launch"
                               android:textSize="@dimen/larger_text"
                               android:textStyle="bold"
+                            android:text="@{'$' + String.valueOf(rocketItem.cost_per_launch)}"
                     >
 
                     </TextView>
@@ -227,3 +240,4 @@
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
