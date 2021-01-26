@@ -16,4 +16,22 @@
         <item>Kilogram</item>
         <item>Pound</item>
     </string-array>
+    <string-array name="list_prefetence_max_time_without_fetch">
+        <item>1 minute</item>
+        <item>5 minutes</item>
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>60 minutes</item>
+        <item>120 minutes</item>
+        <item>240 minutes</item>
+    </string-array>
+    <string-array name="list_prefetence_max_time_without_fetch_value">
+        <item>1</item>
+        <item>5</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>240</item>
+    </string-array>
 </resources>

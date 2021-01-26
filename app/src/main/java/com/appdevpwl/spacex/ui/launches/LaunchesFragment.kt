@@ -1,11 +1,9 @@
 package com.appdevpwl.spacex.ui.launches
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
@@ -61,7 +59,7 @@ class LaunchesFragment : DaggerFragment() {
 
         }.attach()
 
-        coreViewModel.getDataFromApi()
+        coreViewModel.getData()
 //
 //        launchesViewModel.getDataFromApi()
 //

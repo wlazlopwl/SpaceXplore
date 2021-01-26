@@ -28,13 +28,12 @@ class CoresFragment : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var coresViewModel: CoresViewModel
     lateinit var swipeRefresh: SwipeRefreshLayout
-
     lateinit var coresAdapter: CoresAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?,
+    ): View {
         AndroidSupportInjection.inject(this)
         coresViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
@@ -48,9 +47,7 @@ class CoresFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         swipeRefresh = view.findViewById(R.id.cores_refresh)
         coresViewModel.liveData.observe(viewLifecycleOwner, Observer {
-
-
-            initialRecyclerView(it)
+            initRecyclerView(it)
         })
 
         coresViewModel.snackbarText.observe(viewLifecycleOwner, Observer {
@@ -71,7 +68,7 @@ class CoresFragment : DaggerFragment() {
     }
 
 
-    private fun initialRecyclerView(data: List<CoresItem>) {
+    private fun initRecyclerView(data: List<CoresItem>) {
 
 
         coresAdapter = CoresAdapter()

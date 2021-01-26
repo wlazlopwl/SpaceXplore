@@ -2,52 +2,58 @@ package com.appdevpwl.spacex.data.cores
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.Service
-import com.appdevpwl.spacex.util.checkIsOnline
+import com.appdevpwl.spacex.util.Constant.Companion.CORES_LAST_DATE
+import com.appdevpwl.spacex.util.deviceIsOnline
+import com.appdevpwl.spacex.util.getCurrentMillisTime
+import com.appdevpwl.spacex.util.millisToDate
 import javax.inject.Inject
 
 class CoresRepository @Inject constructor(
     private val coresDao: CoresDao,
     private val service: Service,
-    private val context: Context
+    private val context: Context,
+    private val preferences: DataStorePreferences
 ) {
 
     val liveData = MutableLiveData<List<CoresItem>>()
     val snackbarText = MutableLiveData<String>()
-    val loadingData = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
 
 
+    suspend fun fetchDataAndSaveToDb() {
 
-    suspend fun getDataFromApiAndSave() {
+        when (deviceIsOnline(context)) {
 
-        when (checkIsOnline(context)) {
-
-            false -> snackbarText.postValue("Check your connection")
-            true ->{
-                loadingData.postValue(true)
+            false -> {
+                snackbarText.postValue("Check Internet connection")
+                getAllCoresFromDb()
+            }
+            true -> {
+                isLoading.postValue(true)
                 val response = service.getAllCores()
                 if (response.isSuccessful) {
-                    val body = response.body()!!
+                    val body = response.body()
                     response.body().let {
                         if (it != null) {
                             saveCoresToDb(it)
+                            preferences.saveCurrentUpdateTime(CORES_LAST_DATE,
+                                getCurrentMillisTime())
                         }
-                        liveData.value = body
+                        liveData.value = body!!
                     }
                 } else {
                     snackbarText.postValue(response.errorBody().toString())
-
-
                 }
-                loadingData.postValue(false)
+                isLoading.postValue(false)
             }
         }
-
-
     }
 
     private suspend fun saveCoresToDb(list: List<CoresItem>) {
         coresDao.replaceAllCores(list)
+
     }
 
     fun getDbSize(): Int {
@@ -55,10 +61,11 @@ class CoresRepository @Inject constructor(
     }
 
     suspend fun getAllCoresFromDb() {
-        loadingData.postValue(true)
+        isLoading.postValue(true)
 
         liveData.value = coresDao.getAllCores()
-        loadingData.postValue(false)
+        isLoading.postValue(false)
+        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CORES_LAST_DATE)!!).toString())
 
     }
 

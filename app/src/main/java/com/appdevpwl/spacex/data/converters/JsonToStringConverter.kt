@@ -13,9 +13,6 @@ class JsonToStringConverter {
     fun stringToJson(string: String): MutableList<String> {
         val type = object : TypeToken<MutableList<String>>(){}.type
 
-        if (string == null) {
-            return Collections.emptyList()
-        }
         return gson.fromJson(string, type)
     }
     @TypeConverter

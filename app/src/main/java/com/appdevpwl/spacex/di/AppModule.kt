@@ -3,12 +3,17 @@ package com.appdevpwl.spacex.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.datastore.core.DataStore
+import androidx.datastore.createDataStore
+import androidx.datastore.preferences.createDataStore
+import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.appdevpwl.spacex.data.AppDatabase
 import com.appdevpwl.spacex.data.capsules.CapsulesDao
 import dagger.Module
 import dagger.Provides
+import java.util.prefs.Preferences
 import javax.inject.Singleton
 
 @Module(includes = [ ActivityBuildersModule::class, ViewModelModule::class])
@@ -50,5 +55,11 @@ class AppModule {
         PreferenceManager.getDefaultSharedPreferences(context)
 //        context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
 
-
+    @Singleton
+    @Provides
+    fun provideDataStore( context: Context) : DataStore<androidx.datastore.preferences.core.Preferences>{
+        return context.createDataStore(
+            name="dataStore"
+        )
+    }
 }

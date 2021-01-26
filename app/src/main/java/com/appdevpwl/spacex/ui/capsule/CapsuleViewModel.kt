@@ -33,12 +33,12 @@ class CapsuleViewModel @Inject constructor(private val capsulesRepository: Capsu
             }
         }
         allCapsules.addSource(launchTimeDescending) { result ->
-            if (launchTimeDescending == CapsulesSortType.TIME_DESC) {
+            if (capsuleSortType == CapsulesSortType.TIME_DESC) {
                 result.let { allCapsules.value = it }
             }
         }
         allCapsules.addSource(launchTimeAscending) { result ->
-            if (launchTimeAscending == CapsulesSortType.TIME_ASC) {
+            if (capsuleSortType == CapsulesSortType.TIME_ASC) {
                 result.let { allCapsules.value = it }
             }
         }
