@@ -97,16 +97,16 @@ class RocketDetailsFragment : DaggerFragment() {
         viewPager = requireView().findViewById(R.id.rocket_img_view_pager)
 
 
-        val id = arguments?.getString("argRocketId")!!.toInt()
+        val id = arguments?.getString("argRocketId")!!
 
         viewModel.getRocketById(id)
 
         viewModel.rocketLiveData.observe(viewLifecycleOwner, Observer {
 //            Toolbar title
-            (activity as AppCompatActivity?)!!.supportActionBar!!.title = it.rocket_name
+            (activity as AppCompatActivity?)!!.supportActionBar!!.title = it.name
 
 //            first card - MAIN info
-            rocketName.text = it.rocket_name
+            rocketName.text = it.name
             rocketCost.text = it.cost_per_launch.toString()
             rocketFirstFlight.text = it.first_flight
             rocketStages.text = it.stages.toString()

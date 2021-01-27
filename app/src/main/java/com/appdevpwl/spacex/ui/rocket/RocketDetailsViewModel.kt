@@ -12,7 +12,7 @@ class RocketDetailsViewModel @Inject constructor(private val rocketRepository: R
 
     val rocketLiveData : MutableLiveData<Rocket> = rocketRepository.rocketByIdLiveData
 
-    fun getRocketById(id:Int){
+    fun getRocketById(id:String){
         viewModelScope.launch {
             rocketRepository.getRocketById(id)
         }

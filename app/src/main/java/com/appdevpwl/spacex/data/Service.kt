@@ -13,7 +13,7 @@ interface Service {
     @GET("v4/capsules")
    suspend fun getCapsules() : Response<List<Capsule>>
 
-    @GET("v3/rockets")
+    @GET("v4/rockets")
     suspend fun getRockets() : Response<List<Rocket>>
 
     @GET("v4/launches")

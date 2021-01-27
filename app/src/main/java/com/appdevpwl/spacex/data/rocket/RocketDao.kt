@@ -24,7 +24,7 @@ interface RocketDao {
 
 
     @Query("SELECT * FROM rocket_table where id=:id")
-    fun getRocketByRocketId(id: Int): Rocket
+    fun getRocketByRocketId(id: String): Rocket
 
     @Query("SELECT COUNT(id) FROM rocket_table")
     fun getSize(): Int
