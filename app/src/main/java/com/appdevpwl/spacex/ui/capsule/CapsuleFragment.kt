@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -14,7 +15,10 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdevpwl.spacex.R
+import com.appdevpwl.spacex.data.capsules.Capsule
+import com.appdevpwl.spacex.databinding.CapsuleFragmentBinding
 import com.appdevpwl.spacex.util.CapsulesSortType
+import com.appdevpwl.spacex.util.SnackbarType
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.capsule_fragment.*
@@ -35,11 +39,15 @@ class CapsuleFragment : DaggerFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         AndroidSupportInjection.inject(this)
         capsuleViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CapsuleViewModel::class.java)
+        val binding: CapsuleFragmentBinding =
+            DataBindingUtil.inflate(inflater, R.layout.capsule_fragment, container, false)
+        binding.viewModel=capsuleViewModel
+        binding.lifecycleOwner=viewLifecycleOwner
 
         v = inflater.inflate(R.layout.capsule_fragment, container, false)
         bottomSheetMain = v.findViewById(R.id.sort_main_linearlayout)
@@ -48,9 +56,11 @@ class CapsuleFragment : DaggerFragment() {
             Navigation.findNavController(v).navigate(R.id.bottomSheetMainSortFragment)
         }
 
+        return binding.root
 
 
-        return v
+
+
 
     }
 
@@ -58,8 +68,6 @@ class CapsuleFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        capsuleViewModel.getDataFromApiAndSave()
 
         val navController = findNavController()
         navController.currentBackStackEntry?.savedStateHandle?.getLiveData<String>("sort_by")
@@ -75,28 +83,30 @@ class CapsuleFragment : DaggerFragment() {
 
             }
 
-        capsuleViewModel.allCapsules.observe(viewLifecycleOwner, Observer {
+        capsuleViewModel.capsulesLiveData.observe(viewLifecycleOwner, Observer {
 
             i++
             Toast.makeText(activity, i.toString(), Toast.LENGTH_SHORT).show()
-//            when (it.status) {
-//                Response.Status.SUCCESS -> Toast.makeText(activity, "Działa", Toast.LENGTH_SHORT).show()
-//            }
-            capsuleAdapter = CapsuleAdapter()
-            capsule_recyclerview.apply {
-                setHasFixedSize(true)
-                layoutManager = LinearLayoutManager(activity)
-                adapter = capsuleAdapter
 
-            }
-
-
-            capsuleAdapter.addCapsuleList(it)
+            initRecyclerView(it)
 
 
         })
+        capsuleViewModel.snackbarText.observe(viewLifecycleOwner, Observer {
+            SnackbarType.enableSnackbar(view, it)
+        })
 
 
+    }
+
+    private fun initRecyclerView(data: List<Capsule>) {
+        capsuleAdapter = CapsuleAdapter()
+        capsule_recyclerview.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(activity)
+            adapter = capsuleAdapter
+            capsuleAdapter.addCapsuleList(data)
+        }
     }
 
 

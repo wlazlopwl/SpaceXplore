@@ -10,8 +10,11 @@ class Constant {
         const val NO_CONNECTION_MESSAGE="Check Internet connection"
 
         //preferences key
-        const val CORES_LAST_DATE: String = ""
-        const val ROCKET_LAST_DATE: String = ""
+        const val CORES_LAST_DATE: String = "cores_last"
+        const val ROCKET_LAST_DATE: String = "rocket_last"
+        const val LAUNCHES_LAST_DATE: String = "launches_last"
+        const val CAPSULES_LAST_DATE: String = "capsules_last"
+
 
 
         //TIME TO GET DATA FROM API

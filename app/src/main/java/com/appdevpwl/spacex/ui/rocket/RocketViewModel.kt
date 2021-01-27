@@ -26,7 +26,7 @@ import javax.inject.Inject
 
 class RocketViewModel @Inject constructor(
     private val rocketRepository: RocketRepository,
-    private val preferences: DataStorePreferences,
+    private val preferences: DataStorePreferences
 ) : ViewModel() {
 
     val rocketLiveData: MutableLiveData<List<Rocket>> = rocketRepository.rocketLiveData

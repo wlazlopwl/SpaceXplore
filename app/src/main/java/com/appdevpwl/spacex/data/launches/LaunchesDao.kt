@@ -30,4 +30,7 @@ interface LaunchesDao {
 
     @Query("SELECT * FROM launches_table where ids=:id")
     fun getPastLaunches(id: Int): LaunchesItem
+
+    @Query("SELECT COUNT(id) FROM launches_table")
+    fun getSize(): Int
 }

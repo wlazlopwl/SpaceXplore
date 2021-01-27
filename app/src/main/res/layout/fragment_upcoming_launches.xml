@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+                name="viewModel"
+                type="com.appdevpwl.spacex.ui.launches.LaunchesViewModel" />
+    </data>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.launches.UpcomingLaunchesFragment">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:onRefreshListener="@{()-> viewModel.refreshData()}"
+                app:refreshing="@{viewModel.loadingData}"
+                >
+
 
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
@@ -17,8 +33,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/progressBar2"
             app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{viewModel.loadingData==true? View.VISIBLE: View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/rv_upcoming_launches" />
-
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,55 +1,81 @@
 package com.appdevpwl.spacex.data.capsules
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.Service
-
+import com.appdevpwl.spacex.util.Constant
+import com.appdevpwl.spacex.util.Constant.Companion.CAPSULES_LAST_DATE
+import com.appdevpwl.spacex.util.deviceIsOnline
+import com.appdevpwl.spacex.util.getCurrentMillisTime
+import com.appdevpwl.spacex.util.millisToDate
 import javax.inject.Inject
 
-class CapsulesRepository @Inject constructor(private val capsulesDao: CapsulesDao, private val service: Service) {
+class CapsulesRepository @Inject constructor(
+    private val capsulesDao: CapsulesDao,
+    private val service: Service,
+    private val context: Context,
+    private val preferences: DataStorePreferences,
+) {
+
+    val snackbarText = MutableLiveData<String>()
+    val isLoading = MutableLiveData<Boolean>()
+    val capsuleLiveData = MutableLiveData<List<Capsule>>()
+
+    fun getAllCapsulesSortTypeDescending() = capsulesDao.getAllCapsulesSortByTypeDescending()
+
+    fun getAllCapsulesSortTypeAscending() = capsulesDao.getAllCapsulesSortByTypeAscending()
+    fun getAllCapsulesSortLaunchTimeAscending() =
+        capsulesDao.getAllCapsulesSortByLaunchTimeAscending()
+
+    fun getAllCapsulesSortLaunchTimeDescending() =
+        capsulesDao.getAllCapsulesSortByLaunchTimeDescending()
 
 
-    fun getAllCapsulesSortTypeDescending() =capsulesDao.getAllCapsulesSortByTypeDescending()
+    suspend fun fetchDataAndSaveToDb() {
 
-    fun getAllCapsulesSortTypeAscending() =capsulesDao.getAllCapsulesSortByTypeAscending()
-    fun getAllCapsulesSortLaunchTimeAscending() =capsulesDao.getAllCapsulesSortByLaunchTimeAscending()
-    fun getAllCapsulesSortLaunchTimeDescending() =capsulesDao.getAllCapsulesSortByLaunchTimeDescending()
+        when (deviceIsOnline(context)) {
 
-
-    val liveData = MutableLiveData<com.appdevpwl.spacex.util.Response<List<Capsule>>>()
-
-    suspend fun getDataFromApiAndSave() {
-        val response = service.getCapsules()
-        if (response.isSuccessful) {
-            val body = response.body()!!
-            liveData.value = com.appdevpwl.spacex.util.Response.success(body)
-            response.body().let {
-                if ((it!=null)&&(!isEmptyDB())) {
-                    capsulesDao.replaceAllCapsules(it)
-                }
-                if ((it!=null)&&(isEmptyDB())) {
-                    capsulesDao.insertAllCapsules(it)
-                }
-
-
+            false -> {
+                snackbarText.postValue(Constant.NO_CONNECTION_MESSAGE)
+                getAllRocketsFromDb()
             }
-        } else {
-            
+            true -> {
+                isLoading.postValue(true)
+                val response = service.getCapsules()
+                if (response.isSuccessful) {
+                    val body = response.body()
+                    response.body().let {
+                        if (it != null) {
+                            saveRocketsToDb(it)
+                            preferences.saveCurrentUpdateTime(CAPSULES_LAST_DATE,
+                                getCurrentMillisTime())
+                        }
+                        capsuleLiveData.value = body!!
+                    }
+                } else {
+                    snackbarText.postValue(response.errorBody().toString())
+                }
+                isLoading.postValue(false)
+            }
         }
+    }
 
+    private suspend fun saveRocketsToDb(list: List<Capsule>) {
+        capsulesDao.replaceAllCapsules(list)
+    }
 
+    suspend fun getAllRocketsFromDb() {
+        isLoading.postValue(true)
+
+        capsuleLiveData.value = capsulesDao.getAllCapsules()
+        isLoading.postValue(false)
+        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CAPSULES_LAST_DATE)!!).toString())
     }
 
 
-    private fun isEmptyDB(): Boolean {
-        return when (capsulesDao.countCapsules()) {
-            0 -> true
-            else -> false
-        }
-
-    }
-
-    fun countCapsulesInDB() {
-        capsulesDao.countCapsules()
+    fun getDbSize():Int {
+        return capsulesDao.getSize()
     }
 
 

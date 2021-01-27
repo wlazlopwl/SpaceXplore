@@ -20,7 +20,7 @@ import javax.inject.Inject
 class LaunchesFragment : DaggerFragment() {
 
     lateinit var adapter: LaunchesTabsAdapter
-    lateinit var viewPager:ViewPager2
+    lateinit var viewPager: ViewPager2
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -28,19 +28,15 @@ class LaunchesFragment : DaggerFragment() {
     private lateinit var coreViewModel: CoresViewModel
 
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-       AndroidSupportInjection.inject(this)
-        launchesViewModel= ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
-        coreViewModel= ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
+        AndroidSupportInjection.inject(this)
+        launchesViewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
+        coreViewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
         return inflater.inflate(R.layout.fragment_launches, container, false)
     }
 
@@ -51,24 +47,16 @@ class LaunchesFragment : DaggerFragment() {
         viewPager.adapter = adapter
 
         val tabLayout = view.findViewById<TabLayout>(R.id.launches_tabs)
-        TabLayoutMediator(tabLayout, launches_vievpager){tab, position ->
-            when(position){
-                0 -> tab.text= "Upcoming"
-                else ->tab.text= "Past"
+        TabLayoutMediator(tabLayout, launches_vievpager) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Upcoming"
+                else -> tab.text = "Past"
             }
 
         }.attach()
 
-        coreViewModel.getData()
-//
-//        launchesViewModel.getDataFromApi()
-//
-//        launchesViewModel.liveData.observe(viewLifecycleOwner, Observer {
-//            Log.d("1", it.data?.get(1)?.details.toString())
-//        })
 
     }
-
 
 
 }

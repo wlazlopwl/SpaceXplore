@@ -1,7 +1,6 @@
 package com.appdevpwl.spacex.data.capsules
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
@@ -9,8 +8,9 @@ interface CapsulesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllCapsules(capsules: List<Capsule>)
+
     @Transaction
-    suspend fun replaceAllCapsules(capsules: List<Capsule>){
+    suspend fun replaceAllCapsules(capsules: List<Capsule>) {
         deleteAllCapsules()
         insertAllCapsules(capsules)
     }
@@ -18,11 +18,11 @@ interface CapsulesDao {
     @Query("DELETE FROM capsule_table")
     suspend fun deleteAllCapsules()
 
-    @Query("SELECT COUNT(serial) FROM capsule_table")
-    fun countCapsules(): Int
+    @Query("SELECT COUNT(id) FROM capsule_table")
+    fun getSize(): Int
 
     @Query("SELECT * FROM capsule_table")
-    fun loadAllCapsules(): LiveData<List<Capsule>>
+    fun getAllCapsules(): List<Capsule>
 
     @Query("SELECT * FROM capsule_table ORDER BY serial DESC")
     fun getAllCapsulesSortByTypeDescending(): LiveData<List<Capsule>>

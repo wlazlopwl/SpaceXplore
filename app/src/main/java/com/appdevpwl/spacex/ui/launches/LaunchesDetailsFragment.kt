@@ -35,7 +35,7 @@ class LaunchesDetailsFragment : DaggerFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         coreViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
@@ -51,14 +51,12 @@ class LaunchesDetailsFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-
-
 //        lstGroups.add("Payloads")
         coreViewModel.getAllCoresByLaunchesId(launches.id!!)
-        var i =0
+        var i = 0
         coreViewModel.liveDataCoresByLaunchesId.observe(viewLifecycleOwner, Observer {
             i++
-            Log.d("iiiiii",i.toString())
+            Log.d("iiiiii", i.toString())
             when (it.size) {
 
                 0 -> {

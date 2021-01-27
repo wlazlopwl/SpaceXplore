@@ -17,14 +17,6 @@ class RocketAdapter : RecyclerView.Adapter<RocketAdapter.ViewHolder>() {
     class ViewHolder(val binding: RocketSingleItemRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-//        private val rocketName: TextView = mView.rocket_name
-//        private val rocketFirstFlight: TextView = mView.rocket_first_flight
-//        private val rocketStatus: TextView = mView.rocket_status_tv
-//        private val rocketImageView: ImageView = mView.rocketIV
-//        private val progressBar: ProgressBar = mView.progress_bar
-//        private val rocketCompany: TextView = mView.rocket_company
-//        private val rocketCost: TextView = mView.rocket_cost_per_launch
-//        private val rocketSuccessRate: TextView = mView.rocket_succes_rate
 
         fun bindView(rocket: Rocket) {
             binding.apply {
