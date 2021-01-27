@@ -14,7 +14,7 @@ import com.appdevpwl.spacex.data.rocket.model.Rocket
 import com.appdevpwl.spacex.data.rocket.RocketDao
 
 
-@Database(entities = [TestEntity::class, Capsule::class, Rocket::class, LaunchesItem::class, CoresItem::class], version = 4, exportSchema = false)
+@Database(entities = [TestEntity::class, Capsule::class, Rocket::class, LaunchesItem::class, CoresItem::class], version = 5, exportSchema = false)
 @TypeConverters(
 //    MissionTypeConverter::class,
     JsonToStringConverter::class,

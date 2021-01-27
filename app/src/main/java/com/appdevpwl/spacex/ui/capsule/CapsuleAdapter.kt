@@ -25,7 +25,7 @@ class CapsuleAdapter() : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
         // private val capsuleStatus: ImageView = mView.capsule_status_icon
         private val countMissions: TextView = mView.capsule_count_missions
         private val capsuleStatusTV: TextView = mView.capsule_status_tv
-        private val countLandings: TextView = mView.capsule_count_landings
+//        private val countLandings: TextView = mView.capsule_count_landings
         fun bindView(capsule: Capsule) {
             capsuleName.text = capsule.serial + " | " + capsule.type
 //            activeSince.text = when (capsule.original_launch_unix) {
@@ -45,7 +45,7 @@ class CapsuleAdapter() : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
 //                null -> "0"
 //                else -> capsule.missions.size.toString()
 //            }
-            countLandings.text = (capsule.water_landings + capsule.land_landings).toString()
+//            countLandings.text = (capsule.water_landings + capsule.land_landings).toString()
 
         }
     }
