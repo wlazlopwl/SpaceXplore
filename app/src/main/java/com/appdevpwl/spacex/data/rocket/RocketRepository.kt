@@ -56,7 +56,7 @@ class RocketRepository @Inject constructor(
         rocketDao.replaceAllRockets(list)
     }
 
-    suspend fun getRocketById(id: Int) {
+    suspend fun getRocketById(id: String) {
         rocketByIdLiveData.value = rocketDao.getRocketByRocketId(id)
     }
 
