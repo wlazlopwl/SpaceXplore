@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 interface Service {
 
-    @GET("v3/capsules")
+    @GET("v4/capsules")
    suspend fun getCapsules() : Response<List<Capsule>>
 
     @GET("v3/rockets")
