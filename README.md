@@ -9,6 +9,7 @@ Project is created with:
 * Navigation Component
 * Coroutines
 * Retrofit
+* Data Binding
 * Room database
 * LiveData
 * ViewModel, MVVM architecture
