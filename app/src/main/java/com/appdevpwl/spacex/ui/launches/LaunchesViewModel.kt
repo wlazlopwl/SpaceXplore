@@ -34,25 +34,19 @@ class LaunchesViewModel @Inject constructor(
         getPastLaunches()
     }
 
-    fun getAllLaunches() {
-        viewModelScope.launch {
-            launchesRepository.getAllLaunchesFromDb()
-        }
-    }
-
-    fun getUpcomingLaunches() {
+    private fun getUpcomingLaunches() {
         viewModelScope.launch {
             launchesRepository.getUpcomingLaunchesFromDb()
         }
     }
 
-    fun getPastLaunches() {
+    private fun getPastLaunches() {
         viewModelScope.launch {
             launchesRepository.getPastLaunchesFromDb()
         }
     }
 
-    fun getLaunchesData() {
+    private fun getLaunchesData() {
         viewModelScope.launch {
             when (launchesRepository.getDbSize()) {
                 0 -> refreshData()
@@ -61,7 +55,7 @@ class LaunchesViewModel @Inject constructor(
                     val timeToFetch: Long? =
                         preferences.getMaxMinutesBeforeFetchAPI(Constant.MAX_TIME_TO_FETCH_MILLIS)
                     val currentTime = getCurrentMillisTime()
-                    when (compareMillis(oldTime!!, currentTime, timeToFetch!!)) {
+                    when (compareMillis(oldTime, currentTime, timeToFetch!!)) {
                         true -> refreshData()
                         else -> launchesRepository.getUpcomingLaunchesFromDb()
                     }

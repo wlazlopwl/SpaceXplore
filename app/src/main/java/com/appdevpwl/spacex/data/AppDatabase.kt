@@ -14,7 +14,7 @@ import com.appdevpwl.spacex.data.rocket.model.Rocket
 import com.appdevpwl.spacex.data.rocket.RocketDao
 
 
-@Database(entities = [TestEntity::class, Capsule::class, Rocket::class, LaunchesItem::class, CoresItem::class], version = 5, exportSchema = false)
+@Database(entities = [HomeEntity::class, Capsule::class, Rocket::class, LaunchesItem::class, CoresItem::class], version = 5, exportSchema = false)
 @TypeConverters(
 //    MissionTypeConverter::class,
     JsonToStringConverter::class,
@@ -34,7 +34,7 @@ import com.appdevpwl.spacex.data.rocket.RocketDao
 )
 
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun testEntityDao(): TestEntityDao
+    abstract fun testEntityDao(): HomeDao
     abstract fun capsuleDao(): CapsulesDao
     abstract fun rocketDao(): RocketDao
     abstract fun launchesDao(): LaunchesDao

@@ -1,7 +1,6 @@
 package com.appdevpwl.spacex.ui.launches
 
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,9 +43,9 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
                         e: GlideException?,
                         model: Any?,
                         target: Target<Drawable>?,
-                        isFirstResource: Boolean
+                        isFirstResource: Boolean,
                     ): Boolean {
-                        progressBar.visibility = View.VISIBLE
+                        progressBar.visibility = View.GONE
                         return false
                     }
 
@@ -55,9 +54,9 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
                         model: Any?,
                         target: Target<Drawable>?,
                         dataSource: DataSource?,
-                        isFirstResource: Boolean
+                        isFirstResource: Boolean,
                     ): Boolean {
-                        progressBar.visibility = View.INVISIBLE
+                        progressBar.visibility = View.GONE
                         return false
                     }
                 })
@@ -70,10 +69,8 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
             itemView.setOnClickListener { view ->
                 val argLaunchesId = launchesItem
                 val bundle = bundleOf("argLaunchesId" to argLaunchesId)
-
-
-
-                view.findNavController().navigate(R.id.action_nav_launches_to_launchesDetailsFragment, bundle)
+                view.findNavController()
+                    .navigate(R.id.action_nav_launches_to_launchesDetailsFragment, bundle)
             }
 
         }
@@ -90,9 +87,6 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
         val launchesItem = launchesList[position]
         holder.bindView(launchesItem)
 
-//        holder.itemView.setOnClickListener { view ->
-//            view.findNavController().navigate(R.id.action_nav_rocket_to_rocketDetailsFragment)
-//        }
 
     }
 

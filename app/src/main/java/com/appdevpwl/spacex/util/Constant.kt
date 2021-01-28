@@ -1,6 +1,5 @@
 package com.appdevpwl.spacex.util
 
-import androidx.datastore.preferences.core.stringPreferencesKey
 
 class Constant {
 
@@ -14,8 +13,6 @@ class Constant {
         const val ROCKET_LAST_DATE: String = "rocket_last"
         const val LAUNCHES_LAST_DATE: String = "launches_last"
         const val CAPSULES_LAST_DATE: String = "capsules_last"
-
-
 
         //TIME TO GET DATA FROM API
         const val MAX_TIME_TO_FETCH_MILLIS : String = "MAX_TIME"

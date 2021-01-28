@@ -3,8 +3,8 @@ package com.appdevpwl.spacex.data
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
-import com.appdevpwl.spacex.util.getCurrentMillisTime
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
@@ -18,15 +18,13 @@ class DataStorePreferences @Inject constructor(private val preferences: DataStor
         }
     }
 
-    suspend fun getLastUpdateTime(key: String): Long? {
+    suspend fun getLastUpdateTime(key: String): Long {
         val dataStoreKey = longPreferencesKey(key)
-        var value = preferences.data.first()
-        if (value[dataStoreKey] == null) {
-            //TODO not current/ set past because must fetch api when last uptade is null
-            saveCurrentUpdateTime(key, getCurrentMillisTime())
-            value = preferences.data.first()
+        val value = preferences.data.map { currentPreferences ->
+            currentPreferences[dataStoreKey] ?: 1511823542403
+
         }
-        return value[dataStoreKey]
+        return value.first()
     }
 
     suspend fun saveMaxMinutesBeforeFetchAPI(key: String, minutes: Long) {

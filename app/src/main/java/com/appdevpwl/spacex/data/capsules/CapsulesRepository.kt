@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.Service
-import com.appdevpwl.spacex.util.Constant
 import com.appdevpwl.spacex.util.Constant.Companion.CAPSULES_LAST_DATE
+import com.appdevpwl.spacex.util.Constant.Companion.NO_CONNECTION_MESSAGE
 import com.appdevpwl.spacex.util.deviceIsOnline
 import com.appdevpwl.spacex.util.getCurrentMillisTime
 import com.appdevpwl.spacex.util.millisToDate
@@ -37,7 +37,7 @@ class CapsulesRepository @Inject constructor(
         when (deviceIsOnline(context)) {
 
             false -> {
-                snackbarText.postValue(Constant.NO_CONNECTION_MESSAGE)
+                snackbarText.postValue(NO_CONNECTION_MESSAGE)
                 getAllRocketsFromDb()
             }
             true -> {
@@ -74,7 +74,7 @@ class CapsulesRepository @Inject constructor(
     }
 
 
-    fun getDbSize():Int {
+    fun getDbSize(): Int {
         return capsulesDao.getSize()
     }
 

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,8 +32,6 @@ class CapsuleFragment : DaggerFragment() {
     lateinit var capsuleAdapter: CapsuleAdapter
     lateinit var bottomSheetMain: LinearLayout
     lateinit var v: View
-    var i = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,8 +43,8 @@ class CapsuleFragment : DaggerFragment() {
             ViewModelProviders.of(this, viewModelFactory).get(CapsuleViewModel::class.java)
         val binding: CapsuleFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.capsule_fragment, container, false)
-        binding.viewModel=capsuleViewModel
-        binding.lifecycleOwner=viewLifecycleOwner
+        binding.viewModel = capsuleViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         v = inflater.inflate(R.layout.capsule_fragment, container, false)
         bottomSheetMain = v.findViewById(R.id.sort_main_linearlayout)
@@ -57,9 +54,6 @@ class CapsuleFragment : DaggerFragment() {
         }
 
         return binding.root
-
-
-
 
 
     }
@@ -84,10 +78,6 @@ class CapsuleFragment : DaggerFragment() {
             }
 
         capsuleViewModel.capsulesLiveData.observe(viewLifecycleOwner, Observer {
-
-            i++
-            Toast.makeText(activity, i.toString(), Toast.LENGTH_SHORT).show()
-
             initRecyclerView(it)
 
 

@@ -6,10 +6,10 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface TestEntityDao {
+interface HomeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(testEntity: TestEntity)
+    fun insert(homeEntity: HomeEntity)
 
-    @Query("SELECT * from TestEntity")
-    fun getAllTest():List<TestEntity>
+    @Query("SELECT * from HomeEntity")
+    fun getAllTest():List<HomeEntity>
 }

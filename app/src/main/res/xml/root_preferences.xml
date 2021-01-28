@@ -21,15 +21,15 @@
                 android:entries="@array/list_preference_mass_entries"
                 android:entryValues="@array/list_preference_mass_entry_values" />
     </PreferenceCategory>
-    <PreferenceCategory
-            app:title="Time to fetch">
-            <ListPreference
-                    app:key="maxTimeToFetch"
-                    app:title="Time without fetch data"
-                android:entryValues="@array/list_prefetence_max_time_without_fetch_value"
-                    android:entries="@array/list_prefetence_max_time_without_fetch"
-                />
-    </PreferenceCategory>
+<!--    <PreferenceCategory-->
+<!--            app:title="Time to fetch">-->
+<!--            <ListPreference-->
+<!--                    app:key="maxTimeToFetch"-->
+<!--                    app:title="Time without fetch data"-->
+<!--                android:entryValues="@array/list_prefetence_max_time_without_fetch_value"-->
+<!--                    android:entries="@array/list_prefetence_max_time_without_fetch"-->
+<!--                />-->
+<!--    </PreferenceCategory>-->
 
 </PreferenceScreen>
 
