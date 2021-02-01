@@ -12,7 +12,7 @@ import com.appdevpwl.spacex.R
 class LaunchesExpandableListAdapter internal constructor(
     private val context: Context,
     private val groupTitle: List<String>,
-    private val dataList: HashMap<String, MutableList<List<String>>>
+    private val dataList: HashMap<String, MutableList<List<String>>>,
 ) : BaseExpandableListAdapter() {
 
 
@@ -49,16 +49,17 @@ class LaunchesExpandableListAdapter internal constructor(
         groupPosition: Int,
         isExpanded: Boolean,
         convertView: View?,
-        parent: ViewGroup?
+        parent: ViewGroup?,
     ): View {
         var convertView = convertView
         val groupTitle = getGroup(groupPosition) as String
         if (convertView == null) {
-            val layoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val layoutInflater =
+                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = layoutInflater.inflate(R.layout.layout_expandable_group, null)
         }
 
-        
+
         val listTitleTextView = convertView!!.findViewById<TextView>(R.id.launches_expandable_title)
         listTitleTextView.setTypeface(null, Typeface.BOLD)
         listTitleTextView.text = groupTitle
@@ -71,19 +72,20 @@ class LaunchesExpandableListAdapter internal constructor(
         childPosition: Int,
         isLastChild: Boolean,
         convertView: View?,
-        parent: ViewGroup?
+        parent: ViewGroup?,
     ): View {
         var convertView = convertView
-        val expandableItem = getChild(groupPosition,childPosition) as List<*>
+        val expandableItem = getChild(groupPosition, childPosition) as List<*>
         if (convertView == null) {
-            val layoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val layoutInflater =
+                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = layoutInflater.inflate(R.layout.core_single_item_rv, null)
         }
         val coresSerial = convertView!!.findViewById<TextView>(R.id.core_serial_type)
-        val coresStatus = convertView!!.findViewById<TextView>(R.id.core_status_tv)
-        val coresBlocks = convertView!!.findViewById<TextView>(R.id.core_blocks_tv)
-        val coresReuseCount = convertView!!.findViewById<TextView>(R.id.core_reuse_count_tv)
-        val coresLastUpdate = convertView!!.findViewById<TextView>(R.id.cores_last_update)
+        val coresStatus = convertView.findViewById<TextView>(R.id.core_status_tv)
+        val coresBlocks = convertView.findViewById<TextView>(R.id.core_blocks_tv)
+        val coresReuseCount = convertView.findViewById<TextView>(R.id.core_reuse_count_tv)
+        val coresLastUpdate = convertView.findViewById<TextView>(R.id.cores_last_update)
         coresSerial.setTypeface(null, Typeface.BOLD)
         coresSerial.text = expandableItem[0].toString()
         coresStatus.text = expandableItem[1].toString()

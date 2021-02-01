@@ -67,7 +67,7 @@ class CoresRepository @Inject constructor(
 
         coresLiveData.value = coresDao.getAllCores()
         isLoading.postValue(false)
-        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CORES_LAST_DATE)!!).toString())
+        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CORES_LAST_DATE)).toString())
 
     }
 

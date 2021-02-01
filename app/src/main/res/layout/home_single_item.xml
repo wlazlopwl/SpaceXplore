@@ -4,16 +4,20 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="menuItem"
                 type="String" />
+        <variable
+                name="imageId"
+                type="Integer" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
+            android:padding="16dp">
 
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -23,14 +27,23 @@
 
                 app:cardCornerRadius="20dp"
                 tools:ignore="MissingConstraints">
-            <ImageView
-                    android:layout_width="match_parent"
-                    android:background="@color/cardview_shadow_start_color"
-                    android:layout_height="match_parent" />
+
 
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:background="@color/cardview_shadow_start_color"
+                        android:layout_height="match_parent"
+                        android:padding="50dp"
+                        app:imageResource="@{imageId}"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

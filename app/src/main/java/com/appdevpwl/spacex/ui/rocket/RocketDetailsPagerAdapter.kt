@@ -72,11 +72,11 @@ class RocketDetailsPagerAdapter(private val context: Context, private val urlLis
             .error(R.drawable.ic_error_black_24dp)
             .fallback(R.drawable.ic_error_black_24dp)
             .into(image)
-        container!!.addView(view)
+        container.addView(view)
         return view
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-       container!!.removeView(`object` as LinearLayout)
+       container.removeView(`object` as LinearLayout)
     }
 }

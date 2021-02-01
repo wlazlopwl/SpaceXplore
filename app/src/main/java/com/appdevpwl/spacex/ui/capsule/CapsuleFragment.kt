@@ -37,7 +37,7 @@ class CapsuleFragment : DaggerFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         AndroidSupportInjection.inject(this)
         capsuleViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CapsuleViewModel::class.java)
@@ -47,11 +47,11 @@ class CapsuleFragment : DaggerFragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         v = inflater.inflate(R.layout.capsule_fragment, container, false)
-        bottomSheetMain = v.findViewById(R.id.sort_main_linearlayout)
-
-        bottomSheetMain.setOnClickListener { v ->
-            Navigation.findNavController(v).navigate(R.id.bottomSheetMainSortFragment)
-        }
+//        bottomSheetMain = v.findViewById(R.id.sort_main_linearlayout)
+//
+//        bottomSheetMain.setOnClickListener { v ->
+//            Navigation.findNavController(v).navigate(R.id.bottomSheetMainSortFragment)
+//        }
 
         return binding.root
 

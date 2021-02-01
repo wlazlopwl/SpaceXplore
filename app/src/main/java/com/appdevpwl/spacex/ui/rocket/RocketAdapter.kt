@@ -46,11 +46,6 @@ class RocketAdapter : RecyclerView.Adapter<RocketAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: RocketAdapter.ViewHolder, position: Int) {
         val rocket = rocketsList[position]
         holder.bindView(rocket)
-
-//        holder.itemView.setOnClickListener { view ->
-//            view.findNavController().navigate(R.id.action_nav_rocket_to_rocketDetailsFragment)
-//        }
-
     }
 
     override fun getItemCount(): Int {

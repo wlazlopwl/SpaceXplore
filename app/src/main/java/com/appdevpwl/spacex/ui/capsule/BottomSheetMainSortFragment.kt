@@ -6,27 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.util.CapsulesSortType
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BottomSheetMainSortFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BottomSheetMainSortFragment : BottomSheetDialogFragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     lateinit var linearSerialAsc: LinearLayout
     lateinit var linearSerialDesc: LinearLayout
@@ -35,17 +21,9 @@ class BottomSheetMainSortFragment : BottomSheetDialogFragment() {
     var checkedSortTypeOption: Int = 0
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
 
 
@@ -77,8 +55,8 @@ class BottomSheetMainSortFragment : BottomSheetDialogFragment() {
         linearTimeDesc = view.findViewById(R.id.linear_time_desc)
 
 
-        val clickListener = View.OnClickListener { view ->
-            when (view.id) {
+        val clickListener = View.OnClickListener {
+            when (it.id) {
                 R.id.linear_serial_asc -> {
                     setSelectedOption(CapsulesSortType.TYPE_ASC)
                 }
@@ -103,22 +81,4 @@ class BottomSheetMainSortFragment : BottomSheetDialogFragment() {
 
     }
 
-    companion object {
-        /**
-
-
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BottomSheetMainSortFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BottomSheetMainSortFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

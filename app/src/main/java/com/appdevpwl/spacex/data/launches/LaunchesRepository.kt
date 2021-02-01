@@ -71,7 +71,7 @@ class LaunchesRepository @Inject constructor(
 
         upcomingLaunchesLiveData.value = launchesDao.getUpcomingLaunches()
         isLoading.postValue(false)
-        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(LAUNCHES_LAST_DATE)!!).toString())
+        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(LAUNCHES_LAST_DATE)).toString())
     }
 
     fun getPastLaunchesFromDb() {

@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.launches.model.LaunchesItem
+import com.appdevpwl.spacex.databinding.FragmentPastLaunchesBinding
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_past_lunches.*
+import kotlinx.android.synthetic.main.fragment_past_launches.*
 import javax.inject.Inject
 
 
@@ -29,13 +31,14 @@ class PastLaunchesFragment : DaggerFragment() {
         AndroidSupportInjection.inject(this)
         launchesViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
-
-        return inflater.inflate(R.layout.fragment_past_lunches, container, false)
+        val binding: FragmentPastLaunchesBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_past_launches, container, false)
+        binding.viewModel = launchesViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
         launchesViewModel.pastLaunchesLiveData.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
         })

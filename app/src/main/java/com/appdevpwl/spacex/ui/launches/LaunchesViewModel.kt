@@ -23,9 +23,9 @@ class LaunchesViewModel @Inject constructor(
     val snackbarText: LiveData<String> = launchesRepository.snackbarText
     val loadingData: LiveData<Boolean> = launchesRepository.isLoading
 
-    val upcomingLaunchesLiveData: MutableLiveData<List<LaunchesItem>> =
+    val upcomingLaunchesLiveData: LiveData<List<LaunchesItem>> =
         launchesRepository.upcomingLaunchesLiveData
-    val pastLaunchesLiveData: MutableLiveData<List<LaunchesItem>> =
+    val pastLaunchesLiveData: LiveData<List<LaunchesItem>> =
         launchesRepository.pastLaunchesLiveData
 
     init {

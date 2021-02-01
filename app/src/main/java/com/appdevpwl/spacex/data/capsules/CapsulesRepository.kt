@@ -70,7 +70,7 @@ class CapsulesRepository @Inject constructor(
 
         capsuleLiveData.value = capsulesDao.getAllCapsules()
         isLoading.postValue(false)
-        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CAPSULES_LAST_DATE)!!).toString())
+        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CAPSULES_LAST_DATE)).toString())
     }
 
 

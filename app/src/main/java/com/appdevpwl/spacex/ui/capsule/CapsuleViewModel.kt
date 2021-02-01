@@ -81,7 +81,7 @@ class CapsuleViewModel @Inject constructor(
                     val timeToFetch: Long? =
                         preferences.getMaxMinutesBeforeFetchAPI(Constant.MAX_TIME_TO_FETCH_MILLIS)
                     val currentTime = getCurrentMillisTime()
-                    when (compareMillis(oldTime!!, currentTime, timeToFetch!!)) {
+                    when (compareMillis(oldTime, currentTime, timeToFetch!!)) {
                         true -> refreshData()
                         else -> capsulesRepository.getAllRocketsFromDb()
                     }

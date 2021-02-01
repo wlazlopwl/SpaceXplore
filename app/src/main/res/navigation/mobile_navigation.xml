@@ -47,7 +47,7 @@
             android:defaultValue="0" />
 
     <fragment
-            android:id="@+id/settingsFragment"
+            android:id="@+id/nav_settings"
             android:name="com.appdevpwl.spacex.ui.SettingsFragment"
             android:label="Settings" />
     <fragment
@@ -78,7 +78,7 @@
             android:id="@+id/pastLaunchesFragment"
             android:name="com.appdevpwl.spacex.ui.launches.PastLaunchesFragment"
             android:label="fragment_past_lunches"
-            tools:layout="@layout/fragment_past_lunches" >
+            tools:layout="@layout/fragment_past_launches" >
         <action
                 android:id="@+id/action_pastLaunchesFragment_to_launchesDetailsFragment"
                 app:destination="@id/launchesDetailsFragment" />

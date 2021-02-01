@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.fragment_launches.*
 import javax.inject.Inject
 
 
-class LaunchesFragment : DaggerFragment() {
+class
+LaunchesFragment : DaggerFragment() {
 
     lateinit var adapter: LaunchesTabsAdapter
     lateinit var viewPager: ViewPager2

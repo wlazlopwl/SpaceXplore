@@ -1,7 +1,6 @@
 package com.appdevpwl.spacex.ui.launches
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,12 +50,10 @@ class LaunchesDetailsFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-//        lstGroups.add("Payloads")
         coreViewModel.getAllCoresByLaunchesId(launches.id!!)
-        var i = 0
+
         coreViewModel.liveDataCoresByLaunchesId.observe(viewLifecycleOwner, Observer {
-            i++
-            Log.d("iiiiii", i.toString())
+
             when (it.size) {
 
                 0 -> {

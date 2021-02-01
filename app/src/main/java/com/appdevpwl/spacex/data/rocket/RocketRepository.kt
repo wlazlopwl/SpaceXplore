@@ -69,7 +69,7 @@ class RocketRepository @Inject constructor(
 
         rocketLiveData.value = rocketDao.getAllRockets()
         isLoading.postValue(false)
-        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(ROCKET_LAST_DATE)!!).toString())
+        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(ROCKET_LAST_DATE)).toString())
     }
 
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,14 +33,16 @@ class HomeFragment : DaggerFragment() {
             ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
         val binding: FragmentHomeBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        binding.viewModel=homeViewModel
-       return binding.root
+        binding.viewModel = homeViewModel
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val data = listOf<String>("All launches", "Cores", "Capsules", "Rockets")
-        initRecyclerView(data)
+        homeViewModel.menuList.observe(viewLifecycleOwner, Observer {
+            initRecyclerView(it)
+        })
+
 
     }
 

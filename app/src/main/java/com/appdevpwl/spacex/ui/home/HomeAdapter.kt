@@ -2,20 +2,24 @@ package com.appdevpwl.spacex.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.databinding.HomeSingleItemBinding
 
+
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     private var menuList: List<String> = emptyList()
 
     class ViewHolder(val binding: HomeSingleItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindView(item: String) {
+        fun bindView(item: String, imageId: Int) {
             binding.apply {
                 binding.menuItem = item
+                binding.imageId =imageId
             }
         }
     }
@@ -29,10 +33,21 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
         val item = menuList[position]
-        holder.bindView(item)
+        val imageId= when(item){
+            "All launches" -> R.drawable.launches1
+            "Cores" -> R.drawable.cores
+            "Capsules" -> R.drawable.capsule1
+            "Rockets" -> R.drawable.rocket_icon1
+            else -> null
+        }
+
+        if (imageId != null) {
+            holder.bindView(item, imageId)
+        }
+
 
         holder.itemView.setOnClickListener(
-            when(item){
+            when (item) {
                 "All launches" -> Navigation.createNavigateOnClickListener(R.id.nav_launches)
                 "Cores" -> Navigation.createNavigateOnClickListener(R.id.nav_cores)
                 "Capsules" -> Navigation.createNavigateOnClickListener(R.id.nav_capsule)
@@ -48,8 +63,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     }
 
     fun addMenuItemToList(data: List<String>) {
-        menuList=data
+        menuList = data
         notifyDataSetChanged()
 
     }
+
 }
