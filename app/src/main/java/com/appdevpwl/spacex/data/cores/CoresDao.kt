@@ -20,10 +20,10 @@ interface CoresDao {
     suspend fun deleteAllCores()
 
     @Query("SELECT * FROM cores_table")
-    suspend fun getAllCores():List<CoresItem>
+     fun getAllCores(): LiveData<List<CoresItem>>
 
     @Query("SELECT * FROM cores_table where launches LIKE '%' || :id || '%'")
-    suspend fun getAllCoresByLaunchesId(id: String): List<CoresItem>
+     fun getAllCoresByLaunchesId(id: String): LiveData<List<CoresItem>>
 
     @Query("SELECT COUNT(id) FROM cores_table")
      fun getSize(): Int

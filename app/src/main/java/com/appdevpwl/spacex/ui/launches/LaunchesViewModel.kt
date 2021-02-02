@@ -1,7 +1,7 @@
 package com.appdevpwl.spacex.ui.launches
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.appdevpwl.spacex.data.DataStorePreferences
@@ -24,27 +24,15 @@ class LaunchesViewModel @Inject constructor(
     val loadingData: LiveData<Boolean> = launchesRepository.isLoading
 
     val upcomingLaunchesLiveData: LiveData<List<LaunchesItem>> =
-        launchesRepository.upcomingLaunchesLiveData
+        launchesRepository.getUpcomingLaunchesFromDb()
     val pastLaunchesLiveData: LiveData<List<LaunchesItem>> =
-        launchesRepository.pastLaunchesLiveData
+        launchesRepository.getPastLaunchesFromDb()
 
     init {
         getLaunchesData()
-        getUpcomingLaunches()
-        getPastLaunches()
+
     }
 
-    private fun getUpcomingLaunches() {
-        viewModelScope.launch {
-            launchesRepository.getUpcomingLaunchesFromDb()
-        }
-    }
-
-    private fun getPastLaunches() {
-        viewModelScope.launch {
-            launchesRepository.getPastLaunchesFromDb()
-        }
-    }
 
     private fun getLaunchesData() {
         viewModelScope.launch {
@@ -67,8 +55,6 @@ class LaunchesViewModel @Inject constructor(
     fun refreshData() {
         viewModelScope.launch {
             launchesRepository.fetchDataAndSaveToDb()
-
         }
     }
-
 }

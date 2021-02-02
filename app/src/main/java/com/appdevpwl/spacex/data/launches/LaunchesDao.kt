@@ -1,5 +1,6 @@
 package com.appdevpwl.spacex.data.launches
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.appdevpwl.spacex.data.launches.model.LaunchesItem
 import com.appdevpwl.spacex.data.rocket.model.Rocket
@@ -19,14 +20,11 @@ interface LaunchesDao {
     @Query("DELETE FROM launches_table")
     suspend fun deleteAllLaunches()
 
-        @Query("SELECT * FROM launches_table")
-    suspend fun getAllLaunches():List<LaunchesItem>
+    @Query("SELECT * FROM launches_table where upcoming = :upcoming ORDER BY flight_number ASC")
+      fun getUpcomingLaunches(upcoming: Boolean = true): LiveData<List<LaunchesItem>>
 
     @Query("SELECT * FROM launches_table where upcoming = :upcoming")
-      fun getUpcomingLaunches(upcoming: Boolean = true): List<LaunchesItem>
-
-    @Query("SELECT * FROM launches_table where upcoming = :upcoming")
-    fun getPastLaunches(upcoming: Boolean = false): List<LaunchesItem>
+    fun getPastLaunches(upcoming: Boolean = false): LiveData<List<LaunchesItem>>
 
     @Query("SELECT * FROM launches_table where ids=:id")
     fun getPastLaunches(id: Int): LaunchesItem

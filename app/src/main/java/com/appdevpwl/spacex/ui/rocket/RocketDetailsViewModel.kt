@@ -1,5 +1,6 @@
 package com.appdevpwl.spacex.ui.rocket
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,11 +11,11 @@ import javax.inject.Inject
 
 class RocketDetailsViewModel @Inject constructor(private val rocketRepository: RocketRepository)  : ViewModel() {
 
-    val rocketLiveData : MutableLiveData<Rocket> = rocketRepository.rocketByIdLiveData
+    lateinit var rocketLiveData : LiveData<Rocket>
 
     fun getRocketById(id:String){
         viewModelScope.launch {
-            rocketRepository.getRocketById(id)
+            rocketLiveData=rocketRepository.getRocketById(id)
         }
     }
 

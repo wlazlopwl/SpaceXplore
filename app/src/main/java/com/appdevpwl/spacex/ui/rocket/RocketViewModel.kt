@@ -29,7 +29,7 @@ class RocketViewModel @Inject constructor(
     private val preferences: DataStorePreferences
 ) : ViewModel() {
 
-    val rocketLiveData: MutableLiveData<List<Rocket>> = rocketRepository.rocketLiveData
+    val rocketLiveData: LiveData<List<Rocket>> = rocketRepository.getAllRocketsFromDb()
     val snackbarText: LiveData<String> = rocketRepository.snackbarText
     val loadingData: LiveData<Boolean> = rocketRepository.isLoading
 
@@ -38,7 +38,9 @@ class RocketViewModel @Inject constructor(
         getRocketData()
     }
 
-    fun getRocketData() {
+
+
+    private fun getRocketData() {
         viewModelScope.launch {
             when (rocketRepository.getDbSize()) {
                 0 -> refreshData()
@@ -50,6 +52,7 @@ class RocketViewModel @Inject constructor(
                     when (compareMillis(oldTime, currentTime, timeToFetch!!)) {
                         true -> refreshData()
                         else -> rocketRepository.getAllRocketsFromDb()
+
                     }
                 }
 

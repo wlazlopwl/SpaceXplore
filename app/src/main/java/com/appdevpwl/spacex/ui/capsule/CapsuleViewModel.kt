@@ -18,7 +18,7 @@ class CapsuleViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    val capsulesLiveData: MutableLiveData<List<Capsule>> = capsulesRepository.capsuleLiveData
+    val capsulesLiveData: LiveData<List<Capsule>> = capsulesRepository.getAllCapsulesFromDb()
     val snackbarText: LiveData<String> = capsulesRepository.snackbarText
     val loadingData: LiveData<Boolean> = capsulesRepository.isLoading
 
@@ -72,7 +72,7 @@ class CapsuleViewModel @Inject constructor(
         }
     }
 
-    fun getCapsuleData() {
+    private fun getCapsuleData() {
         viewModelScope.launch {
             when (capsulesRepository.getDbSize()) {
                 0 -> refreshData()
@@ -83,7 +83,7 @@ class CapsuleViewModel @Inject constructor(
                     val currentTime = getCurrentMillisTime()
                     when (compareMillis(oldTime, currentTime, timeToFetch!!)) {
                         true -> refreshData()
-                        else -> capsulesRepository.getAllRocketsFromDb()
+                        else -> capsulesRepository.getAllCapsulesFromDb()
                     }
                 }
 
@@ -95,7 +95,6 @@ class CapsuleViewModel @Inject constructor(
     fun refreshData() {
         viewModelScope.launch {
             capsulesRepository.fetchDataAndSaveToDb()
-
         }
 
     }

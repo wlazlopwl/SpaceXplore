@@ -30,6 +30,8 @@ class RocketFragment : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var rocketViewModel: RocketViewModel
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,6 +42,7 @@ class RocketFragment : DaggerFragment() {
         rocketViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(RocketViewModel::class.java)
         val binding: FragmentRocketBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_rocket, container,false)
+
         binding.viewModel= rocketViewModel
         binding.lifecycleOwner= viewLifecycleOwner
         return binding.root
@@ -47,6 +50,7 @@ class RocketFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         rocketViewModel.rocketLiveData.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)

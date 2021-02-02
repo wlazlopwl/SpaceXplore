@@ -1,6 +1,7 @@
 package com.appdevpwl.spacex.data.capsules
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.Service
@@ -8,7 +9,6 @@ import com.appdevpwl.spacex.util.Constant.Companion.CAPSULES_LAST_DATE
 import com.appdevpwl.spacex.util.Constant.Companion.NO_CONNECTION_MESSAGE
 import com.appdevpwl.spacex.util.deviceIsOnline
 import com.appdevpwl.spacex.util.getCurrentMillisTime
-import com.appdevpwl.spacex.util.millisToDate
 import javax.inject.Inject
 
 class CapsulesRepository @Inject constructor(
@@ -38,7 +38,7 @@ class CapsulesRepository @Inject constructor(
 
             false -> {
                 snackbarText.postValue(NO_CONNECTION_MESSAGE)
-                getAllRocketsFromDb()
+                getAllCapsulesFromDb()
             }
             true -> {
                 isLoading.postValue(true)
@@ -47,30 +47,27 @@ class CapsulesRepository @Inject constructor(
                     val body = response.body()
                     response.body().let {
                         if (it != null) {
-                            saveRocketsToDb(it)
+                            saveCapsulesToDb(it)
                             preferences.saveCurrentUpdateTime(CAPSULES_LAST_DATE,
                                 getCurrentMillisTime())
                         }
-                        capsuleLiveData.value = body!!
                     }
                 } else {
                     snackbarText.postValue(response.errorBody().toString())
                 }
-                isLoading.postValue(false)
+
             }
         }
+        isLoading.postValue(false)
     }
 
-    private suspend fun saveRocketsToDb(list: List<Capsule>) {
+    private suspend fun saveCapsulesToDb(list: List<Capsule>) {
         capsulesDao.replaceAllCapsules(list)
     }
 
-    suspend fun getAllRocketsFromDb() {
-        isLoading.postValue(true)
-
-        capsuleLiveData.value = capsulesDao.getAllCapsules()
-        isLoading.postValue(false)
-        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CAPSULES_LAST_DATE)).toString())
+    fun getAllCapsulesFromDb(): LiveData<List<Capsule>> {
+        return capsulesDao.getAllCapsules()
+//        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CAPSULES_LAST_DATE)).toString())
     }
 
 

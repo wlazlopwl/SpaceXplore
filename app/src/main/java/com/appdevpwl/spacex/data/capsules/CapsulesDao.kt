@@ -22,7 +22,7 @@ interface CapsulesDao {
     fun getSize(): Int
 
     @Query("SELECT * FROM capsule_table")
-    fun getAllCapsules(): List<Capsule>
+    fun getAllCapsules(): LiveData<List<Capsule>>
 
     @Query("SELECT * FROM capsule_table ORDER BY serial DESC")
     fun getAllCapsulesSortByTypeDescending(): LiveData<List<Capsule>>
