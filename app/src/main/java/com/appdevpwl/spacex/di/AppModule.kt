@@ -7,9 +7,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.createDataStore
 import androidx.datastore.preferences.createDataStore
 import androidx.preference.Preference
+import androidx.preference.PreferenceDataStore
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.appdevpwl.spacex.data.AppDatabase
+import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.capsules.CapsulesDao
 import dagger.Module
 import dagger.Provides
@@ -51,13 +53,17 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideSharedPreferences(context: Context) : SharedPreferences =
-        PreferenceManager.getDefaultSharedPreferences(context)
-//        context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
+    fun provideCompanyDao(appDatabase: AppDatabase)= appDatabase.companyDao()
 
     @Singleton
     @Provides
-    fun provideDataStore( context: Context) : DataStore<androidx.datastore.preferences.core.Preferences>{
+    fun provideSharedPreferences(context: Context) : SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
+
+
+    @Singleton
+    @Provides
+    fun provideDataStore( context: Context) : DataStore<androidx.datastore.preferences.core.Preferences> {
         return context.createDataStore(
             name="dataStore"
         )

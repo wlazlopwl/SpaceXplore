@@ -5,7 +5,7 @@
     <PreferenceCategory app:title="@string/units_header">
 
         <ListPreference
-                app:key="lengthUnit"
+                app:key="LENGTH_UNIT"
                 android:title="Length"
                 android:defaultValue="meters"
                 app:useSimpleSummaryProvider="true"
@@ -14,22 +14,22 @@
 
 
         <ListPreference
-                app:key="massUnit"
+                app:key="MASS_UNIT"
                 android:title="Mass"
                 android:defaultValue="kg"
                 app:useSimpleSummaryProvider="true"
                 android:entries="@array/list_preference_mass_entries"
                 android:entryValues="@array/list_preference_mass_entry_values" />
     </PreferenceCategory>
-<!--    <PreferenceCategory-->
-<!--            app:title="Time to fetch">-->
-<!--            <ListPreference-->
-<!--                    app:key="maxTimeToFetch"-->
-<!--                    app:title="Time without fetch data"-->
-<!--                android:entryValues="@array/list_prefetence_max_time_without_fetch_value"-->
-<!--                    android:entries="@array/list_prefetence_max_time_without_fetch"-->
-<!--                />-->
-<!--    </PreferenceCategory>-->
+    <PreferenceCategory app:title="Time to fetch">
+        <ListPreference
+                app:key="MAX_TIME"
+                app:title="Time without fetch data"
+                android:defaultValue="5 minutes"
+                app:useSimpleSummaryProvider="true"
+                android:entryValues="@array/list_preference_max_time_without_fetch_value"
+                android:entries="@array/list_preference_max_time_without_fetch" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
 

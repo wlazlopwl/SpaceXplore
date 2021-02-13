@@ -68,4 +68,5 @@
     <string name="app_version">1.2</string>
     <string name="capsule_water_landing">Water landing</string>
     <string name="capsule_land_landing">Land landings</string>
+    <string name="menu_company">Company</string>
 </resources>

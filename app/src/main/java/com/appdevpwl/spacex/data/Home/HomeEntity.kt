@@ -1,4 +1,4 @@
-package com.appdevpwl.spacex.data
+package com.appdevpwl.spacex.data.Home
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

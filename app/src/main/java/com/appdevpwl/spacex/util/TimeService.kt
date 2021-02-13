@@ -1,7 +1,6 @@
 package com.appdevpwl.spacex.util
 
 import android.util.Log
-import kotlinx.coroutines.flow.Flow
 import java.util.*
 
 fun getCurrentMillisTime(): Long {
@@ -11,7 +10,11 @@ fun getCurrentMillisTime(): Long {
 
 fun compareMillis(oldMillis: Long, currentMillis: Long, timeToFetch: Long): Boolean {
 
-    val maxNotFetchFromApi: Long = 1000 * 60 * timeToFetch
+    val maxNotFetchFromApi: Long = when (timeToFetch) {
+        0L -> 0L
+        else -> 1000 * 60 * timeToFetch
+    }
+
     val differenceOfTime = currentMillis - oldMillis
     Log.d("difference", differenceOfTime.toString())
     return when {
@@ -22,7 +25,7 @@ fun compareMillis(oldMillis: Long, currentMillis: Long, timeToFetch: Long): Bool
 
 }
 
-fun millisToDate(millis: Long): Date{
+fun millisToDate(millis: Long): Date {
     return Date(millis)
 
 }

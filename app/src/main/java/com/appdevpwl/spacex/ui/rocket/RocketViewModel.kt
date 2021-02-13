@@ -1,11 +1,9 @@
 package com.appdevpwl.spacex.ui.rocket
 
 import android.graphics.drawable.Drawable
-import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.appdevpwl.spacex.R
@@ -26,19 +24,16 @@ import javax.inject.Inject
 
 class RocketViewModel @Inject constructor(
     private val rocketRepository: RocketRepository,
-    private val preferences: DataStorePreferences
+    private val preferences: DataStorePreferences,
 ) : ViewModel() {
 
     val rocketLiveData: LiveData<List<Rocket>> = rocketRepository.getAllRocketsFromDb()
     val snackbarText: LiveData<String> = rocketRepository.snackbarText
     val loadingData: LiveData<Boolean> = rocketRepository.isLoading
 
-
     init {
         getRocketData()
     }
-
-
 
     private fun getRocketData() {
         viewModelScope.launch {
@@ -55,8 +50,6 @@ class RocketViewModel @Inject constructor(
 
                     }
                 }
-
-
             }
         }
     }
@@ -64,15 +57,13 @@ class RocketViewModel @Inject constructor(
     fun refreshData() {
         viewModelScope.launch {
             rocketRepository.fetchDataAndSaveToDb()
-
         }
-
     }
 
-    companion object{
+    companion object {
         @JvmStatic
         @BindingAdapter("imageUrl")
-        fun loadImage(imgView: ImageView, url:String?){
+        fun loadImage(imgView: ImageView, url: String?) {
 
             Glide.with(imgView.context).load(url)
                 .listener(object : RequestListener<Drawable> {

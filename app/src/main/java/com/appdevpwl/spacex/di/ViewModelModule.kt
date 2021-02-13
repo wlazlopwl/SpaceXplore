@@ -3,6 +3,7 @@ package com.appdevpwl.spacex.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.appdevpwl.spacex.ui.capsule.CapsuleViewModel
+import com.appdevpwl.spacex.ui.company.AboutCompanyViewModel
 import com.appdevpwl.spacex.ui.cores.CoresViewModel
 import com.appdevpwl.spacex.ui.home.HomeViewModel
 import com.appdevpwl.spacex.ui.launches.LaunchesViewModel
@@ -44,6 +45,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CoresViewModel::class)
     abstract fun bindCoresViewModel(coresViewModel: CoresViewModel):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AboutCompanyViewModel::class)
+    abstract fun bindAboutCompanyViewModel(aboutCompanyViewModel: AboutCompanyViewModel):ViewModel
 
 
     @Binds

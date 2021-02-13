@@ -54,7 +54,7 @@ class RocketRepository @Inject constructor(
         rocketDao.replaceAllRockets(list)
     }
 
-    fun getRocketById(id: String) :LiveData<Rocket> {
+    fun getRocketById(id: String): LiveData<Rocket> {
         return rocketDao.getRocketByRocketId(id)
     }
 

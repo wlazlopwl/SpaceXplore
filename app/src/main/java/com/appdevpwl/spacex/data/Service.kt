@@ -1,7 +1,7 @@
 package com.appdevpwl.spacex.data
 
+import com.appdevpwl.spacex.data.company.Company
 import com.appdevpwl.spacex.data.capsules.Capsule
-import com.appdevpwl.spacex.data.cores.CoresDao
 import com.appdevpwl.spacex.data.cores.CoresItem
 import com.appdevpwl.spacex.data.launches.model.LaunchesItem
 import com.appdevpwl.spacex.data.rocket.model.Rocket
@@ -21,4 +21,7 @@ interface Service {
 
     @GET("v4/cores")
     suspend fun getAllCores() : Response<List<CoresItem>>
+
+    @GET("v4/company")
+    suspend fun getCompanyInfo(): Response<Company>
 }

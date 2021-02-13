@@ -18,15 +18,12 @@ class CapsuleViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    val capsulesLiveData: LiveData<List<Capsule>> = capsulesRepository.getAllCapsulesFromDb()
     val snackbarText: LiveData<String> = capsulesRepository.snackbarText
     val loadingData: LiveData<Boolean> = capsulesRepository.isLoading
 
     var capsules = MutableLiveData<List<Capsule>>()
     private val typeAscending = capsulesRepository.getAllCapsulesSortTypeAscending()
     private val typeDescending = capsulesRepository.getAllCapsulesSortTypeDescending()
-    private val launchTimeDescending = capsulesRepository.getAllCapsulesSortLaunchTimeDescending()
-    private val launchTimeAscending = capsulesRepository.getAllCapsulesSortLaunchTimeAscending()
     val allCapsules: MediatorLiveData<List<Capsule>> = MediatorLiveData()
     private var capsuleSortType = CapsulesSortType.TYPE_ASC
 
@@ -44,18 +41,6 @@ class CapsuleViewModel @Inject constructor(
                 result.let { allCapsules.value = it }
             }
         }
-        allCapsules.addSource(launchTimeDescending) { result ->
-            if (capsuleSortType == CapsulesSortType.TIME_DESC) {
-                result.let { allCapsules.value = it }
-            }
-        }
-        allCapsules.addSource(launchTimeAscending) { result ->
-            if (capsuleSortType == CapsulesSortType.TIME_ASC) {
-                result.let { allCapsules.value = it }
-            }
-        }
-
-
     }
 
     fun sortCapsules(capsuleSortType: CapsulesSortType) {
@@ -63,9 +48,7 @@ class CapsuleViewModel @Inject constructor(
 
             CapsulesSortType.TYPE_ASC -> typeAscending.value?.let { allCapsules.value = it }
             CapsulesSortType.TYPE_DESC -> typeDescending.value?.let { allCapsules.value = it }
-            CapsulesSortType.TIME_ASC -> launchTimeAscending.value?.let { allCapsules.value = it }
-            CapsulesSortType.TIME_DESC -> launchTimeDescending.value?.let { allCapsules.value = it }
-            else -> capsulesRepository.getDbSize()
+
         }.also {
             this.capsuleSortType = capsuleSortType
 
@@ -86,8 +69,6 @@ class CapsuleViewModel @Inject constructor(
                         else -> capsulesRepository.getAllCapsulesFromDb()
                     }
                 }
-
-
             }
         }
     }

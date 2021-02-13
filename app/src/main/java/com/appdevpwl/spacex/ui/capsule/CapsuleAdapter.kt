@@ -12,7 +12,7 @@ import com.appdevpwl.spacex.databinding.CapsuleSingleItemRvBinding
 
 class CapsuleAdapter : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
 
-    private var list: List<Capsule> = emptyList()
+    private var capsuleList: List<Capsule> = emptyList()
 
     class ViewHolder(val binding: CapsuleSingleItemRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -24,7 +24,6 @@ class CapsuleAdapter : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val inflater = LayoutInflater.from(parent.context)
@@ -35,19 +34,17 @@ class CapsuleAdapter : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CapsuleAdapter.ViewHolder, position: Int) {
-        val capsule = list[position]
+        val capsule = capsuleList[position]
         holder.bindView(capsule)
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return capsuleList.size
     }
 
     fun addCapsuleList(list: List<Capsule>) {
-        this.list = list
+        this.capsuleList = list
         notifyDataSetChanged()
 
     }
-
-
 }

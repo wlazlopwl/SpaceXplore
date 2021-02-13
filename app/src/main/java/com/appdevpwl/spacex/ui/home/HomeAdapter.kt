@@ -38,12 +38,15 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
             "Cores" -> R.drawable.cores
             "Capsules" -> R.drawable.capsule1
             "Rockets" -> R.drawable.rocket_icon1
+            "Company" -> R.drawable.company_icon
             else -> null
         }
+
 
         if (imageId != null) {
             holder.bindView(item, imageId)
         }
+
 
 
         holder.itemView.setOnClickListener(
@@ -52,6 +55,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
                 "Cores" -> Navigation.createNavigateOnClickListener(R.id.nav_cores)
                 "Capsules" -> Navigation.createNavigateOnClickListener(R.id.nav_capsule)
                 "Rockets" -> Navigation.createNavigateOnClickListener(R.id.nav_rocket)
+                "Company" -> Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_about_company)
                 else -> null
             }
 

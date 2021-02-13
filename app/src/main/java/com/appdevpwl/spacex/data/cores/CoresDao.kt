@@ -2,7 +2,7 @@ package com.appdevpwl.spacex.data.cores
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.appdevpwl.spacex.data.launches.model.LaunchesItem
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CoresDao {
@@ -20,11 +20,15 @@ interface CoresDao {
     suspend fun deleteAllCores()
 
     @Query("SELECT * FROM cores_table")
-     fun getAllCores(): LiveData<List<CoresItem>>
+    fun getAllCores(): LiveData<List<CoresItem>>
 
     @Query("SELECT * FROM cores_table where launches LIKE '%' || :id || '%'")
-     fun getAllCoresByLaunchesId(id: String): LiveData<List<CoresItem>>
+    fun getAllCoresByLaunchesId(id: String): LiveData<List<CoresItem>>
+
+    @Query("SELECT * FROM cores_table where serial LIKE '%' || :query || '%'")
+    fun searchCores(query: String): LiveData<List<CoresItem>>
 
     @Query("SELECT COUNT(id) FROM cores_table")
-     fun getSize(): Int
+    fun getSize(): Int
+
 }

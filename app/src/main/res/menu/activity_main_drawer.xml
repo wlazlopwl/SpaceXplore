@@ -25,6 +25,10 @@
                 android:id="@+id/nav_rocket"
                 android:icon="@drawable/rocket_icon1"
                 android:title="@string/menu_rocket" />
+        <item
+                android:id="@+id/nav_about_company"
+                android:icon="@drawable/company_icon"
+                android:title="@string/menu_company" />
 
         <item
                 android:id="@+id/nav_settings"

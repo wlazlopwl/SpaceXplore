@@ -1,22 +1,36 @@
 package com.appdevpwl.spacex.ui.rocket
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.rocket.RocketRepository
 import com.appdevpwl.spacex.data.rocket.model.Rocket
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class RocketDetailsViewModel @Inject constructor(private val rocketRepository: RocketRepository)  : ViewModel() {
+class RocketDetailsViewModel @Inject constructor(
+    private val rocketRepository: RocketRepository,
+    private val preferences: DataStorePreferences,
+) : ViewModel() {
 
-    lateinit var rocketLiveData : LiveData<Rocket>
+    lateinit var rocketLiveData: LiveData<Rocket>
 
-    fun getRocketById(id:String){
+   private  val _massUnit= preferences.massUnit.asLiveData()
+    val massUnit: LiveData<String>
+    get() = _massUnit
+
+    private  val _lengthUnit= preferences.lengthUnit.asLiveData()
+    val lengthUnit: LiveData<String>
+        get() = _lengthUnit
+
+
+
+
+    fun getRocketById(id: String) {
         viewModelScope.launch {
-            rocketLiveData=rocketRepository.getRocketById(id)
+            rocketLiveData = rocketRepository.getRocketById(id)
         }
     }
+
+
 
 }

@@ -1,16 +1,13 @@
 package com.appdevpwl.spacex.ui.cores
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.cores.CoresItem
 import com.appdevpwl.spacex.databinding.FragmentCoresBinding
@@ -18,11 +15,13 @@ import com.appdevpwl.spacex.util.SnackbarType
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_cores.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class CoresFragment : DaggerFragment() {
+
+    private var _binding: FragmentCoresBinding? = null
+    private val binding get() = _binding!!
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -36,7 +35,7 @@ class CoresFragment : DaggerFragment() {
         AndroidSupportInjection.inject(this)
         coresViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
-        val binding: FragmentCoresBinding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_cores, container, false)
         binding.viewModel = coresViewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -52,8 +51,9 @@ class CoresFragment : DaggerFragment() {
             SnackbarType.enableSnackbar(view, it)
 
         })
-
+        setHasOptionsMenu(true)
     }
+
     private fun initRecyclerView(data: List<CoresItem>) {
         coresAdapter = CoresAdapter()
         cores_recyclerview.apply {
@@ -63,4 +63,40 @@ class CoresFragment : DaggerFragment() {
             coresAdapter.addItemsToCoresList(data)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.cores_menu, menu)
+        val searchItem = menu.findItem(R.id.cores_menu_search)
+        val searchView = searchItem.actionView as SearchView
+        searchView.queryHint = "Enter serial"
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchInDB(newText)
+                }
+                return true
+            }
+
+            private fun searchInDB(newText: String) {
+
+                coresViewModel.searchBySerial(newText).observe(viewLifecycleOwner, Observer {
+                    coresAdapter.addItemsToCoresList(it)
+                })
+            }
+
+        })
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
 }

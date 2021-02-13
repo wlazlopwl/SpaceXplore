@@ -1,4 +1,4 @@
-package com.appdevpwl.spacex.data
+package com.appdevpwl.spacex.data.Home
 
 import javax.inject.Inject
 

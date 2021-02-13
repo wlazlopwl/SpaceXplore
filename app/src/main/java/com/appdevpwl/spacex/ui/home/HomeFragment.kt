@@ -17,6 +17,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class HomeFragment : DaggerFragment() {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     lateinit var homeAdapter: HomeAdapter
     private lateinit var homeViewModel: HomeViewModel
 
@@ -27,11 +30,11 @@ class HomeFragment : DaggerFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         AndroidSupportInjection.inject(this)
         homeViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
-        val binding: FragmentHomeBinding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.viewModel = homeViewModel
         return binding.root
@@ -55,5 +58,10 @@ class HomeFragment : DaggerFragment() {
             homeAdapter.addMenuItemToList(data)
 
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
     }
 }

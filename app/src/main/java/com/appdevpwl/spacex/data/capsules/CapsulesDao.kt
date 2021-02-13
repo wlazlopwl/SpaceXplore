@@ -2,6 +2,7 @@ package com.appdevpwl.spacex.data.capsules
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.appdevpwl.spacex.util.CapsulesSortType
 
 @Dao
 interface CapsulesDao {
@@ -29,12 +30,5 @@ interface CapsulesDao {
 
     @Query("SELECT * FROM capsule_table ORDER BY serial ASC")
     fun getAllCapsulesSortByTypeAscending(): LiveData<List<Capsule>>
-
-    @Query("SELECT * FROM capsule_table ORDER BY serial ASC")
-    fun getAllCapsulesSortByLaunchTimeAscending(): LiveData<List<Capsule>>
-
-    @Query("SELECT * FROM capsule_table ORDER BY serial DESC")
-    fun getAllCapsulesSortByLaunchTimeDescending(): LiveData<List<Capsule>>
-
 
 }

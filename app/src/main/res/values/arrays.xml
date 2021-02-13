@@ -16,16 +16,21 @@
         <item>Kilogram</item>
         <item>Pound</item>
     </string-array>
-    <string-array name="list_prefetence_max_time_without_fetch">
+
+    <string-array name="list_preference_max_time_without_fetch">
+        <item>NONE</item>
         <item>1 minute</item>
         <item>5 minutes</item>
         <item>15 minutes</item>
         <item>30 minutes</item>
-        <item>60 minutes</item>
-        <item>120 minutes</item>
-        <item>240 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>4 hours</item>
+        <item>12 hours</item>
     </string-array>
-    <string-array name="list_prefetence_max_time_without_fetch_value">
+
+    <string-array name="list_preference_max_time_without_fetch_value">
+        <item>0</item>
         <item>1</item>
         <item>5</item>
         <item>15</item>
@@ -33,5 +38,7 @@
         <item>60</item>
         <item>120</item>
         <item>240</item>
+        <item>720</item>
     </string-array>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.appdevpwl.spacex.data.cores
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.appdevpwl.spacex.data.DataStorePreferences
@@ -9,6 +10,7 @@ import com.appdevpwl.spacex.util.Constant.Companion.CORES_LAST_DATE
 import com.appdevpwl.spacex.util.Constant.Companion.NO_CONNECTION_MESSAGE
 import com.appdevpwl.spacex.util.deviceIsOnline
 import com.appdevpwl.spacex.util.getCurrentMillisTime
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CoresRepository @Inject constructor(
@@ -62,5 +64,10 @@ class CoresRepository @Inject constructor(
     }
      fun getAllCoresByLaunchesId(id: String): LiveData<List<CoresItem>> {
         return coresDao.getAllCoresByLaunchesId(id)
+    }
+
+    fun searchBySerial(newText: String): LiveData<List<CoresItem>> {
+        return coresDao.searchCores(newText)
+
     }
 }

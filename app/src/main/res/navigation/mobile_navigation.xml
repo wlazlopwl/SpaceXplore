@@ -12,6 +12,27 @@
             tools:layout="@layout/fragment_home">
 
 
+        <action
+                android:id="@+id/action_nav_home_to_nav_about_company"
+                app:destination="@id/nav_about_company" />
+        <action
+                android:id="@+id/action_nav_home_to_nav_rocket"
+                app:destination="@id/nav_rocket" />
+        <action
+                android:id="@+id/action_nav_home_to_nav_launches"
+                app:destination="@id/nav_launches" />
+        <action
+                android:id="@+id/action_nav_home_to_nav_cores"
+                app:destination="@id/nav_cores" />
+        <action
+                android:id="@+id/action_nav_home_to_nav_settings"
+                app:destination="@id/nav_settings" />
+        <action
+                android:id="@+id/action_nav_home_to_nav_about"
+                app:destination="@id/nav_about" />
+        <action
+                android:id="@+id/action_nav_home_to_nav_capsule"
+                app:destination="@id/nav_capsule" />
     </fragment>
 
     <fragment
@@ -21,11 +42,7 @@
             tools:layout="@layout/capsule_fragment">
 
     </fragment>
-    <dialog
-            android:id="@+id/bottomSheetMainSortFragment"
-            android:name="com.appdevpwl.spacex.ui.capsule.BottomSheetMainSortFragment"
-            android:label="fragment_bottom_sheet_main_sort"
-            tools:layout="@layout/capsule_sort_bottom_sheet_main" />
+
     <fragment
             android:id="@+id/nav_rocket"
             android:name="com.appdevpwl.spacex.ui.rocket.RocketFragment"
@@ -54,7 +71,7 @@
             android:id="@+id/nav_launches"
             android:name="com.appdevpwl.spacex.ui.launches.LaunchesFragment"
             android:label="Launches"
-            tools:layout="@layout/fragment_launches" >
+            tools:layout="@layout/fragment_launches">
         <action
                 android:id="@+id/action_nav_launches_to_upcomingLaunchesFragment"
                 app:destination="@id/upcomingLaunchesFragment" />
@@ -69,7 +86,7 @@
             android:id="@+id/upcomingLaunchesFragment"
             android:name="com.appdevpwl.spacex.ui.launches.UpcomingLaunchesFragment"
             android:label="fragment_upcoming_launches"
-            tools:layout="@layout/fragment_upcoming_launches" >
+            tools:layout="@layout/fragment_upcoming_launches">
         <action
                 android:id="@+id/action_upcomingLaunchesFragment_to_launchesDetailsFragment"
                 app:destination="@id/launchesDetailsFragment" />
@@ -78,7 +95,7 @@
             android:id="@+id/pastLaunchesFragment"
             android:name="com.appdevpwl.spacex.ui.launches.PastLaunchesFragment"
             android:label="fragment_past_lunches"
-            tools:layout="@layout/fragment_past_launches" >
+            tools:layout="@layout/fragment_past_launches">
         <action
                 android:id="@+id/action_pastLaunchesFragment_to_launchesDetailsFragment"
                 app:destination="@id/launchesDetailsFragment" />
@@ -90,8 +107,7 @@
             tools:layout="@layout/fragment_launches_details" />
     <argument
             android:name="argLaunchesId"
-            app:argType="com.appdevpwl.spacex.data.launches.model.LaunchesItem"
-             />
+            app:argType="com.appdevpwl.spacex.data.launches.model.LaunchesItem" />
     <fragment
             android:id="@+id/nav_cores"
             android:name="com.appdevpwl.spacex.ui.cores.CoresFragment"
@@ -102,6 +118,15 @@
             android:name="com.appdevpwl.spacex.ui.about.AboutFragment"
             android:label="@string/menu_about"
             tools:layout="@layout/fragment_about" />
+    <fragment
+            android:id="@+id/nav_about_company"
+            android:name="com.appdevpwl.spacex.ui.company.AboutCompanyFragment"
+            android:label="About SpaceX"
+            tools:layout="@layout/fragment_about_company">
+        <action
+                android:id="@+id/action_nav_about_company_to_nav_home"
+                app:destination="@id/nav_home" />
+    </fragment>
 
 
 </navigation>

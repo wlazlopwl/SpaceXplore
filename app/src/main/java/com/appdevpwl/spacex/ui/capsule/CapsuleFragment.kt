@@ -1,17 +1,11 @@
 package com.appdevpwl.spacex.ui.capsule
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.observe
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.capsules.Capsule
@@ -25,13 +19,13 @@ import javax.inject.Inject
 
 
 class CapsuleFragment : DaggerFragment() {
+    private var _binding: CapsuleFragmentBinding? = null
+    private val binding get() = _binding!!
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var capsuleViewModel: CapsuleViewModel
     lateinit var capsuleAdapter: CapsuleAdapter
-    lateinit var bottomSheetMain: LinearLayout
-    lateinit var v: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,43 +35,19 @@ class CapsuleFragment : DaggerFragment() {
         AndroidSupportInjection.inject(this)
         capsuleViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CapsuleViewModel::class.java)
-        val binding: CapsuleFragmentBinding =
-            DataBindingUtil.inflate(inflater, R.layout.capsule_fragment, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.capsule_fragment, container, false)
         binding.viewModel = capsuleViewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
-        v = inflater.inflate(R.layout.capsule_fragment, container, false)
-//        bottomSheetMain = v.findViewById(R.id.sort_main_linearlayout)
-//
-//        bottomSheetMain.setOnClickListener { v ->
-//            Navigation.findNavController(v).navigate(R.id.bottomSheetMainSortFragment)
-//        }
-
         return binding.root
 
 
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val navController = findNavController()
-        navController.currentBackStackEntry?.savedStateHandle?.getLiveData<String>("sort_by")
-            ?.observe(viewLifecycleOwner) {
-                when (it) {
-                    "TYPE_ASC" -> capsuleViewModel.sortCapsules(CapsulesSortType.TYPE_ASC)
-                    "TYPE_DESC" -> capsuleViewModel.sortCapsules(CapsulesSortType.TYPE_DESC)
-                    "TIME_ASC" -> capsuleViewModel.sortCapsules(CapsulesSortType.TIME_ASC)
-                    "TIME_DESC" -> capsuleViewModel.sortCapsules(CapsulesSortType.TIME_DESC)
-
-                }
-
-
-            }
-
-        capsuleViewModel.capsulesLiveData.observe(viewLifecycleOwner, Observer {
+        capsuleViewModel.allCapsules.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
 
 
@@ -86,7 +56,7 @@ class CapsuleFragment : DaggerFragment() {
             SnackbarType.enableSnackbar(view, it)
         })
 
-
+        setHasOptionsMenu(true)
     }
 
     private fun initRecyclerView(data: List<Capsule>) {
@@ -99,5 +69,21 @@ class CapsuleFragment : DaggerFragment() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.capsules_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.capsules_menu_sort_ASC -> capsuleViewModel.sortCapsules(CapsulesSortType.TYPE_ASC)
+            R.id.capsules_menu_sort_DESC -> capsuleViewModel.sortCapsules(CapsulesSortType.TYPE_DESC)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

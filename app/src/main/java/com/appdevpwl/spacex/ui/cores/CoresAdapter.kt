@@ -19,8 +19,6 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.ViewHolder>() {
                 binding.coresItem = coresItem
             }
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,8 +27,6 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.ViewHolder>() {
             R.layout.core_single_item_rv,
             parent, false)
         return ViewHolder(binding)
-
-
     }
 
 

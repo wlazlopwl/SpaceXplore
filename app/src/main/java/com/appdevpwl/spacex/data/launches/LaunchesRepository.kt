@@ -22,10 +22,6 @@ class LaunchesRepository @Inject constructor(
     val snackbarText = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
 
-    val launchesLiveData = MutableLiveData<List<LaunchesItem>>()
-    val upcomingLaunchesLiveData = MutableLiveData<List<LaunchesItem>>()
-    val pastLaunchesLiveData = MutableLiveData<List<LaunchesItem>>()
-
     suspend fun fetchDataAndSaveToDb() {
 
         when (deviceIsOnline(context)) {

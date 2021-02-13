@@ -20,17 +20,10 @@ class CapsulesRepository @Inject constructor(
 
     val snackbarText = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
-    val capsuleLiveData = MutableLiveData<List<Capsule>>()
 
     fun getAllCapsulesSortTypeDescending() = capsulesDao.getAllCapsulesSortByTypeDescending()
 
     fun getAllCapsulesSortTypeAscending() = capsulesDao.getAllCapsulesSortByTypeAscending()
-    fun getAllCapsulesSortLaunchTimeAscending() =
-        capsulesDao.getAllCapsulesSortByLaunchTimeAscending()
-
-    fun getAllCapsulesSortLaunchTimeDescending() =
-        capsulesDao.getAllCapsulesSortByLaunchTimeDescending()
-
 
     suspend fun fetchDataAndSaveToDb() {
 
@@ -44,7 +37,6 @@ class CapsulesRepository @Inject constructor(
                 isLoading.postValue(true)
                 val response = service.getCapsules()
                 if (response.isSuccessful) {
-                    val body = response.body()
                     response.body().let {
                         if (it != null) {
                             saveCapsulesToDb(it)
