@@ -4,6 +4,7 @@ package com.appdevpwl.spacex.di
 import com.appdevpwl.spacex.ui.SettingsFragment
 import com.appdevpwl.spacex.ui.capsule.CapsuleFragment
 import com.appdevpwl.spacex.ui.company.AboutCompanyFragment
+import com.appdevpwl.spacex.ui.cores.CoresDetailsFragment
 import com.appdevpwl.spacex.ui.cores.CoresFragment
 import com.appdevpwl.spacex.ui.home.HomeFragment
 import com.appdevpwl.spacex.ui.launches.LaunchesDetailsFragment
@@ -49,6 +50,9 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsFragment(): SettingsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeCoresDetailsFragment(): CoresDetailsFragment
 
 
 

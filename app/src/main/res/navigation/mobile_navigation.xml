@@ -112,7 +112,11 @@
             android:id="@+id/nav_cores"
             android:name="com.appdevpwl.spacex.ui.cores.CoresFragment"
             android:label="Cores"
-            tools:layout="@layout/fragment_cores" />
+            tools:layout="@layout/fragment_cores" >
+        <action
+                android:id="@+id/action_nav_cores_to_coresDetailsFragment"
+                app:destination="@id/coresDetailsFragment" />
+    </fragment>
     <fragment
             android:id="@+id/nav_about"
             android:name="com.appdevpwl.spacex.ui.about.AboutFragment"
@@ -126,6 +130,14 @@
         <action
                 android:id="@+id/action_nav_about_company_to_nav_home"
                 app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+            android:id="@+id/coresDetailsFragment"
+            android:name="com.appdevpwl.spacex.ui.cores.CoresDetailsFragment"
+            android:label="Core details">
+    <argument
+            android:name="coresItem"
+            app:argType="com.appdevpwl.spacex.data.cores.CoresItem" />
     </fragment>
 
 

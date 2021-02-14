@@ -22,6 +22,7 @@ import javax.inject.Inject
 class AboutCompanyFragment : DaggerFragment() {
     private var _binding: FragmentAboutCompanyBinding? = null
     private val binding get() = _binding!!
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var companyViewModel: AboutCompanyViewModel
@@ -59,6 +60,7 @@ class AboutCompanyFragment : DaggerFragment() {
 
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

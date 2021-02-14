@@ -52,6 +52,8 @@ class CoresFragment : DaggerFragment() {
 
         })
         setHasOptionsMenu(true)
+
+
     }
 
     private fun initRecyclerView(data: List<CoresItem>) {

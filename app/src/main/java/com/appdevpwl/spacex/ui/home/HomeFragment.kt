@@ -1,13 +1,12 @@
 package com.appdevpwl.spacex.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.databinding.FragmentHomeBinding
@@ -45,8 +44,21 @@ class HomeFragment : DaggerFragment() {
         homeViewModel.menuList.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
         })
+        setHasOptionsMenu(true)
 
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_settings -> {
+                view?.findNavController()?.navigate(R.id.action_nav_home_to_nav_settings)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initRecyclerView(data: List<String>) {
@@ -62,6 +74,6 @@ class HomeFragment : DaggerFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding=null
+        _binding = null
     }
 }

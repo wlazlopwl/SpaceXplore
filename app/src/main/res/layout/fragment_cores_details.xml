@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="coresItem"
+                type="com.appdevpwl.spacex.data.cores.CoresItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/largest_text"
+                    android:layout_marginTop="32dp"
+                    android:text="@{coresItem.serial}">
+
+            </TextView>
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/padding_card"
+                    android:text="@{coresItem.last_update}">
+
+            </TextView>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    app:cardCornerRadius="16dp"
+
+                    android:id="@+id/cardView">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/padding_card"
+                        android:paddingRight="@dimen/padding_card"
+
+                        >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{coresItem.serial + ` info`}"
+                                android:textSize="@dimen/largest_text" />
+
+
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:text="@{coresItem.status}"
+                                android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Block"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{coresItem.block==null? `No data`: coresItem.block.toString()}" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Reuse count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(coresItem.reuse_count)}" />
+                    </LinearLayout>
+
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="RTLS attempt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </TextView>
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(coresItem.rtls_attempts)}">
+
+                        </TextView>
+                    </LinearLayout>
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="RTLS landings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </TextView>
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(coresItem.rtls_landings)}">
+
+                        </TextView>
+                    </LinearLayout>
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="ASDS attempt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </TextView>
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(coresItem.asds_attempts)}">
+
+                        </TextView>
+                    </LinearLayout>
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="ASDS landings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </TextView>
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(coresItem.asds_landings)}">
+
+                        </TextView>
+                    </LinearLayout>
+                    <View
+                            style="@style/SmallDivider"
+                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                        <TextView
+                                android:text="Launch count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                        </TextView>
+
+                        <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(coresItem.launches.size())}">
+
+                        </TextView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

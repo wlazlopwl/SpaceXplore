@@ -2,6 +2,7 @@ package com.appdevpwl.spacex.ui.capsule
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -71,6 +72,8 @@ class CapsuleFragment : DaggerFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.capsules_menu, menu)
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

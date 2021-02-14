@@ -75,12 +75,7 @@ class LaunchesDetailsFragment : DaggerFragment() {
                     }
                     dataList[lstGroups[0]] = lstContent
 
-//                    val lstContent1: MutableList<String> = ArrayList()
-//                    lstContent1.add("Renda Variavél")
-//                    lstContent1.add("Renda Fixa")
 
-
-//        dataList.put(lstGroups.get(1), lstContent1)
 
 
                     expandableListView = view.findViewById(R.id.launches_details_expandable_list)
