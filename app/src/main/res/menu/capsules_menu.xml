@@ -2,12 +2,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Search"
-        android:icon="@drawable/ic_baseline_search_24"
-        app:showAsAction="always|collapseActionView"
-        android:id="@+id/capsule_menu_search">
 
-    </item>
     <item
             android:title="Sort"
             android:icon="@drawable/ic_baseline_sort_24"

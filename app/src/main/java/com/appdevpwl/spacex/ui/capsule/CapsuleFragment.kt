@@ -2,7 +2,6 @@ package com.appdevpwl.spacex.ui.capsule
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,12 +32,16 @@ class CapsuleFragment : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+
+        capsuleAdapter = CapsuleAdapter()
         AndroidSupportInjection.inject(this)
         capsuleViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(CapsuleViewModel::class.java)
         _binding = DataBindingUtil.inflate(inflater, R.layout.capsule_fragment, container, false)
         binding.viewModel = capsuleViewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.capsuleRecyclerview.layoutManager = LinearLayoutManager(activity)
+        binding.capsuleRecyclerview.adapter = capsuleAdapter
         return binding.root
 
 
@@ -61,11 +64,9 @@ class CapsuleFragment : DaggerFragment() {
     }
 
     private fun initRecyclerView(data: List<Capsule>) {
-        capsuleAdapter = CapsuleAdapter()
+
         capsule_recyclerview.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = capsuleAdapter
             capsuleAdapter.addCapsuleList(data)
         }
     }

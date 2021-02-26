@@ -55,7 +55,7 @@ class AboutCompanyFragment : DaggerFragment() {
             val mapUri = Uri.parse("geo:0,0?q=" + Uri.encode(companyViewModel.getCompanyAddress()))
             val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
             mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+            requireActivity().startActivity(mapIntent)
         }
 
 
