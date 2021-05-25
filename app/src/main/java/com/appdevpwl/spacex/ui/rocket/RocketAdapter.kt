@@ -24,7 +24,7 @@ class RocketAdapter : RecyclerView.Adapter<RocketAdapter.ViewHolder>() {
             }
 
             itemView.setOnClickListener { view ->
-                val argRocketId = rocket.id.toString()
+                val argRocketId = rocket.id
                 val bundle = bundleOf("argRocketId" to argRocketId)
                 view.findNavController()
                     .navigate(R.id.action_nav_rocket_to_rocketDetailsFragment, bundle)

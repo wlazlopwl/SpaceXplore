@@ -27,14 +27,20 @@
 
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:text="@{launchesItem.name}"
                     android:textSize="@dimen/largest_text"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/launches_detail_name"
                     app:layout_constraintStart_toEndOf="@+id/launches_detail_img"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="32dp"
                     app:layout_constraintTop_toTopOf="@+id/launches_detail_img"
-                    android:layout_marginStart="24dp" />
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintBottom_toTopOf="@+id/launches_detail_time" />
 
             <ImageView
                     android:layout_width="82dp"
@@ -49,42 +55,17 @@
 
             <TextView
                     android:text="@{ConvertDateTimeKt.convertUnixTime(launchesItem.date_unix).toString()}"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/launches_detail_time"
                     app:layout_constraintTop_toBottomOf="@+id/launches_detail_name"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="@+id/launches_detail_name" />
-
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    app:layout_constraintStart_toStartOf="@+id/launches_detail_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="32dp"
-                    app:layout_constraintStart_toEndOf="@+id/launches_detail_img"
-                    android:layout_marginStart="190dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/launches_detail_img">
-
-                <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp">
-
-                </ImageView>
-
-                <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp">
-
-                </ImageView>
-
-                <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp">
-
-                </ImageView>
-            </LinearLayout>
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintBottom_toBottomOf="@+id/launches_detail_img" />
 
             <TextView
                     android:text="About"

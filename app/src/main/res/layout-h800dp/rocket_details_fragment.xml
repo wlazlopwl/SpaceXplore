@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 
+    <data>
+
+        <variable
+                name="viewmodel"
+                type="com.appdevpwl.spacex.ui.rocket.RocketDetailsViewModel" />
+    </data>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -54,7 +61,7 @@
                                 android:id="@+id/rocket_details_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/app_name"
+                                android:text="@{viewmodel.rocketLiveData.name}"
                                 android:textSize="@dimen/largest_text" />
 
                         <Space
@@ -65,7 +72,8 @@
                         <ImageView
                                 android:id="@+id/rocket_details_status_IV"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:src="@{viewmodel.rocketLiveData.active? @drawable/ic_baseline_trip_origin_24_green : @drawable/ic_baseline_trip_origin_24_red}">
 
                         </ImageView>
                     </LinearLayout>
@@ -91,6 +99,7 @@
                         <TextView
                                 android:id="@+id/rocket_details_cost"
                                 android:layout_width="wrap_content"
+                                android:text="@{'$'+String.valueOf(viewmodel.rocketLiveData.cost_per_launch)}"
                                 android:layout_height="wrap_content" />
                     </LinearLayout>
 
@@ -115,7 +124,8 @@
                         <TextView
                                 android:id="@+id/rocket_details_stages"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(viewmodel.rocketLiveData.stages)}" />
                     </LinearLayout>
 
                     <View
@@ -139,7 +149,8 @@
                         <TextView
                                 android:id="@+id/rocket_details_first_flight"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="@{viewmodel.rocketLiveData.first_flight}" />
                     </LinearLayout>
 
                     <View
@@ -165,14 +176,13 @@
                         <TextView
                                 android:id="@+id/rocket_details_success_rate"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:text="@{String.valueOf(viewmodel.rocketLiveData.success_rate_pct)+`%` }">
 
                         </TextView>
                     </LinearLayout>
 
                 </LinearLayout>
-
-
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -227,7 +237,8 @@
                         <TextView
                                 android:id="@+id/rocket_details_metric_mass"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="@{viewmodel.massUnit.equals(`kg`)? viewmodel.rocketLiveData.mass.kg +` kg` : viewmodel.rocketLiveData.mass.lb + ` lb`  }" />
                     </LinearLayout>
 
                     <View
@@ -251,7 +262,9 @@
                         <TextView
                                 android:id="@+id/rocket_details_metric_height"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="@{viewmodel.lengthUnit.equals(`meters`)? viewmodel.rocketLiveData.height.meters + ` m` : viewmodel.rocketLiveData.height.feet + ` ft`  }" />
+
                     </LinearLayout>
 
                     <View
@@ -275,7 +288,10 @@
                         <TextView
                                 android:id="@+id/rocket_details_metric_diameter"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:text="@{viewmodel.lengthUnit.equals(`meters`)? viewmodel.rocketLiveData.diameter.meters + ` m` : viewmodel.rocketLiveData.diameter.feet + ` ft`  }" />
+
+                        />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -286,5 +302,5 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
-
+</layout>
 

@@ -1,6 +1,8 @@
 package com.appdevpwl.spacex.ui.cores
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.appdevpwl.spacex.data.DataStorePreferences
 import com.appdevpwl.spacex.data.cores.CoresItem
 import com.appdevpwl.spacex.data.cores.CoresRepository
@@ -8,9 +10,6 @@ import com.appdevpwl.spacex.util.Constant.Companion.CORES_LAST_DATE
 import com.appdevpwl.spacex.util.Constant.Companion.MAX_TIME_TO_FETCH_MILLIS
 import com.appdevpwl.spacex.util.compareMillis
 import com.appdevpwl.spacex.util.getCurrentMillisTime
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,7 +24,6 @@ class CoresViewModel @Inject constructor(
     lateinit var liveDataCoresByLaunchesId: LiveData<List<CoresItem>>
     val snackbarText: LiveData<String> = coresRepository.snackbarText
     val loadingData: LiveData<Boolean> = coresRepository.isLoading
-
 
 
     init {
@@ -52,16 +50,16 @@ class CoresViewModel @Inject constructor(
     }
 
 
-     fun refreshData() {
-         viewModelScope.launch {
-             coresRepository.fetchDataAndSaveToDb()
-         }
+    fun refreshData() {
+        viewModelScope.launch {
+            coresRepository.fetchDataAndSaveToDb()
+        }
 
     }
 
     fun getAllCoresByLaunchesId(id: String) {
         viewModelScope.launch {
-            liveDataCoresByLaunchesId= coresRepository.getAllCoresByLaunchesId(id)
+            liveDataCoresByLaunchesId = coresRepository.getAllCoresByLaunchesId(id)
         }
 
     }

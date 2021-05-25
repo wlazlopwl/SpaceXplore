@@ -125,7 +125,7 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/core_blocks_tv"
                                 android:textSize="@dimen/larger_text"
-                                android:text="@{String.valueOf(coresItem.block)}"
+                                android:text="@{coresItem.block  == null ? `No data`: String.valueOf(coresItem.block)}"
                                 android:textStyle="bold">
 
                         </TextView>

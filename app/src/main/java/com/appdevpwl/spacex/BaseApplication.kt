@@ -1,7 +1,6 @@
 package com.appdevpwl.spacex
 
 
-import androidx.fragment.app.Fragment
 import com.appdevpwl.spacex.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
