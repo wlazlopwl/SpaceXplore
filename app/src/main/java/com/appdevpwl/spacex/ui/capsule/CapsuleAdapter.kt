@@ -1,6 +1,7 @@
 package com.appdevpwl.spacex.ui.capsule
 
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -30,7 +31,6 @@ class CapsuleAdapter : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
         val binding: CapsuleSingleItemRvBinding =
             DataBindingUtil.inflate(inflater, R.layout.capsule_single_item_rv, parent, false)
         return ViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: CapsuleAdapter.ViewHolder, position: Int) {
@@ -42,9 +42,9 @@ class CapsuleAdapter : RecyclerView.Adapter<CapsuleAdapter.ViewHolder>() {
         return capsuleList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addCapsuleList(list: List<Capsule>) {
         this.capsuleList = list
         notifyDataSetChanged()
-
     }
 }

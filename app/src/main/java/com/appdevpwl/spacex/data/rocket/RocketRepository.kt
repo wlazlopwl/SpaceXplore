@@ -18,15 +18,12 @@ class RocketRepository @Inject constructor(
     private val context: Context,
     private val preferences: DataStorePreferences,
 ) {
-
     val snackbarText = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
-    val rocketByIdLiveData = MutableLiveData<Rocket>()
 
     suspend fun fetchDataAndSaveToDb() {
 
         when (deviceIsOnline(context)) {
-
             false -> {
                 snackbarText.postValue(NO_CONNECTION_MESSAGE)
                 getAllRocketsFromDb()
@@ -65,6 +62,4 @@ class RocketRepository @Inject constructor(
     fun getAllRocketsFromDb(): LiveData<List<Rocket>> {
         return rocketDao.getAllRockets()
     }
-
-
 }

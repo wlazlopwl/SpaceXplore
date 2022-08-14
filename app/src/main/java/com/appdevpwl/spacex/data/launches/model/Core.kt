@@ -9,5 +9,5 @@ data class Core(
     val landing_type: Any,
     val landpad: Any,
     val legs: Boolean,
-    val reused: Boolean
+    val reused: Boolean,
 )

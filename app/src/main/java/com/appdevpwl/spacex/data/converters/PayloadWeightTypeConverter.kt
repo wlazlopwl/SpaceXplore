@@ -6,16 +6,17 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
 
-class PayloadWeightTypeConverter  {
+class PayloadWeightTypeConverter {
 
-     private val gson= Gson()
+    private val gson = Gson()
+
     @TypeConverter
-    fun payloadWeightToString(payloadWeight: List<PayloadWeight>): String?{
-        return  gson.toJson(payloadWeight)
+    fun payloadWeightToString(payloadWeight: List<PayloadWeight>): String? {
+        return gson.toJson(payloadWeight)
     }
 
     @TypeConverter
-    fun stringToPayloadWeight(string: String?) : List<PayloadWeight>{
+    fun stringToPayloadWeight(string: String?): List<PayloadWeight> {
         if (string == null) {
             return Collections.emptyList()
         }
@@ -23,7 +24,6 @@ class PayloadWeightTypeConverter  {
         val type = object : TypeToken<List<PayloadWeight>>() {
         }.type
 
-        return gson.fromJson(string,type)
+        return gson.fromJson(string, type)
     }
-
 }

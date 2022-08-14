@@ -21,12 +21,9 @@ fun compareMillis(oldMillis: Long, currentMillis: Long, timeToFetch: Long): Bool
         differenceOfTime > maxNotFetchFromApi -> true
         else -> false
     }
-
-
 }
 
 fun millisToDate(millis: Long): Date {
     return Date(millis)
-
 }
 

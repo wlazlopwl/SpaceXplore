@@ -45,13 +45,11 @@ class CapsuleViewModel @Inject constructor(
 
     fun sortCapsules(capsuleSortType: CapsulesSortType) {
         when (capsuleSortType) {
-
             CapsulesSortType.TYPE_ASC -> typeAscending.value?.let { allCapsules.value = it }
             CapsulesSortType.TYPE_DESC -> typeDescending.value?.let { allCapsules.value = it }
 
         }.also {
             this.capsuleSortType = capsuleSortType
-
         }
     }
 
@@ -77,10 +75,7 @@ class CapsuleViewModel @Inject constructor(
         viewModelScope.launch {
             capsulesRepository.fetchDataAndSaveToDb()
         }
-
     }
-
-
 }
 
 

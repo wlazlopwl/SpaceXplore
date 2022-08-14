@@ -16,15 +16,11 @@ class CompanyRepository @Inject constructor(
     private val service: Service,
     private val preferences: DataStorePreferences,
 ) {
-
-
     val snackbarText = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
 
-
     suspend fun fetchDataAndSaveToDb() {
         when (deviceIsOnline(context)) {
-
             false -> {
                 snackbarText.postValue(Constant.NO_CONNECTION_MESSAGE)
                 getCompanyFromDb()
@@ -58,7 +54,5 @@ class CompanyRepository @Inject constructor(
 
     fun getCompanyFromDb(): LiveData<Company> {
         return companyDao.getCompany()
-
     }
-
 }

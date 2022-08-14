@@ -20,5 +20,5 @@ data class Capsule(
     val serial: String,
     val status: String,
     val type: String,
-    val water_landings: Int
+    val water_landings: Int,
 )

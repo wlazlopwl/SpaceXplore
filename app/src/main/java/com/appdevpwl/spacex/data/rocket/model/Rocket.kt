@@ -11,7 +11,7 @@ data class Rocket(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ids")
-    val ids:Long,
+    val ids: Long,
     val active: Boolean,
     val boosters: Int,
     val company: String,
@@ -42,5 +42,5 @@ data class Rocket(
     val stages: Int,
     val success_rate_pct: Int,
     val type: String,
-    val wikipedia: String
+    val wikipedia: String,
 )

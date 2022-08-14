@@ -1,5 +1,6 @@
 package com.appdevpwl.spacex.ui.launches
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,6 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
         private val launchImageView: ImageView = mView.launch_img
         private val launchFlightNumber: TextView = mView.launch_flight_number
         private val progressBar = mView.progressBar
-
 
         fun bindView(launchesItem: LaunchesItem) {
             launchesName.text = launchesItem.name
@@ -72,10 +72,7 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
                 view.findNavController()
                     .navigate(R.id.action_nav_launches_to_launchesDetailsFragment, bundle)
             }
-
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
@@ -86,14 +83,13 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: LaunchesAdapter.ViewHolder, position: Int) {
         val launchesItem = launchesList[position]
         holder.bindView(launchesItem)
-
-
     }
 
     override fun getItemCount(): Int {
         return launchesList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addItemsToLaunchesList(list: List<LaunchesItem>) {
         launchesList = list
         notifyDataSetChanged()

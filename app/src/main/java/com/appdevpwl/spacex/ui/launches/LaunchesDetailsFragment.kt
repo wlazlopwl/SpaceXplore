@@ -49,15 +49,12 @@ class LaunchesDetailsFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
         coreViewModel.getAllCoresByLaunchesId(launches.id!!)
 
         coreViewModel.liveDataCoresByLaunchesId.observe(viewLifecycleOwner, Observer {
 
             when (it.size) {
-
-                0 -> {
-                }
+                0 -> {}
                 else -> {
                     val lstGroups: MutableList<String> = ArrayList()
                     lstGroups.add("Cores")
@@ -74,10 +71,6 @@ class LaunchesDetailsFragment : DaggerFragment() {
 
                     }
                     dataList[lstGroups[0]] = lstContent
-
-
-
-
                     expandableListView = view.findViewById(R.id.launches_details_expandable_list)
                     if (expandableListView != null) {
                         adapter =
@@ -88,8 +81,6 @@ class LaunchesDetailsFragment : DaggerFragment() {
                 }
             }
         })
-
-
     }
 
     companion object BindingAdapter {
@@ -100,6 +91,5 @@ class LaunchesDetailsFragment : DaggerFragment() {
             Glide.with(view.context).load(url).error(R.drawable.ic_error_black_24dp)
                 .fallback(R.drawable.ic_error_black_24dp).into(view)
         }
-
     }
 }

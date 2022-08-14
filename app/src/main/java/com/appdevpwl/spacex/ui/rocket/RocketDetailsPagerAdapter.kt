@@ -24,20 +24,15 @@ class RocketDetailsPagerAdapter(private val context: Context, private val urlLis
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-
-
         return view === `object`
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-
-
-        var url = urlList[position]
-        var image: ImageView
+        val url = urlList[position]
+        val image: ImageView
         inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var view: View = inflater.inflate(R.layout.rocket_slide_img, container, false)
+        val view: View = inflater.inflate(R.layout.rocket_slide_img, container, false)
         image = view.findViewById(R.id.image_slide_item_IV)
-
 
         GlideApp.with(context).load(url)
             .listener(object : RequestListener<Drawable> {

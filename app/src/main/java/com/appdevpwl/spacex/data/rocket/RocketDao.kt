@@ -2,7 +2,6 @@ package com.appdevpwl.spacex.data.rocket
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.appdevpwl.spacex.data.cores.CoresItem
 import com.appdevpwl.spacex.data.rocket.model.Rocket
 
 @Dao
@@ -21,8 +20,7 @@ interface RocketDao {
     suspend fun deleteAllRockets()
 
     @Query("SELECT * FROM rocket_table")
-     fun getAllRockets():LiveData<List<Rocket>>
-
+    fun getAllRockets(): LiveData<List<Rocket>>
 
     @Query("SELECT * FROM rocket_table where id=:id")
     fun getRocketByRocketId(id: String): LiveData<Rocket>

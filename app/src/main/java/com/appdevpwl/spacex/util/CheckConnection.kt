@@ -3,7 +3,6 @@ package com.appdevpwl.spacex.util
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.util.Log
 
 fun deviceIsOnline(context: Context): Boolean {
     val connectivityManager =

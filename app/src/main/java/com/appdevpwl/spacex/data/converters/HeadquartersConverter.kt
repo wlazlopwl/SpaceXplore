@@ -9,12 +9,14 @@ class HeadquartersConverter {
 
     private val gson = Gson()
     private val type = object : TypeToken<Headquarters>() {}.type
+
     @TypeConverter
-    fun headquartersToString(headquarters: Headquarters): String?{
+    fun headquartersToString(headquarters: Headquarters): String? {
         return gson.toJson(headquarters, type)
     }
+
     @TypeConverter
-    fun stringToHeadquarters(string: String): Headquarters?{
-        return gson.fromJson(string,type)
+    fun stringToHeadquarters(string: String): Headquarters? {
+        return gson.fromJson(string, type)
     }
 }

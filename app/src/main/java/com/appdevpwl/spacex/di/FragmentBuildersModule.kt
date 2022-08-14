@@ -55,8 +55,4 @@ abstract class FragmentBuildersModule {
     abstract fun contributeCoresDetailsFragment(): CoresDetailsFragment
 
 
-
-
-
-
 }

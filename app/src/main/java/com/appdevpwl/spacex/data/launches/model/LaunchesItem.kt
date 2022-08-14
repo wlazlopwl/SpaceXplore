@@ -49,5 +49,5 @@ data class LaunchesItem(
     val success: Boolean?,
     val tbd: Boolean?,
     val upcoming: Boolean?,
-    val window: Int?
+    val window: Int?,
 ) : Parcelable

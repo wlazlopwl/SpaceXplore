@@ -50,11 +50,8 @@ class CapsuleFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         capsuleViewModel.allCapsules.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
-
-
         })
         capsuleViewModel.snackbarText.observe(viewLifecycleOwner, Observer {
             SnackbarType.enableSnackbar(view, it)
@@ -73,8 +70,6 @@ class CapsuleFragment : DaggerFragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.capsules_menu, menu)
-
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -89,5 +84,4 @@ class CapsuleFragment : DaggerFragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

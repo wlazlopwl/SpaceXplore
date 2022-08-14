@@ -30,10 +30,6 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun providesDao(appDatabase: AppDatabase) = appDatabase.testEntityDao()
-
-    @Singleton
-    @Provides
     fun provideCapsuleDao(appDatabase: AppDatabase) = appDatabase.capsuleDao()
 
     @Singleton

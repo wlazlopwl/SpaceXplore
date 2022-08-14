@@ -11,7 +11,6 @@
             android:label="@string/menu_home"
             tools:layout="@layout/fragment_home">
 
-
         <action
                 android:id="@+id/action_nav_home_to_nav_about_company"
                 app:destination="@id/nav_about_company" />
@@ -47,9 +46,7 @@
             android:id="@+id/nav_rocket"
             android:name="com.appdevpwl.spacex.ui.rocket.RocketFragment"
             android:label="Rockets"
-            tools:layout="@layout/fragment_rocket"
-
-            >
+            tools:layout="@layout/fragment_rocket">
         <action
                 android:id="@+id/action_nav_rocket_to_rocketDetailsFragment"
                 app:destination="@id/rocketDetailsFragment" />
@@ -112,7 +109,7 @@
             android:id="@+id/nav_cores"
             android:name="com.appdevpwl.spacex.ui.cores.CoresFragment"
             android:label="Cores"
-            tools:layout="@layout/fragment_cores" >
+            tools:layout="@layout/fragment_cores">
         <action
                 android:id="@+id/action_nav_cores_to_coresDetailsFragment"
                 app:destination="@id/coresDetailsFragment" />
@@ -135,10 +132,9 @@
             android:id="@+id/coresDetailsFragment"
             android:name="com.appdevpwl.spacex.ui.cores.CoresDetailsFragment"
             android:label="Core details">
-    <argument
-            android:name="coresItem"
-            app:argType="com.appdevpwl.spacex.data.cores.CoresItem" />
+        <argument
+                android:name="coresItem"
+                app:argType="com.appdevpwl.spacex.data.cores.CoresItem" />
     </fragment>
-
 
 </navigation>

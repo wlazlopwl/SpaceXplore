@@ -16,20 +16,16 @@ import javax.inject.Inject
 class CoresViewModel @Inject constructor(
     private val coresRepository: CoresRepository,
     private val preferences: DataStorePreferences,
-) :
-    ViewModel() {
-
+) : ViewModel() {
 
     val coresLiveData: LiveData<List<CoresItem>> = coresRepository.getAllCoresFromDb()
     lateinit var liveDataCoresByLaunchesId: LiveData<List<CoresItem>>
     val snackbarText: LiveData<String> = coresRepository.snackbarText
     val loadingData: LiveData<Boolean> = coresRepository.isLoading
 
-
     init {
         getData()
     }
-
 
     private fun getData() {
         viewModelScope.launch {
@@ -49,21 +45,17 @@ class CoresViewModel @Inject constructor(
         }
     }
 
-
     fun refreshData() {
         viewModelScope.launch {
             coresRepository.fetchDataAndSaveToDb()
         }
-
     }
 
     fun getAllCoresByLaunchesId(id: String) {
         viewModelScope.launch {
             liveDataCoresByLaunchesId = coresRepository.getAllCoresByLaunchesId(id)
         }
-
     }
-
 
     fun searchBySerial(newText: String): LiveData<List<CoresItem>> {
         return coresRepository.searchBySerial(newText)

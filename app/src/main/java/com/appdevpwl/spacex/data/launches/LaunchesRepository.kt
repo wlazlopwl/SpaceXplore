@@ -25,7 +25,6 @@ class LaunchesRepository @Inject constructor(
     suspend fun fetchDataAndSaveToDb() {
 
         when (deviceIsOnline(context)) {
-
             false -> {
                 snackbarText.postValue(Constant.NO_CONNECTION_MESSAGE)
                 getUpcomingLaunchesFromDb()
@@ -65,6 +64,4 @@ class LaunchesRepository @Inject constructor(
     fun getDbSize(): Int {
         return launchesDao.getSize()
     }
-
-
 }

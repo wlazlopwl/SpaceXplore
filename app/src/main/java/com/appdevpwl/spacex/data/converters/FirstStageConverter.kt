@@ -8,12 +8,14 @@ import com.google.gson.reflect.TypeToken
 class FirstStageConverter {
     private val gson = Gson()
     private val type = object : TypeToken<FirstStage>() {}.type
+
     @TypeConverter
-    fun firstStageToString(firstStage: FirstStage): String?{
+    fun firstStageToString(firstStage: FirstStage): String? {
         return gson.toJson(firstStage, type)
     }
+
     @TypeConverter
-    fun stringToFirstStage(string: String): FirstStage?{
-        return gson.fromJson(string,type)
+    fun stringToFirstStage(string: String): FirstStage? {
+        return gson.fromJson(string, type)
     }
 }

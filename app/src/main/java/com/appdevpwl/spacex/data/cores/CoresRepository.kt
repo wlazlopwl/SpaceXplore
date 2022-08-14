@@ -20,7 +20,6 @@ class CoresRepository @Inject constructor(
     val snackbarText = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
 
-
     suspend fun fetchDataAndSaveToDb() {
 
         when (deviceIsOnline(context)) {
@@ -67,6 +66,5 @@ class CoresRepository @Inject constructor(
 
     fun searchBySerial(newText: String): LiveData<List<CoresItem>> {
         return coresDao.searchCores(newText)
-
     }
 }

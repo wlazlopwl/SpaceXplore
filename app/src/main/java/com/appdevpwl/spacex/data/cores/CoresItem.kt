@@ -14,7 +14,7 @@ import kotlinx.android.parcel.RawValue
 data class CoresItem(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ids")
-    val ids:Long,
+    val ids: Long,
     val asds_attempts: Int,
     val asds_landings: Int,
     val block: Int?,
@@ -26,5 +26,5 @@ data class CoresItem(
     val rtls_attempts: Int,
     val rtls_landings: Int,
     val serial: String,
-    val status: String
+    val status: String,
 ) : Parcelable

@@ -1,5 +1,6 @@
 package com.appdevpwl.spacex.ui.rocket
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -16,7 +17,6 @@ class RocketAdapter : RecyclerView.Adapter<RocketAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: RocketSingleItemRvBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
 
         fun bindView(rocket: Rocket) {
             binding.apply {
@@ -52,6 +52,7 @@ class RocketAdapter : RecyclerView.Adapter<RocketAdapter.ViewHolder>() {
         return rocketsList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addItemsToRocketList(list: List<Rocket>) {
         rocketsList = list
         notifyDataSetChanged()

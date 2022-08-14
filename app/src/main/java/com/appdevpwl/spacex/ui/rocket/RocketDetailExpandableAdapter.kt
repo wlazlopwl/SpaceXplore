@@ -11,9 +11,8 @@ import com.appdevpwl.spacex.R
 class RocketDetailExpandableAdapter(
     var context: Context?,
     private val groupList: List<String>,
-    private val childList: HashMap<String, List<String>>
+    private val childList: HashMap<String, List<String>>,
 ) : BaseExpandableListAdapter() {
-
 
     override fun getGroupCount(): Int {
         return groupList.size
@@ -43,14 +42,20 @@ class RocketDetailExpandableAdapter(
         return false
     }
 
-    override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup?): View {
+    override fun getGroupView(
+        groupPosition: Int,
+        isExpanded: Boolean,
+        convertView: View?,
+        parent: ViewGroup?,
+    ): View {
         var convertView = convertView
         val groupTitle = getGroup(groupPosition) as String
         if (convertView == null) {
-            val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val inflater =
+                context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = inflater.inflate(R.layout.rocket_details_expandable_group, null)
         }
-        var groupText = convertView!!.findViewById<TextView>(R.id.rocket_expandable_group)
+        val groupText = convertView!!.findViewById<TextView>(R.id.rocket_expandable_group)
         groupText.text = groupTitle
         return convertView
     }
@@ -60,15 +65,16 @@ class RocketDetailExpandableAdapter(
         childPosition: Int,
         isLastChild: Boolean,
         convertView: View?,
-        parent: ViewGroup?
+        parent: ViewGroup?,
     ): View {
         var convertView = convertView
         val childTitle = getChild(groupPosition, childPosition) as String
         if (convertView == null) {
-            val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val inflater =
+                context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = inflater.inflate(R.layout.rocket_details_expandable_child, null)
         }
-        var childText = convertView!!.findViewById<TextView>(R.id.rocket_expandable_child)
+        val childText = convertView!!.findViewById<TextView>(R.id.rocket_expandable_child)
         childText.text = childTitle
         return convertView
     }

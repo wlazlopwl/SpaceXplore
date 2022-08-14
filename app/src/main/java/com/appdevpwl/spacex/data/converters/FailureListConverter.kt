@@ -2,21 +2,21 @@ package com.appdevpwl.spacex.data.converters
 
 import androidx.room.TypeConverter
 import com.appdevpwl.spacex.data.launches.model.Failure
-import com.appdevpwl.spacex.data.rocket.model.PayloadWeight
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.util.*
 
-class FailureListConverter  {
+class FailureListConverter {
 
-     private val gson= Gson()
+    private val gson = Gson()
+
     @TypeConverter
-    fun FailureToString(failure: List<Failure>): String?{
-        return  gson.toJson(failure)
+    fun failureToString(failure: List<Failure>): String? {
+        return gson.toJson(failure)
     }
 
     @TypeConverter
-    fun stringToFailure(string: String?) : List<Failure>{
+    fun stringToFailure(string: String?): List<Failure> {
         if (string == null) {
             return Collections.emptyList()
         }
@@ -24,7 +24,6 @@ class FailureListConverter  {
         val type = object : TypeToken<List<Failure>>() {
         }.type
 
-        return gson.fromJson(string,type)
+        return gson.fromJson(string, type)
     }
-
 }

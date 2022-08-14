@@ -1,5 +1,6 @@
 package com.appdevpwl.spacex.ui.launches
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
 import android.view.LayoutInflater
@@ -14,7 +15,6 @@ class LaunchesExpandableListAdapter internal constructor(
     private val groupTitle: List<String>,
     private val dataList: HashMap<String, MutableList<List<String>>>,
 ) : BaseExpandableListAdapter() {
-
 
     override fun getGroupCount(): Int {
         return this.groupTitle.size
@@ -45,6 +45,7 @@ class LaunchesExpandableListAdapter internal constructor(
         return false
     }
 
+    @SuppressLint("InflateParams")
     override fun getGroupView(
         groupPosition: Int,
         isExpanded: Boolean,
@@ -59,12 +60,10 @@ class LaunchesExpandableListAdapter internal constructor(
             convertView = layoutInflater.inflate(R.layout.layout_expandable_group, null)
         }
 
-
         val listTitleTextView = convertView!!.findViewById<TextView>(R.id.launches_expandable_title)
         listTitleTextView.setTypeface(null, Typeface.BOLD)
         listTitleTextView.text = groupTitle
         return convertView
-
     }
 
     override fun getChildView(

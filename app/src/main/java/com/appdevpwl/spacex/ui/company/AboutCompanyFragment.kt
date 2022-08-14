@@ -57,8 +57,6 @@ class AboutCompanyFragment : DaggerFragment() {
             mapIntent.setPackage("com.google.android.apps.maps")
             requireActivity().startActivity(mapIntent)
         }
-
-
     }
 
     override fun onDestroyView() {

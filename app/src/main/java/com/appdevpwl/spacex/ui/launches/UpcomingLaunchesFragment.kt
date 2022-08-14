@@ -35,18 +35,15 @@ class UpcomingLaunchesFragment : DaggerFragment() {
             ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
         val binding: FragmentUpcomingLaunchesBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_upcoming_launches, container, false)
-        binding.viewModel=launchesViewModel
-        binding.lifecycleOwner=viewLifecycleOwner
+        binding.viewModel = launchesViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         launchesViewModel.upcomingLaunchesLiveData.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
         })
-
-
     }
 
     private fun initRecyclerView(data: List<LaunchesItem>?) {

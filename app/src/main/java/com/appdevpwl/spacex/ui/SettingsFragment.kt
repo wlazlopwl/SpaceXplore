@@ -18,7 +18,6 @@ import javax.inject.Inject
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
-
     @Inject
     lateinit var preferences: DataStorePreferences
 
@@ -32,9 +31,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
-        var maxTime: ListPreference? = findPreference("MAX_TIME")
-        var massUnit: ListPreference? = findPreference("MASS_UNIT")
-        var lengthUnit: ListPreference? = findPreference("LENGTH_UNIT")
+        val maxTime: ListPreference? = findPreference("MAX_TIME")
+        val massUnit: ListPreference? = findPreference("MASS_UNIT")
+        val lengthUnit: ListPreference? = findPreference("LENGTH_UNIT")
 
         massUnit!!.setOnPreferenceChangeListener { _, newValue ->
             viewLifecycleOwner.lifecycleScope.launch {
@@ -52,7 +51,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
             true
         }
 
-
         maxTime!!.setOnPreferenceChangeListener { pref, newValue ->
             viewLifecycleOwner.lifecycleScope.launch {
                 preferences.saveMaxMinutesBeforeFetchAPI(Constant.MAX_TIME_TO_FETCH_MILLIS,
@@ -61,8 +59,5 @@ class SettingsFragment : PreferenceFragmentCompat() {
             }
             true
         }
-
     }
-
-
 }

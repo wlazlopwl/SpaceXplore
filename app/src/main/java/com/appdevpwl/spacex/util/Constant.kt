@@ -14,13 +14,11 @@ class Constant {
         const val ROCKET_LAST_DATE: String = "rocket_last"
         const val LAUNCHES_LAST_DATE: String = "launches_last"
         const val CAPSULES_LAST_DATE: String = "capsules_last"
-        const val COMPANY_LAST_DATE: String="company_last"
-        const val MASS_UNIT: String="MASS_UNIT"
-        const val LENGTH_UNIT: String="LENGTH_UNIT"
+        const val COMPANY_LAST_DATE: String = "company_last"
+        const val MASS_UNIT: String = "MASS_UNIT"
+        const val LENGTH_UNIT: String = "LENGTH_UNIT"
 
         //TIME TO GET DATA FROM API
         const val MAX_TIME_TO_FETCH_MILLIS: String = "MAX_TIME"
-
-
     }
 }

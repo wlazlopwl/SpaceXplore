@@ -19,38 +19,37 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(homeViewModel: HomeViewModel):ViewModel
+    abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(CapsuleViewModel::class)
-    abstract fun bindCapsuleViewModel(capsuleViewModel: CapsuleViewModel):ViewModel
+    abstract fun bindCapsuleViewModel(capsuleViewModel: CapsuleViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(RocketViewModel::class)
-    abstract fun bindRocketViewModel(rocketViewModel: RocketViewModel):ViewModel
+    abstract fun bindRocketViewModel(rocketViewModel: RocketViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(RocketDetailsViewModel::class)
-    abstract fun bindRocketDetailsViewModel(rocketDetailsViewModel: RocketDetailsViewModel):ViewModel
+    abstract fun bindRocketDetailsViewModel(rocketDetailsViewModel: RocketDetailsViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(LaunchesViewModel::class)
-    abstract fun bindLaunchesViewModel(launchesViewModel: LaunchesViewModel):ViewModel
+    abstract fun bindLaunchesViewModel(launchesViewModel: LaunchesViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(CoresViewModel::class)
-    abstract fun bindCoresViewModel(coresViewModel: CoresViewModel):ViewModel
+    abstract fun bindCoresViewModel(coresViewModel: CoresViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(AboutCompanyViewModel::class)
-    abstract fun bindAboutCompanyViewModel(aboutCompanyViewModel: AboutCompanyViewModel):ViewModel
-
+    abstract fun bindAboutCompanyViewModel(aboutCompanyViewModel: AboutCompanyViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(viewModelProviderFactory: ViewModelProviderFactory): ViewModelProvider.Factory

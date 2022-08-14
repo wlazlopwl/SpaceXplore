@@ -92,9 +92,6 @@ class RocketViewModel @Inject constructor(
                 .fallback(R.drawable.ic_error_black_24dp)
                 .centerCrop()
                 .into(imgView)
-
         }
     }
-
-
 }

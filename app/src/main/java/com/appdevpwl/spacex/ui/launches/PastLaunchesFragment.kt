@@ -27,7 +27,7 @@ class PastLaunchesFragment : DaggerFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         AndroidSupportInjection.inject(this)
         launchesViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
@@ -53,6 +53,4 @@ class PastLaunchesFragment : DaggerFragment() {
             launchesAdapter.addItemsToLaunchesList(data)
         }
     }
-
-
 }

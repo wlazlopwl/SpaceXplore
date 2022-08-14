@@ -62,10 +62,7 @@ class CapsulesRepository @Inject constructor(
 //        snackbarText.postValue(millisToDate(preferences.getLastUpdateTime(CAPSULES_LAST_DATE)).toString())
     }
 
-
     fun getDbSize(): Int {
         return capsulesDao.getSize()
     }
-
-
 }

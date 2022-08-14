@@ -19,7 +19,7 @@ class HomeFragment : DaggerFragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    lateinit var homeAdapter: HomeAdapter
+    private lateinit var homeAdapter: HomeAdapter
     private lateinit var homeViewModel: HomeViewModel
 
     @Inject
@@ -45,7 +45,6 @@ class HomeFragment : DaggerFragment() {
             initRecyclerView(it)
         })
         setHasOptionsMenu(true)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -53,7 +52,7 @@ class HomeFragment : DaggerFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.action_settings -> {
                 view?.findNavController()?.navigate(R.id.action_nav_home_to_nav_settings)
             }

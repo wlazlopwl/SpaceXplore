@@ -21,7 +21,6 @@ interface CompanyDao {
     @Query("SELECT * FROM company_table")
     fun getCompany(): LiveData<Company>
 
-
     @Query("SELECT COUNT(id) FROM company_table")
     fun getSize(): Int
 

@@ -9,12 +9,14 @@ class LinksConverter {
 
     private val gson = Gson()
     private val type = object : TypeToken<Links>() {}.type
+
     @TypeConverter
-    fun linksToString(links: Links): String?{
+    fun linksToString(links: Links): String? {
         return gson.toJson(links, type)
     }
+
     @TypeConverter
-    fun stringToLinks(string: String): Links?{
-        return gson.fromJson(string,type)
+    fun stringToLinks(string: String): Links? {
+        return gson.fromJson(string, type)
     }
 }

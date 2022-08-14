@@ -85,20 +85,15 @@ class CoresFragment : DaggerFragment() {
             }
 
             private fun searchInDB(newText: String) {
-
                 coresViewModel.searchBySerial(newText).observe(viewLifecycleOwner, Observer {
                     coresAdapter.addItemsToCoresList(it)
                 })
             }
-
         })
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

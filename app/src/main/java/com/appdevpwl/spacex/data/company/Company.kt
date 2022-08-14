@@ -11,7 +11,7 @@ import com.appdevpwl.spacex.data.converters.HeadquartersConverter
 data class Company(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ids")
-    val ids:Int,
+    val ids: Int,
     val ceo: String?,
     val coo: String?,
     val cto: String?,
@@ -29,5 +29,5 @@ data class Company(
     val summary: String?,
     val test_sites: Int?,
     val valuation: Long?,
-    val vehicles: Int?
+    val vehicles: Int?,
 )

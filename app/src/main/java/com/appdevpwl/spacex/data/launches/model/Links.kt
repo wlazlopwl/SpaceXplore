@@ -8,5 +8,5 @@ data class Links(
     val reddit: Reddit?,
     val webcast: String?,
     val wikipedia: String?,
-    val youtube_id: String?
+    val youtube_id: String?,
 )

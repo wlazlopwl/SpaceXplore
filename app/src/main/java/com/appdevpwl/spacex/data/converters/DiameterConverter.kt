@@ -9,12 +9,14 @@ class DiameterConverter {
 
     private val gson = Gson()
     private val type = object : TypeToken<Diameter>() {}.type
+
     @TypeConverter
-    fun diameterToString(diameter: Diameter): String?{
+    fun diameterToString(diameter: Diameter): String? {
         return gson.toJson(diameter, type)
     }
+
     @TypeConverter
-    fun stringToDiameter(string: String): Diameter?{
-        return gson.fromJson(string,type)
+    fun stringToDiameter(string: String): Diameter? {
+        return gson.fromJson(string, type)
     }
 }

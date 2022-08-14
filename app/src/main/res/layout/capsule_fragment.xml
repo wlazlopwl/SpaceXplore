@@ -15,15 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.capsule.CapsuleFragment"
-
-            >
-
-<!--        <include-->
-<!--                layout="@layout/capsule_sort_top_layout"-->
-
-<!--                android:id="@+id/sort_type_select" />-->
-
+            tools:context=".ui.capsule.CapsuleFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/capsule_refresh"

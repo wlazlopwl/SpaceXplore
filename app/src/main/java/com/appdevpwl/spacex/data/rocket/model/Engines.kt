@@ -11,5 +11,5 @@ data class Engines(
     val thrust_to_weight: Double,
     val thrust_vacuum: ThrustVacuum,
     val type: String,
-    val version: String
+    val version: String,
 )

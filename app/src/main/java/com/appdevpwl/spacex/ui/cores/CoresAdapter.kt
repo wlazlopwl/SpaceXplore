@@ -1,5 +1,6 @@
 package com.appdevpwl.spacex.ui.cores
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -20,7 +21,6 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.ViewHolder>() {
             binding.apply {
                 binding.coresItem = coresItem
             }
-
         }
     }
 
@@ -36,23 +36,21 @@ class CoresAdapter : RecyclerView.Adapter<CoresAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: CoresAdapter.ViewHolder, position: Int) {
         val coresItem = coresList[position]
         holder.bindView(coresItem)
-        holder.itemView.setOnClickListener {view->
+        holder.itemView.setOnClickListener { view ->
             val coresItem = coresItem
             val bundle = bundleOf("coresItem" to coresItem)
             view.findNavController()
                 .navigate(R.id.action_nav_cores_to_coresDetailsFragment, bundle)
         }
-
     }
 
     override fun getItemCount(): Int {
         return coresList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addItemsToCoresList(list: List<CoresItem>) {
         coresList = list
         notifyDataSetChanged()
     }
-
-
 }

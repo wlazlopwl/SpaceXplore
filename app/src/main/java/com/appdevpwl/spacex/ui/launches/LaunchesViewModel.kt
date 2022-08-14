@@ -1,6 +1,5 @@
 package com.appdevpwl.spacex.ui.launches
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,7 +18,6 @@ class LaunchesViewModel @Inject constructor(
     private val preferences: DataStorePreferences,
 ) : ViewModel() {
 
-
     val snackbarText: LiveData<String> = launchesRepository.snackbarText
     val loadingData: LiveData<Boolean> = launchesRepository.isLoading
 
@@ -32,7 +30,6 @@ class LaunchesViewModel @Inject constructor(
         getLaunchesData()
 
     }
-
 
     private fun getLaunchesData() {
         viewModelScope.launch {

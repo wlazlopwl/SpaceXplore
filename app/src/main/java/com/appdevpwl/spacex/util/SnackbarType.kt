@@ -6,11 +6,9 @@ import com.google.android.material.snackbar.Snackbar
 class SnackbarType {
 
     companion object {
-        fun enableSnackbar(view:View, message: String ){
+        fun enableSnackbar(view: View, message: String) {
             val snackbar: Snackbar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
             snackbar.show()
         }
     }
-
-
 }

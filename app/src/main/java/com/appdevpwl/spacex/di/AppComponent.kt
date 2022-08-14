@@ -28,5 +28,4 @@ interface AppComponent : AndroidInjector<BaseApplication> {
     }
 
     fun inject(application: Application)
-
 }

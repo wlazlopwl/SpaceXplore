@@ -6,5 +6,5 @@ data class SecondStage(
     val fuel_amount_tons: Double,
     val payloads: Payloads,
     val reusable: Boolean,
-    val thrust: Thrust
+    val thrust: Thrust,
 )

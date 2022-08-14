@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="fragment"
                 type="com.appdevpwl.spacex.ui.company.AboutCompanyFragment" />
@@ -20,498 +21,498 @@
             tools:context=".ui.company.AboutCompanyFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:onRefreshListener="@{()-> viewmodel.refreshData()}"
-        app:refreshing="@{viewmodel.loadingData}"
-        >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:onRefreshListener="@{()-> viewmodel.refreshData()}"
+                app:refreshing="@{viewmodel.loadingData}">
+
             <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:ignore="MissingConstraints"
-                android:orientation="vertical">
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="@dimen/largest_text"
-                    android:layout_marginTop="32dp"
-                    android:text="@{viewmodel.companyLiveData.name}">
-
-            </TextView>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="32dp"
-                    android:text="@{viewmodel.companyLiveData.founder +' '+ String.valueOf(viewmodel.companyLiveData.founded)}">
-
-            </TextView>
-
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="@dimen/padding_card"
-                    android:text="@{viewmodel.companyLiveData.summary}">
-
-            </TextView>
-
-
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    app:cardCornerRadius="16dp"
-
-                    android:id="@+id/cardView">
-
                 <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/padding_card"
-                        android:paddingRight="@dimen/padding_card"
+                        android:layout_height="wrap_content"
+                        tools:ignore="MissingConstraints"
+                        android:orientation="vertical">
 
-                        >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="@dimen/largest_text"
+                            android:layout_marginTop="32dp"
+                            android:text="@{viewmodel.companyLiveData.name}">
 
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                    </TextView>
 
-                        <TextView
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="32dp"
+                            android:text="@{viewmodel.companyLiveData.founder +' '+ String.valueOf(viewmodel.companyLiveData.founded)}">
 
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Head"
-                                android:textSize="@dimen/largest_text" />
+                    </TextView>
 
 
-                    </LinearLayout>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="@dimen/padding_card"
+                            android:text="@{viewmodel.companyLiveData.summary}">
 
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+                    </TextView>
 
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
 
-                        <TextView
-                                android:text="CEO"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:id="@+id/rocket_details_cost"
-                                android:layout_width="wrap_content"
-                                android:text="@{viewmodel.companyLiveData.ceo}"
-                                android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="CTO"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:id="@+id/rocket_details_stages"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{viewmodel.companyLiveData.cto}" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="COO"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:id="@+id/rocket_details_first_flight"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{viewmodel.companyLiveData.coo}" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="CTO Propulsion"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                        </TextView>
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:id="@+id/rocket_details_success_rate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{viewmodel.companyLiveData.cto_propulsion }">
-
-                        </TextView>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    app:cardCornerRadius="16dp"
-
-                    >
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/padding_card"
-                        android:paddingRight="@dimen/padding_card"
-
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="SpaceX numbers"
-                                android:textSize="@dimen/largest_text" />
-
-
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="Valuation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-
-                                android:layout_width="wrap_content"
-                                android:text="@{'$'+String.valueOf(viewmodel.companyLiveData.valuation)}"
-                                android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="Employees"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewmodel.companyLiveData.employees)}" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="Vehicles"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewmodel.companyLiveData.vehicles)}" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="Launch sites"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                        </TextView>
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewmodel.companyLiveData.launch_sites) }">
-
-                        </TextView>
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="Test sites"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                        </TextView>
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewmodel.companyLiveData.test_sites) }">
-
-                        </TextView>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    app:cardCornerRadius="16dp"
-
-                    >
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/padding_card"
-                        android:paddingRight="@dimen/padding_card"
-
-                        >
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Headquarters"
-                                android:textSize="@dimen/largest_text" />
-
-
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="Address"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-
-                                android:layout_width="wrap_content"
-                                android:text="@{viewmodel.companyLiveData.headquarters.address}"
-                                android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="City"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{viewmodel.companyLiveData.headquarters.city}" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <TextView
-                                android:text="State"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{viewmodel.companyLiveData.headquarters.state}" />
-                    </LinearLayout>
-
-                    <View
-                            style="@style/SmallDivider"
-                            android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
-
-                    <LinearLayout
-                            android:id="@+id/showOnMap"
+                    <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:clickable="true"
-                            android:background="?android:attr/selectableItemBackground"
-                            android:focusable="true">
+                            android:layout_margin="20dp"
+                            app:cardCornerRadius="16dp"
 
-                        <TextView
-                                android:text="Show on map"
-                                android:layout_width="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/larger_text"
+                            android:id="@+id/cardView">
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:paddingLeft="@dimen/padding_card"
+                                android:paddingRight="@dimen/padding_card"
 
                                 >
 
-                        </TextView>
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Head"
+                                        android:textSize="@dimen/largest_text" />
 
 
-                    </LinearLayout>
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="CEO"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:id="@+id/rocket_details_cost"
+                                        android:layout_width="wrap_content"
+                                        android:text="@{viewmodel.companyLiveData.ceo}"
+                                        android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="CTO"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:id="@+id/rocket_details_stages"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{viewmodel.companyLiveData.cto}" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="COO"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:id="@+id/rocket_details_first_flight"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{viewmodel.companyLiveData.coo}" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="CTO Propulsion"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                </TextView>
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:id="@+id/rocket_details_success_rate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{viewmodel.companyLiveData.cto_propulsion }">
+
+                                </TextView>
+                            </LinearLayout>
+
+                        </LinearLayout>
 
 
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="20dp"
+                            app:cardCornerRadius="16dp"
+
+                            >
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:paddingLeft="@dimen/padding_card"
+                                android:paddingRight="@dimen/padding_card"
+
+                                >
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="SpaceX numbers"
+                                        android:textSize="@dimen/largest_text" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="Valuation"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:text="@{'$'+String.valueOf(viewmodel.companyLiveData.valuation)}"
+                                        android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="Employees"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{String.valueOf(viewmodel.companyLiveData.employees)}" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="Vehicles"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{String.valueOf(viewmodel.companyLiveData.vehicles)}" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="Launch sites"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                </TextView>
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{String.valueOf(viewmodel.companyLiveData.launch_sites) }">
+
+                                </TextView>
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="Test sites"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                </TextView>
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{String.valueOf(viewmodel.companyLiveData.test_sites) }">
+
+                                </TextView>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="20dp"
+                            app:cardCornerRadius="16dp"
+
+                            >
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:paddingLeft="@dimen/padding_card"
+                                android:paddingRight="@dimen/padding_card"
+
+                                >
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Headquarters"
+                                        android:textSize="@dimen/largest_text" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="Address"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:text="@{viewmodel.companyLiveData.headquarters.address}"
+                                        android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="City"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{viewmodel.companyLiveData.headquarters.city}" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                <TextView
+                                        android:text="State"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1" />
+
+                                <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{viewmodel.companyLiveData.headquarters.state}" />
+                            </LinearLayout>
+
+                            <View
+                                    style="@style/SmallDivider"
+                                    android:layout_marginBottom="@dimen/margin_bottom_card_linear" />
+
+                            <LinearLayout
+                                    android:id="@+id/showOnMap"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:clickable="true"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:focusable="true">
+
+                                <TextView
+                                        android:text="Show on map"
+                                        android:layout_width="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/larger_text"
+
+                                        >
+
+                                </TextView>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
             </ScrollView>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

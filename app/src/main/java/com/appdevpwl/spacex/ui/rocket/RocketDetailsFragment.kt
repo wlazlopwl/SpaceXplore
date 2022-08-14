@@ -25,15 +25,12 @@ class RocketDetailsFragment : DaggerFragment() {
     lateinit var viewPager: ViewPager
     lateinit var viewPagerAdapter: RocketDetailsPagerAdapter
 
-
     @Inject
     lateinit var preferences: DataStorePreferences
-
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: RocketDetailsViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,12 +48,7 @@ class RocketDetailsFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
         viewPager = requireView().findViewById(R.id.rocket_img_view_pager)
-
-
         val id = arguments?.getString("argRocketId")!!
 
         viewModel.getRocketById(id)
@@ -65,7 +57,6 @@ class RocketDetailsFragment : DaggerFragment() {
 //            Toolbar title
             (activity as AppCompatActivity?)!!.supportActionBar!!.title = it.name
 
-
             var urlList: ArrayList<String> = ArrayList()
             for (i in it.flickr_images) {
                 urlList.add(i)
@@ -73,9 +64,6 @@ class RocketDetailsFragment : DaggerFragment() {
 
             viewPagerAdapter = RocketDetailsPagerAdapter(requireContext(), urlList)
             viewPager.adapter = viewPagerAdapter
-
-
         })
     }
-
 }

@@ -54,9 +54,5 @@ class LaunchesFragment : DaggerFragment() {
             }
 
         }.attach()
-
-
     }
-
-
 }

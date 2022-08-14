@@ -24,7 +24,6 @@ class NetworkModule {
             .connectTimeout(90, TimeUnit.SECONDS).readTimeout(90, TimeUnit.SECONDS).build()
     }
 
-
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -48,6 +47,4 @@ class NetworkModule {
     fun provideService(retrofit: Retrofit): Service {
         return retrofit.create(Service::class.java)
     }
-
-
 }

@@ -2,23 +2,18 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
             android:title="Sort"
             android:icon="@drawable/ic_baseline_sort_24"
             app:showAsAction="always"
-            android:id="@+id/capsules_menu_sort" >
+            android:id="@+id/capsules_menu_sort">
         <menu>
-
             <item
                     android:id="@+id/capsules_menu_sort_ASC"
-                    android:title="Sort ascending"
-                    />
+                    android:title="Sort ascending" />
             <item
                     android:id="@+id/capsules_menu_sort_DESC"
-                    android:title="Sort descending"
-                    />
-
+                    android:title="Sort descending" />
         </menu>
     </item>
 </menu>

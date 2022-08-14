@@ -1,8 +1,5 @@
 package com.appdevpwl.spacex.ui.company
 
-import android.content.Intent
-import android.net.Uri
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,20 +16,15 @@ import javax.inject.Inject
 class AboutCompanyViewModel @Inject constructor(
     private val companyRepository: CompanyRepository,
     private val preferences: DataStorePreferences,
-) :
-    ViewModel() {
-
+) : ViewModel() {
 
     val companyLiveData: LiveData<Company> = companyRepository.getCompanyFromDb()
     val snackbarText: LiveData<String> = companyRepository.snackbarText
     val loadingData: LiveData<Boolean> = companyRepository.isLoading
 
-
     init {
         getData()
-
     }
-
 
     private fun getData() {
         viewModelScope.launch {
@@ -52,19 +44,15 @@ class AboutCompanyViewModel @Inject constructor(
         }
     }
 
-
     fun refreshData() {
         viewModelScope.launch {
             companyRepository.fetchDataAndSaveToDb()
         }
-
     }
 
     fun getCompanyAddress(): String? {
-        return companyLiveData.value?.headquarters?.let {headquarters ->
-            headquarters.address+"+"+headquarters.city+"+"+headquarters.state
+        return companyLiveData.value?.headquarters?.let { headquarters ->
+            headquarters.address + "+" + headquarters.city + "+" + headquarters.state
         }
     }
-
-
 }

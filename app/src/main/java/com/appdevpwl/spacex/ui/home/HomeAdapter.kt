@@ -1,9 +1,8 @@
 package com.appdevpwl.spacex.ui.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +18,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         fun bindView(item: String, imageId: Int) {
             binding.apply {
                 binding.menuItem = item
-                binding.imageId =imageId
+                binding.imageId = imageId
             }
         }
     }
@@ -33,7 +32,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
         val item = menuList[position]
-        val imageId= when(item){
+        val imageId = when (item) {
             "All launches" -> R.drawable.launches1
             "Cores" -> R.drawable.cores
             "Capsules" -> R.drawable.capsule1
@@ -66,6 +65,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         return menuList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addMenuItemToList(data: List<String>) {
         menuList = data
         notifyDataSetChanged()

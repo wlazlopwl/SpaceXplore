@@ -6,5 +6,5 @@ data class FirstStage(
     val fuel_amount_tons: Double,
     val reusable: Boolean,
     val thrust_sea_level: ThrustSeaLevelX,
-    val thrust_vacuum: ThrustVacuumX
+    val thrust_vacuum: ThrustVacuumX,
 )

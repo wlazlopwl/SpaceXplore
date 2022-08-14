@@ -2,7 +2,6 @@ package com.appdevpwl.spacex.data.capsules
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.appdevpwl.spacex.util.CapsulesSortType
 
 @Dao
 interface CapsulesDao {
