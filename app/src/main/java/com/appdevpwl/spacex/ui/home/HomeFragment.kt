@@ -12,7 +12,6 @@ import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.databinding.FragmentHomeBinding
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class HomeFragment : DaggerFragment() {
@@ -62,13 +61,13 @@ class HomeFragment : DaggerFragment() {
 
     private fun initRecyclerView(data: List<String>) {
         homeAdapter = HomeAdapter()
-        home_recyclerview.apply {
-            setHasFixedSize(true)
-            layoutManager = GridLayoutManager(activity, 2)
-            adapter = homeAdapter
-            homeAdapter.addMenuItemToList(data)
-
-        }
+//        home_recyclerview.apply {
+//            setHasFixedSize(true)
+//            layoutManager = GridLayoutManager(activity, 2)
+//            adapter = homeAdapter
+//            homeAdapter.addMenuItemToList(data)
+//
+//        }
     }
 
     override fun onDestroyView() {

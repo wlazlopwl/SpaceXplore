@@ -14,7 +14,6 @@ import com.appdevpwl.spacex.data.launches.model.LaunchesItem
 import com.appdevpwl.spacex.databinding.FragmentUpcomingLaunchesBinding
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_upcoming_launches.*
 import javax.inject.Inject
 
 
@@ -48,13 +47,13 @@ class UpcomingLaunchesFragment : DaggerFragment() {
 
     private fun initRecyclerView(data: List<LaunchesItem>?) {
         launchesAdapter = LaunchesAdapter()
-        rv_upcoming_launches.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = launchesAdapter
-            launchesAdapter.addItemsToLaunchesList(data!!)
-
-        }
+//        rv_upcoming_launches.apply {
+//            setHasFixedSize(true)
+//            layoutManager = LinearLayoutManager(activity)
+//            adapter = launchesAdapter
+//            launchesAdapter.addItemsToLaunchesList(data!!)
+//
+//        }
     }
 }
 

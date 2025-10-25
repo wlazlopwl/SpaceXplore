@@ -15,7 +15,6 @@ import com.appdevpwl.spacex.databinding.FragmentAboutCompanyBinding
 import com.appdevpwl.spacex.util.SnackbarType
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_about_company.*
 import javax.inject.Inject
 
 
@@ -51,12 +50,12 @@ class AboutCompanyFragment : DaggerFragment() {
 
         })
 
-        showOnMap.setOnClickListener {
-            val mapUri = Uri.parse("geo:0,0?q=" + Uri.encode(companyViewModel.getCompanyAddress()))
-            val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            requireActivity().startActivity(mapIntent)
-        }
+//        showOnMap.setOnClickListener {
+//            val mapUri = Uri.parse("geo:0,0?q=" + Uri.encode(companyViewModel.getCompanyAddress()))
+//            val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
+//            mapIntent.setPackage("com.google.android.apps.maps")
+//            requireActivity().startActivity(mapIntent)
+//        }
     }
 
     override fun onDestroyView() {

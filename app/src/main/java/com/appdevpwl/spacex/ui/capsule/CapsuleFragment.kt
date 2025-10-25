@@ -14,7 +14,6 @@ import com.appdevpwl.spacex.util.CapsulesSortType
 import com.appdevpwl.spacex.util.SnackbarType
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.capsule_fragment.*
 import javax.inject.Inject
 
 
@@ -62,10 +61,10 @@ class CapsuleFragment : DaggerFragment() {
 
     private fun initRecyclerView(data: List<Capsule>) {
 
-        capsule_recyclerview.apply {
-            setHasFixedSize(true)
-            capsuleAdapter.addCapsuleList(data)
-        }
+//        capsule_recyclerview.apply {
+//            setHasFixedSize(true)
+//            capsuleAdapter.addCapsuleList(data)
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

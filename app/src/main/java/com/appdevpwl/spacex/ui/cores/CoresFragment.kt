@@ -14,7 +14,6 @@ import com.appdevpwl.spacex.databinding.FragmentCoresBinding
 import com.appdevpwl.spacex.util.SnackbarType
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_cores.*
 import javax.inject.Inject
 
 
@@ -58,12 +57,12 @@ class CoresFragment : DaggerFragment() {
 
     private fun initRecyclerView(data: List<CoresItem>) {
         coresAdapter = CoresAdapter()
-        cores_recyclerview.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = coresAdapter
-            coresAdapter.addItemsToCoresList(data)
-        }
+//        cores_recyclerview.apply {
+//            setHasFixedSize(true)
+//            layoutManager = LinearLayoutManager(activity)
+//            adapter = coresAdapter
+//            coresAdapter.addItemsToCoresList(data)
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
