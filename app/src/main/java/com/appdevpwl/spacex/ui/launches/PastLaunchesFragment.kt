@@ -14,7 +14,6 @@ import com.appdevpwl.spacex.data.launches.model.LaunchesItem
 import com.appdevpwl.spacex.databinding.FragmentPastLaunchesBinding
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_past_launches.*
 import javax.inject.Inject
 
 
@@ -46,11 +45,11 @@ class PastLaunchesFragment : DaggerFragment() {
 
     private fun initRecyclerView(data: List<LaunchesItem>) {
         launchesAdapter = LaunchesAdapter()
-        rv_past_launches.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = launchesAdapter
-            launchesAdapter.addItemsToLaunchesList(data)
-        }
+//        rv_past_launches.apply {
+//            setHasFixedSize(true)
+//            layoutManager = LinearLayoutManager(activity)
+//            adapter = launchesAdapter
+//            launchesAdapter.addItemsToLaunchesList(data)
+//        }
     }
 }

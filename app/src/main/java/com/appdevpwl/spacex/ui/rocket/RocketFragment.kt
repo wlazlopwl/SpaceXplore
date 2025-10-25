@@ -15,7 +15,6 @@ import com.appdevpwl.spacex.databinding.FragmentRocketBinding
 import com.appdevpwl.spacex.util.SnackbarType
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_rocket.*
 import javax.inject.Inject
 
 
@@ -58,12 +57,12 @@ class RocketFragment : DaggerFragment() {
 
     private fun initRecyclerView(data: List<Rocket>) {
         rocketAdapter = RocketAdapter()
-        rocket_recyclerview.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = rocketAdapter
-            rocketAdapter.addItemsToRocketList(data)
-        }
+//        rocket_recyclerview.apply {
+//            setHasFixedSize(true)
+//            layoutManager = LinearLayoutManager(activity)
+//            adapter = rocketAdapter
+//            rocketAdapter.addItemsToRocketList(data)
+//        }
     }
 
     override fun onDestroyView() {

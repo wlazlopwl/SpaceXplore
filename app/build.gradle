@@ -1,17 +1,17 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    namespace = "com.appdevpwl.spacex"
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.appdevpwl.spacex"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdk 36
         versionCode 6
         versionName "1.5"
 
@@ -34,6 +34,7 @@ android {
     }
     buildFeatures {
         dataBinding true
+        viewBinding = true
     }
 
 }
@@ -41,9 +42,8 @@ android {
 
 dependencies {
 
-    implementation 'androidx.preference:preference-ktx:1.1.1'
-    def dagger_version = '2.35.1'
-    def room_version = "2.3.0"
+    def dagger_version = '2.57.2'
+    def room_version = "2.8.3"
     def okHttpVersion = '5.0.0-alpha.2'
     def retrofitVersion = "2.9.0"
     def gsonVersion = "2.7"
@@ -110,18 +110,18 @@ dependencies {
     implementation 'com.github.bumptech.glide:okhttp3-integration:4.12.0'
 
     //viewpager
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "androidx.viewpager2:viewpager2:1.1.0"
 
 
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
 //    preference
-    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
 
     //datastore
-    implementation "androidx.datastore:datastore:1.0.0-alpha06"
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha06"
-    implementation "androidx.datastore:datastore-preferences-core:1.0.0-alpha06"
+    implementation "androidx.datastore:datastore:1.1.7"
+    implementation "androidx.datastore:datastore-preferences:1.1.7"
+    implementation "androidx.datastore:datastore-preferences-core:1.1.7"
 
 }

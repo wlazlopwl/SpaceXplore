@@ -4,8 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.datastore.core.DataStore
-import androidx.datastore.createDataStore
-import androidx.datastore.preferences.createDataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.appdevpwl.spacex.data.AppDatabase
@@ -56,9 +57,9 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideDataStore(context: Context): DataStore<androidx.datastore.preferences.core.Preferences> {
-        return context.createDataStore(
-            name = "dataStore"
-        )
+    fun provideDataStore(context: Context): DataStore<Preferences> {
+        return PreferenceDataStoreFactory.create {
+            context.preferencesDataStoreFile("dataStore")
+        }
     }
 }

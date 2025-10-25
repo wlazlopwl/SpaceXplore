@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_launches.*
+//import kotlinx.android.synthetic.main.fragment_launches.*
 import javax.inject.Inject
 
 
@@ -47,12 +47,12 @@ class LaunchesFragment : DaggerFragment() {
         viewPager.adapter = adapter
 
         val tabLayout = view.findViewById<TabLayout>(R.id.launches_tabs)
-        TabLayoutMediator(tabLayout, launches_vievpager) { tab, position ->
-            when (position) {
-                0 -> tab.text = "Upcoming"
-                else -> tab.text = "Past"
-            }
-
-        }.attach()
+//        TabLayoutMediator(tabLayout, launches_vievpager) { tab, position ->
+//            when (position) {
+//                0 -> tab.text = "Upcoming"
+//                else -> tab.text = "Past"
+//            }
+//
+//        }.attach()
     }
 }
