@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager2.widget.ViewPager2
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.ui.cores.CoresViewModel
@@ -34,9 +33,9 @@ class LaunchesFragment : DaggerFragment() {
     ): View? {
         AndroidSupportInjection.inject(this)
         launchesViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(LaunchesViewModel::class.java)
         coreViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(CoresViewModel::class.java)
         return inflater.inflate(R.layout.fragment_launches, container, false)
     }
 
@@ -47,12 +46,11 @@ class LaunchesFragment : DaggerFragment() {
         viewPager.adapter = adapter
 
         val tabLayout = view.findViewById<TabLayout>(R.id.launches_tabs)
-//        TabLayoutMediator(tabLayout, launches_vievpager) { tab, position ->
-//            when (position) {
-//                0 -> tab.text = "Upcoming"
-//                else -> tab.text = "Past"
-//            }
-//
-//        }.attach()
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Upcoming"
+                else -> tab.text = "Past"
+            }
+        }.attach()
     }
 }

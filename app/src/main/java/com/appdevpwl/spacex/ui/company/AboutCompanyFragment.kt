@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.databinding.FragmentAboutCompanyBinding
 import com.appdevpwl.spacex.util.SnackbarType
@@ -33,7 +32,7 @@ class AboutCompanyFragment : DaggerFragment() {
     ): View {
         AndroidSupportInjection.inject(this)
         companyViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(AboutCompanyViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(AboutCompanyViewModel::class.java)
         _binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_about_company,
             container,

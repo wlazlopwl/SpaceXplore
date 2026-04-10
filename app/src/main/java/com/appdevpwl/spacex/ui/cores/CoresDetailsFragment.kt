@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.cores.CoresItem
 import com.appdevpwl.spacex.databinding.FragmentCoresDetailsBinding
@@ -34,7 +33,7 @@ class CoresDetailsFragment : DaggerFragment() {
         _coresItem = arguments?.get("coresItem") as CoresItem
         AndroidSupportInjection.inject(this)
         coresViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(CoresViewModel::class.java)
         _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_cores_details, container, false)
         binding.coresItem = coresItem

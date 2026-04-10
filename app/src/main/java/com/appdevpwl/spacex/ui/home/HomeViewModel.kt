@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
-
 class HomeViewModel @Inject constructor() : ViewModel() {
 
     private val _menuList: MutableLiveData<List<String>> = MutableLiveData()

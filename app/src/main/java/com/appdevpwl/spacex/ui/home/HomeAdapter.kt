@@ -47,7 +47,6 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
         }
 
 
-
         holder.itemView.setOnClickListener(
             when (item) {
                 "All launches" -> Navigation.createNavigateOnClickListener(R.id.nav_launches)

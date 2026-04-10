@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.DataStorePreferences
@@ -38,7 +37,7 @@ class RocketDetailsFragment : DaggerFragment() {
     ): View {
         AndroidSupportInjection.inject(this)
         viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(RocketDetailsViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(RocketDetailsViewModel::class.java)
         _binding =
             DataBindingUtil.inflate(inflater, R.layout.rocket_details_fragment, container, false)
         binding.viewmodel = viewModel

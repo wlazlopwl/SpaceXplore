@@ -10,7 +10,6 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.launches.model.LaunchesItem
 import com.appdevpwl.spacex.databinding.FragmentLaunchesDetailsBinding
@@ -37,7 +36,7 @@ class LaunchesDetailsFragment : DaggerFragment() {
         savedInstanceState: Bundle?,
     ): View? {
         coreViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(CoresViewModel::class.java)
 
         val binding: FragmentLaunchesDetailsBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_launches_details, container, false)

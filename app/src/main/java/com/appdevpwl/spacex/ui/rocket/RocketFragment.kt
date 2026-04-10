@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.rocket.model.Rocket
@@ -37,7 +36,7 @@ class RocketFragment : DaggerFragment() {
 
         AndroidSupportInjection.inject(this)
         rocketViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(RocketViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(RocketViewModel::class.java)
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_rocket, container, false)
         binding.viewModel = rocketViewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -56,13 +55,15 @@ class RocketFragment : DaggerFragment() {
     }
 
     private fun initRecyclerView(data: List<Rocket>) {
-        rocketAdapter = RocketAdapter()
-//        rocket_recyclerview.apply {
-//            setHasFixedSize(true)
-//            layoutManager = LinearLayoutManager(activity)
-//            adapter = rocketAdapter
-//            rocketAdapter.addItemsToRocketList(data)
-//        }
+        if (!::rocketAdapter.isInitialized) {
+            rocketAdapter = RocketAdapter()
+            binding.rocketRecyclerview.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(activity)
+                adapter = rocketAdapter
+            }
+        }
+        rocketAdapter.addItemsToRocketList(data)
     }
 
     override fun onDestroyView() {

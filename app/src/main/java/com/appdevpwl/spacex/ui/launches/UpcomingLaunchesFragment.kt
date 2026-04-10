@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.launches.model.LaunchesItem
@@ -24,15 +23,17 @@ class UpcomingLaunchesFragment : DaggerFragment() {
     private lateinit var launchesViewModel: LaunchesViewModel
     private lateinit var launchesAdapter: LaunchesAdapter
 
-    override fun onCreateView(
+    private var _binding: FragmentUpcomingLaunchesBinding? = null
+    private val binding get() = _binding!!
 
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         AndroidSupportInjection.inject(this)
         launchesViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(LaunchesViewModel::class.java)
-        val binding: FragmentUpcomingLaunchesBinding =
+            ViewModelProvider(this, viewModelFactory).get(LaunchesViewModel::class.java)
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_upcoming_launches, container, false)
         binding.viewModel = launchesViewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -40,20 +41,24 @@ class UpcomingLaunchesFragment : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        launchesAdapter = LaunchesAdapter()
+        binding.rvUpcomingLaunches.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(activity)
+            adapter = launchesAdapter
+        }
         launchesViewModel.upcomingLaunchesLiveData.observe(viewLifecycleOwner, Observer {
             initRecyclerView(it)
         })
     }
 
     private fun initRecyclerView(data: List<LaunchesItem>?) {
-        launchesAdapter = LaunchesAdapter()
-//        rv_upcoming_launches.apply {
-//            setHasFixedSize(true)
-//            layoutManager = LinearLayoutManager(activity)
-//            adapter = launchesAdapter
-//            launchesAdapter.addItemsToLaunchesList(data!!)
-//
-//        }
+        data?.let { launchesAdapter.addItemsToLaunchesList(it) }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
 

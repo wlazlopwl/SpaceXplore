@@ -10,6 +10,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.launches.model.LaunchesItem
+import com.appdevpwl.spacex.databinding.LaunchesSingleItemRvBinding
+import com.appdevpwl.spacex.util.convertUnixTime
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -21,60 +23,57 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.ViewHolder>() {
 
     private var launchesList: List<LaunchesItem> = emptyList()
 
-    class ViewHolder(private val mView: View) : RecyclerView.ViewHolder(mView) {
-
-//        private val launchesName: TextView = mView.launches_name
-//        private val launchDate: TextView = mView.launch_date
-//        private val launchImageView: ImageView = mView.launch_img
-//        private val launchFlightNumber: TextView = mView.launch_flight_number
-//        private val progressBar = mView.progressBar
+    class ViewHolder(private val binding: LaunchesSingleItemRvBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bindView(launchesItem: LaunchesItem) {
-//            launchesName.text = launchesItem.name
-//            launchDate.text = convertUnixTime(launchesItem.date_unix!!)
-//            launchFlightNumber.text = launchesItem.flight_number.toString()
-            Glide.with(mView).load(launchesItem.links?.patch?.small)
+            binding.launchesName.text = launchesItem.name ?: ""
+            binding.launchDate.text = launchesItem.date_unix?.let { convertUnixTime(it) } ?: ""
+            binding.launchFlightNumber.text = launchesItem.flight_number?.toString() ?: ""
+            binding.progressBar.visibility = View.VISIBLE
+
+            Glide.with(binding.root)
+                .load(launchesItem.links?.patch?.small)
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
                         model: Any?,
-                        target: Target<Drawable>?,
+                        target: Target<Drawable>,
                         isFirstResource: Boolean,
                     ): Boolean {
-//                        progressBar.visibility = View.GONE
+                        binding.progressBar.visibility = View.GONE
                         return false
                     }
 
                     override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
+                        resource: Drawable,
+                        model: Any,
                         target: Target<Drawable>?,
-                        dataSource: DataSource?,
+                        dataSource: DataSource,
                         isFirstResource: Boolean,
                     ): Boolean {
-//                        progressBar.visibility = View.GONE
+                        binding.progressBar.visibility = View.GONE
                         return false
                     }
                 })
                 .error(R.drawable.ic_error_black_24dp)
                 .fallback(R.drawable.ic_error_black_24dp)
-//                .into(launchImageView)
+                .into(binding.launchImg)
 
-
-
-            itemView.setOnClickListener { view ->
-                val argLaunchesId = launchesItem
-                val bundle = bundleOf("argLaunchesId" to argLaunchesId)
+            binding.root.setOnClickListener { view ->
+                val bundle = bundleOf("argLaunchesId" to launchesItem)
                 view.findNavController()
                     .navigate(R.id.action_nav_launches_to_launchesDetailsFragment, bundle)
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
-        LayoutInflater.from(parent.context)
-            .inflate(R.layout.launches_single_item_rv, parent, false)
-    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = LaunchesSingleItemRvBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return ViewHolder(binding)
+    }
 
     override fun onBindViewHolder(holder: LaunchesAdapter.ViewHolder, position: Int) {
         val launchesItem = launchesList[position]

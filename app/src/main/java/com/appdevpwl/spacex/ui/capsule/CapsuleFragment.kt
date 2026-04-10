@@ -5,7 +5,6 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.capsules.Capsule
@@ -35,7 +34,7 @@ class CapsuleFragment : DaggerFragment() {
         capsuleAdapter = CapsuleAdapter()
         AndroidSupportInjection.inject(this)
         capsuleViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(CapsuleViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(CapsuleViewModel::class.java)
         _binding = DataBindingUtil.inflate(inflater, R.layout.capsule_fragment, container, false)
         binding.viewModel = capsuleViewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -60,11 +59,7 @@ class CapsuleFragment : DaggerFragment() {
     }
 
     private fun initRecyclerView(data: List<Capsule>) {
-
-//        capsule_recyclerview.apply {
-//            setHasFixedSize(true)
-//            capsuleAdapter.addCapsuleList(data)
-//        }
+        capsuleAdapter.addCapsuleList(data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

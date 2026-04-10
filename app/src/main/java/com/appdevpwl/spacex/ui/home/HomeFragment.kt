@@ -5,7 +5,6 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.appdevpwl.spacex.R
@@ -13,6 +12,7 @@ import com.appdevpwl.spacex.databinding.FragmentHomeBinding
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
+
 
 class HomeFragment : DaggerFragment() {
 
@@ -31,7 +31,7 @@ class HomeFragment : DaggerFragment() {
     ): View {
         AndroidSupportInjection.inject(this)
         homeViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
         _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.viewModel = homeViewModel
@@ -61,13 +61,13 @@ class HomeFragment : DaggerFragment() {
 
     private fun initRecyclerView(data: List<String>) {
         homeAdapter = HomeAdapter()
-//        home_recyclerview.apply {
-//            setHasFixedSize(true)
-//            layoutManager = GridLayoutManager(activity, 2)
-//            adapter = homeAdapter
-//            homeAdapter.addMenuItemToList(data)
-//
-//        }
+        binding.homeRecyclerview.apply {
+            setHasFixedSize(true)
+            layoutManager = GridLayoutManager(activity, 2)
+            adapter = homeAdapter
+            homeAdapter.addMenuItemToList(data)
+
+        }
     }
 
     override fun onDestroyView() {

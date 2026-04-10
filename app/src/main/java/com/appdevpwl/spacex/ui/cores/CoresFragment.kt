@@ -6,7 +6,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.appdevpwl.spacex.R
 import com.appdevpwl.spacex.data.cores.CoresItem
@@ -33,7 +32,7 @@ class CoresFragment : DaggerFragment() {
     ): View {
         AndroidSupportInjection.inject(this)
         coresViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(CoresViewModel::class.java)
+            ViewModelProvider(this, viewModelFactory).get(CoresViewModel::class.java)
         _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_cores, container, false)
         binding.viewModel = coresViewModel
@@ -56,13 +55,15 @@ class CoresFragment : DaggerFragment() {
     }
 
     private fun initRecyclerView(data: List<CoresItem>) {
-        coresAdapter = CoresAdapter()
-//        cores_recyclerview.apply {
-//            setHasFixedSize(true)
-//            layoutManager = LinearLayoutManager(activity)
-//            adapter = coresAdapter
-//            coresAdapter.addItemsToCoresList(data)
-//        }
+        if (!::coresAdapter.isInitialized) {
+            coresAdapter = CoresAdapter()
+            binding.coresRecyclerview.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(activity)
+                adapter = coresAdapter
+            }
+        }
+        coresAdapter.addItemsToCoresList(data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
